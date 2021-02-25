@@ -1,0 +1,25 @@
+---
+title: "Welcome to Visual Analytics Project"
+description: |
+  Welcome to our new blog, Visual Analytics Project. We hope you enjoy 
+  reading what we have to say!
+author:
+  - name: Choong Shi Lian Selene,Jiang Weiling Angeline, Wong Wei Sheng Dylan
+    affiliation: School of Computing and Information System, Singapore Management University
+    affiliation_url: https://scis.smu.edu.sg/
+date: 02-25-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating blogs with Distill at:
+# https://rstudio.github.io/distill/blog.html
+
+```
+
+
+

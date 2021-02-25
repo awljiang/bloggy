@@ -1,0 +1,36 @@
+[
+  {
+    "path": "posts/welcome/",
+    "title": "Welcome to Visual Analytics Project",
+    "description": "Welcome to our new blog, Visual Analytics Project. We hope you enjoy \nreading what we have to say!",
+    "author": [
+      {
+        "name": "Choong Shi Lian Selene,Jiang Weiling Angeline, Wong Wei Sheng Dylan",
+        "url": {}
+      }
+    ],
+    "date": "2021-02-25",
+    "categories": [],
+    "contents": "\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2021-02-25T21:26:19+08:00",
+    "input_file": "welcome.utf8.md"
+  },
+  {
+    "path": "posts/2021-02-25-proposal/",
+    "title": "Proposal",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Choong Shi Lian Selene,Jiang Weiling Angeline, Wong Wei Sheng Dylan",
+        "url": {}
+      }
+    ],
+    "date": "2021-02-25",
+    "categories": [],
+    "contents": "\r\nThe title of your project\r\nA short description of not more than 350 word summarising the motivation, objectives, main features of the application your team are going to build, and The project proposal.\r\nThis should in a webblog page (remember to provide a link at the wiki).\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2021-02-25T21:46:15+08:00",
+    "input_file": "proposal.utf8.md"
+  }
+]

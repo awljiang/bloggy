@@ -1,0 +1,26 @@
+---
+title: "Proposal"
+description: |
+  A short description of the post.
+author:
+  - name: Choong Shi Lian Selene,Jiang Weiling Angeline, Wong Wei Sheng Dylan
+    url: {}
+date: 02-25-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+The title of your project
+
+A short description of not more than 350 word summarising the motivation, objectives, main features of the application your team are going to build, and
+The project proposal. 
+
+This should in a webblog page (remember to provide a link at the wiki).
+
+

@@ -25,3 +25,22 @@ This should in a webblog page (remember to provide a link at the wiki).
 
 Testing 123 - haha
 
+Background
+
+Motivation
+
+Project Objectives
+
+Data Description
+
+Proposed Scope and Methodology
+
+Storyboard & Visualization Features
+
+Proposed R Packages
+
+Project Timeline
+
+Team Members
+
+References

@@ -3,7 +3,7 @@ title: "Proposal"
 description: |
   A short description of the post.
 author:
-  - name: Choong Shi Lian Selene,Jiang Weiling Angeline, Wong Wei Sheng Dylan
+  - name: Choong Shi Lian Selene, Jiang Weiling Angeline, Wong Wei Sheng Dylan
     url: {}
 date: 02-25-2021
 output:
@@ -16,31 +16,48 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-The title of your project
 
-A short description of not more than 350 word summarising the motivation, objectives, main features of the application your team are going to build, and
-The project proposal. 
+### Background
 
-This should in a webblog page (remember to provide a link at the wiki).
+### Motivation
 
-Testing 123 - haha
 
-Background
+### Project Objectives
+The project aims to deliver an R-Shiny app that provides interactive user interface design to:
+* Understand the correlation of factors affecting greenhouse gases emissions
+* Identify important factors which contributes to greenhuose gases emissions using Panel data regression
+* Further analyse the difference in greenhuose gases emissions by country and time period
 
-Motivation
+### Proposed Scope and Methodology
 
-Project Objectives
+### Storyboard & Visualization Features
 
-Data Description
+#### Exploratory Data Analysis
 
-Proposed Scope and Methodology
+#### Validation Tests
 
-Storyboard & Visualization Features
+#### Calibration of Model
 
-Proposed R Packages
+### Proposed R Packages
+#### Data Preparation
+* tidyverse: https://www.tidyverse.org
 
-Project Timeline
+#### Panel data regression
+* ExPanDaR: https://cran.r-project.org/web/packages/ExPanDaR
+* plm: https://cran.r-project.org/web/packages/plm
 
-Team Members
+#### Building Shiny App
+* shiny: https://shiny.rstudio.com
+* shinythemes: https://cran.r-project.org/web/packages/shinythemes
+* shinyWidgets: https://cran.r-project.org/web/packages/shinyWidgets
+* RColorBrewer: https://cran.r-project.org/web/packages/RColorBrewer
 
-References
+### Project Timeline
+
+### Team Members
+* Choong Shi Lian Selene
+* Jiang Weiling Angeline
+* Wong Wei Sheng Dylan
+
+### References
+

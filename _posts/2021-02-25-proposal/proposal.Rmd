@@ -8,9 +8,18 @@ author:
 date: 02-25-2021
 output:
   distill::distill_article:
+    toc: true
+    toc_depth: 3
     self_contained: false
 ---
 
+<style>
+h1, h2, h3 {
+text-align: left
+}
+body {
+text-align: justify}
+</style>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -60,6 +69,8 @@ The project aims to deliver an R-Shiny app that provides interactive user interf
 * RColorBrewer: https://cran.r-project.org/web/packages/RColorBrewer
 
 ### Project Timeline
+
+![](./image/timeline.png){width=100%}
 
 ### Team Members
 * Choong Shi Lian Selene

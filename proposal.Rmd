@@ -1,0 +1,7 @@
+---
+title: "Proposal"
+site: distill::distill_website
+listing: 
+  posts:
+    - 2021-02-25-proposal
+---

@@ -3,7 +3,7 @@ title: "Proposal"
 description: |
   Exploratory analysis of greenhouse gas emissions and Panel data regression for investigating the determinants of greenhouse gas emissions for European Union countries
 author:
-  - name: Group 2 <br> (Angeline Jiang, Dylan Wong, Selene Choong)
+  - name: Group 2 (Angeline Jiang, Dylan Wong, Selene Choong)
     url: {}
 date: 02-25-2021
 output:

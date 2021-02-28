@@ -50,6 +50,8 @@ The project aims to deliver an R-Shiny app that provides interactive user interf
 
 #### Exploratory Data Analysis
 
+Exploratory Data Analysis (EDA) methods in R
+
 Data|Proposed Visualisation
 :-:|:---:
 Greenhouse Gases Emission|![](./image/EDA1.jpg){width=100%}

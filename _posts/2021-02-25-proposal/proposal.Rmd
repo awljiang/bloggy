@@ -63,6 +63,12 @@ include_graphics(timeline_path)
 
 ### (A) Exploratory Data Analysis (EDA) methods in R
 
+The preliminary proposed layout of the R Shiny app consist of 3 tab panels
+
+![](./image/EDA.jpg){width=100%}
+
+Under the EDA tab, there will be another tab panel comprising of 4 tabs shown below:
+
 Data|Proposed Visualisation
 :-:|:---:
 Greenhouse Gases Emission|![](./image/EDA1.jpg){width=100%}

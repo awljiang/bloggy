@@ -26,9 +26,9 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ### Background
-Global warming is expected to result in a rise of the average global temperature between 1.1 to 6.4 degree celsius over the century, if there are no interventions taken to reduce emissions of greenhouse gases. Greenhouse gases are contributed by multiple drivers which include economic activities such as electricity production, transportation and waste generation.
+Global warming is expected to result in a rise of the average global temperature between 1.1 to 6.4 degree celsius over the century, if there are no interventions taken to reduce emissions of greenhouse gases. Greenhouse gases are contributed by multiple drivers which include economic activities such as electricity production, transportation and waste generation. Carbon dioxide is the primary greenhouse gas emitted through human activities.
 
-In December 2020, the European Union (EU) leaders committed to an ambitious goal of reducing greenhouse gases by 55% by 2030 to tackle climate change. The EU is currently the world's third biggest emitter of greenhouse gases. Measures were introduced to mitigate the greenhouse gas emissions produced by economic activities, such as emission taxes and use of renewable energy sources.
+In December 2020, the European Union (EU) leaders committed to an ambitious goal of reducing greenhouse gases by 55% by 2030 to tackle climate change. The EU is currently the world's third biggest emitter of greenhouse gases. Measures, such as emission taxes and use of renewable energy sources, were introduced to mitigate the greenhouse gas emissions, especially carbon dioxide emissions.
 
 ### Motivation
 A large amount of climate change related statistics are available on Eurostat, with data across multiple domains such as environmental, social and economic statistics. Monitoring of the reduction of greenhouse gas emissions can be performed and is essential for tracking EU's progress towards achieving its 2030 goal. Analysis of the impacts of the drivers and mitigation using the available statistics also allowed for insights on the determinants of the greenhouse gas emissions for the EU countries.
@@ -41,10 +41,10 @@ The project aims to deliver an R-Shiny app that provides interactive user interf
 * Further analyse the difference in greenhouse gas emissions by country and time period
 
 ### Broad Data Description
-Statistics from Eurostat covering a wide range of domains are used in this R Shiny Application. For our project, we will focus on datasets under greenhouse gas emissions, drivers and mitigation for all EU countries.
+Statistics from Eurostat covering a wide range of domains are used in this R Shiny Application. For our project, we will focus on datasets under greenhouse gas emissions (specifically carbon dioxide emissions), drivers and mitigation for all EU countries. 
 
 ### Proposed Scope and Methodology
-1. Analysis of Edurostat greenhouse emission dataset with background research
+1. Analysis of Eurostat greenhouse emission dataset with background research
 2. Exploratory Data Analysis (EDA) methods in R
 3. Analysis of Panel data regression (using plm package) in R
 4. Development of validating checks and model selection in R
@@ -89,7 +89,20 @@ include_graphics(model2_path)
 ```
 
 ### (C) Development of validating checks and model selection in R 
-Validation Tests & Model Selection
+
+To cater to varying statistical knowledge of users, there will be two types of outputs shown - (1) simplified overview of whether the assumptions for the calibrated model is met and (2) detailed outputs from each validation tests.
+
+```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%"}
+knitr::include_graphics("image/Validation.jpg")
+```
+
+The list of validation tests for the panel models include:
+
+ - Test of **poolability** using Chow test
+ - Tests for **individual and time effects** using Lagrange multiplier test
+ - Test for **correlation between unobserved effects and the regressors** using Hausman-type test
+ - Test for **stationarity of the series** using Augmented Dickey-Fuller (ADF)
+ - Test for **cross-sectional dependence** using the Pesaran CD test of independence
 
 ### Proposed R Packages
 #### Data Preparation
@@ -99,6 +112,7 @@ Validation Tests & Model Selection
 * ExPanDaR: https://cran.r-project.org/web/packages/ExPanDaR
 * plm: https://cran.r-project.org/web/packages/plm
 * stargazer: https://cran.r-project.org/web/packages/stargazer
+* tseries: https://cran.r-project.org/web/packages/tseries
 
 #### Building Shiny App
 * shiny: https://shiny.rstudio.com
@@ -113,4 +127,5 @@ Validation Tests & Model Selection
 
 ### References
 * [Climate change: EU leaders set 55% target for CO2 emissions cut](https://www.bbc.com/news/world-europe-55273004)
-* [Combating climate change: Fact sheet](https://www.europarl.europa.eu/factsheets/en/sheet/72/climate-change-and-the-environment#:~:text=The%20European%20Union%20(EU)%20is,a%2040%25%20cut%20by%202030) 
+* [Combating climate change: Fact sheet](https://www.europarl.europa.eu/factsheets/en/sheet/72/climate-change-and-the-environment#:~:text=The%20European%20Union%20(EU)%20is,a%2040%25%20cut%20by%202030)
+* [Overview of Greenhouse Cases: Carbon Dioxide](https://www.epa.gov/ghgemissions/overview-greenhouse-gases)

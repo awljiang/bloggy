@@ -116,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["image/EDA1.jpg","image/EDA2.jpg","image/EDA3.jpg","image/EDA4.jpg","image/Modeling.PNG","image/timeline.png","proposal_files/anchor-4.2.2/anchor.min.js","proposal_files/bowser-1.9.3/bowser.min.js","proposal_files/distill-2.2.21/template.v2.js","proposal_files/header-attrs-2.6.4/header-attrs.js","proposal_files/header-attrs-2.6/header-attrs.js","proposal_files/header-attrs-2.7/header-attrs.js","proposal_files/jquery-1.11.3/jquery.min.js","proposal_files/popper-2.6.0/popper.min.js","proposal_files/tippy-6.2.7/tippy-bundle.umd.min.js","proposal_files/tippy-6.2.7/tippy-light-border.css","proposal_files/tippy-6.2.7/tippy.css","proposal_files/tippy-6.2.7/tippy.umd.min.js","proposal_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["image/EDA1.jpg","image/EDA2.jpg","image/EDA3.jpg","image/EDA4.jpg","image/Modeling1.PNG","image/Modeling2.PNG","image/timeline.png","proposal_files/anchor-4.2.2/anchor.min.js","proposal_files/bowser-1.9.3/bowser.min.js","proposal_files/distill-2.2.21/template.v2.js","proposal_files/header-attrs-2.6.4/header-attrs.js","proposal_files/header-attrs-2.6/header-attrs.js","proposal_files/header-attrs-2.7/header-attrs.js","proposal_files/jquery-1.11.3/jquery.min.js","proposal_files/popper-2.6.0/popper.min.js","proposal_files/tippy-6.2.7/tippy-bundle.umd.min.js","proposal_files/tippy-6.2.7/tippy-light-border.css","proposal_files/tippy-6.2.7/tippy.css","proposal_files/tippy-6.2.7/tippy.umd.min.js","proposal_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2104,12 +2104,14 @@ document.addEventListener('DOMContentLoaded', function() {
 <ul>
 <li><a href="#background">Background</a></li>
 <li><a href="#motivation">Motivation</a></li>
-<li><a href="#broad-data-description">Broad Data Description</a></li>
 <li><a href="#project-objectives">Project Objectives</a></li>
+<li><a href="#broad-data-description">Broad Data Description</a></li>
 <li><a href="#proposed-scope-and-methodology">Proposed Scope and Methodology</a></li>
 <li><a href="#storyboard-visualization-features">Storyboard &amp; Visualization Features</a></li>
+<li><a href="#a-exploratory-data-analysis-eda-methods-in-r">(A) Exploratory Data Analysis (EDA) methods in R</a></li>
+<li><a href="#b-analysis-of-panel-data-regression-using-plm-package-in-r">(B) Analysis of Panel data regression (using plm package) in R</a></li>
+<li><a href="#c-development-of-validating-checks-and-model-selection-in-r">(C) Development of validating checks and model selection in R</a></li>
 <li><a href="#proposed-r-packages">Proposed R Packages</a></li>
-<li><a href="#project-timeline">Project Timeline</a></li>
 <li><a href="#team-members">Team Members</a></li>
 <li><a href="#references">References</a></li>
 </ul>
@@ -2127,8 +2129,6 @@ text-align: justify}
 <p>In December 2020, the European Union (EU) leaders committed to an ambitious goal of reducing greenhouse gases by 55% by 2030 to tackle climate change. The EU is currently the world’s third biggest emitter of greenhouse gases. Measures were introduced to mitigate the greenhouse gas emissions produced by economic activities, such as emission taxes and use of renewable energy sources.</p>
 <h3 id="motivation">Motivation</h3>
 <p>A large amount of climate change related statistics are available on Eurostat, with data across multiple domains such as environmental, social and economic statistics. Monitoring of the reduction of greenhouse gas emissions can be performed and is essential for tracking EU’s progress towards achieving its 2030 goal. Analysis of the impacts of the drivers and mitigation using the available statistics also allowed for insights on the determinants of the greenhouse gas emissions for the EU countries.</p>
-<h3 id="broad-data-description">Broad Data Description</h3>
-<p>Statistics from Eurostat covering a wide range of domains are used in this R Shiny Application. For our project, we will focus on datasets under greenhouse gas emissions, drivers and mitigation for all EU countries.</p>
 <h3 id="project-objectives">Project Objectives</h3>
 <p>The project aims to deliver an R-Shiny app that provides interactive user interface design to:</p>
 <ul>
@@ -2136,10 +2136,22 @@ text-align: justify}
 <li>Identify important factors which contributes to greenhouse gas emissions using Panel data regression</li>
 <li>Further analyse the difference in greenhouse gas emissions by country and time period</li>
 </ul>
+<h3 id="broad-data-description">Broad Data Description</h3>
+<p>Statistics from Eurostat covering a wide range of domains are used in this R Shiny Application. For our project, we will focus on datasets under greenhouse gas emissions, drivers and mitigation for all EU countries.</p>
 <h3 id="proposed-scope-and-methodology">Proposed Scope and Methodology</h3>
+<ol type="1">
+<li>Analysis of Edurostat greenhouse emission dataset with background research</li>
+<li>Exploratory Data Analysis (EDA) methods in R</li>
+<li>Analysis of Panel data regression (using plm package) in R</li>
+<li>Development of validating checks and model selection in R</li>
+<li>R-Shiny app development for user interactivity</li>
+</ol>
+<p>A generalized development timeframe for this project is shown below:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="image/timeline.png" width="100%" height="100%" /></p>
+</div>
 <h3 id="storyboard-visualization-features">Storyboard &amp; Visualization Features</h3>
-<h4 id="exploratory-data-analysis">Exploratory Data Analysis</h4>
-<p>Exploratory Data Analysis (EDA) methods in R</p>
+<h3 id="a-exploratory-data-analysis-eda-methods-in-r">(A) Exploratory Data Analysis (EDA) methods in R</h3>
 <table>
 <thead>
 <tr class="header">
@@ -2166,8 +2178,16 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<h4 id="validation-tests">Validation Tests</h4>
-<h4 id="calibration-of-model">Calibration of Model</h4>
+<h3 id="b-analysis-of-panel-data-regression-using-plm-package-in-r">(B) Analysis of Panel data regression (using plm package) in R</h3>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="image/Modeling1.PNG" width="100%" height="100%" /></p>
+</div>
+<p>If user(s) prefers to see in terms of bar chart i.e. “Bar” is selected under the View option.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="image/Modeling2.PNG" width="100%" height="100%" /></p>
+</div>
+<h3 id="c-development-of-validating-checks-and-model-selection-in-r">(C) Development of validating checks and model selection in R</h3>
+<p>Validation Tests &amp; Model Selection</p>
 <h3 id="proposed-r-packages">Proposed R Packages</h3>
 <h4 id="data-preparation">Data Preparation</h4>
 <ul>
@@ -2177,6 +2197,7 @@ text-align: justify}
 <ul>
 <li>ExPanDaR: <a href="https://cran.r-project.org/web/packages/ExPanDaR" class="uri">https://cran.r-project.org/web/packages/ExPanDaR</a></li>
 <li>plm: <a href="https://cran.r-project.org/web/packages/plm" class="uri">https://cran.r-project.org/web/packages/plm</a></li>
+<li>stargazer: <a href="https://cran.r-project.org/web/packages/stargazer" class="uri">https://cran.r-project.org/web/packages/stargazer</a></li>
 </ul>
 <h4 id="building-shiny-app">Building Shiny App</h4>
 <ul>
@@ -2185,8 +2206,6 @@ text-align: justify}
 <li>shinyWidgets: <a href="https://cran.r-project.org/web/packages/shinyWidgets" class="uri">https://cran.r-project.org/web/packages/shinyWidgets</a></li>
 <li>RColorBrewer: <a href="https://cran.r-project.org/web/packages/RColorBrewer" class="uri">https://cran.r-project.org/web/packages/RColorBrewer</a></li>
 </ul>
-<h3 id="project-timeline">Project Timeline</h3>
-<p><img src="image/timeline.png" style="width:100.0%" /></p>
 <h3 id="team-members">Team Members</h3>
 <ul>
 <li>Choong Shi Lian Selene</li>

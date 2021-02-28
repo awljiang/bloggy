@@ -33,9 +33,6 @@ In December 2020, the European Union (EU) leaders committed to an ambitious goal
 ### Motivation
 A large amount of climate change related statistics are available on Eurostat, with data across multiple domains such as environmental, social and economic statistics. Monitoring of the reduction of greenhouse gas emissions can be performed and is essential for tracking EU's progress towards achieving its 2030 goal. Analysis of the impacts of the drivers and mitigation using the available statistics also allowed for insights on the determinants of the greenhouse gas emissions for the EU countries.
 
-### Broad Data Description
-Statistics from Eurostat covering a wide range of domains are used in this R Shiny Application. For our project, we will focus on datasets under greenhouse gas emissions, drivers and mitigation for all EU countries.
-
 ### Project Objectives
 The project aims to deliver an R-Shiny app that provides interactive user interface design to:
 
@@ -43,14 +40,28 @@ The project aims to deliver an R-Shiny app that provides interactive user interf
 * Identify important factors which contributes to greenhouse gas emissions using Panel data regression
 * Further analyse the difference in greenhouse gas emissions by country and time period
 
+### Broad Data Description
+Statistics from Eurostat covering a wide range of domains are used in this R Shiny Application. For our project, we will focus on datasets under greenhouse gas emissions, drivers and mitigation for all EU countries.
 
 ### Proposed Scope and Methodology
+1. Analysis of Edurostat greenhouse emission dataset with background research
+2. Exploratory Data Analysis (EDA) methods in R
+3. Analysis of Panel data regression (using plm package) in R
+4. Development of validating checks and model selection in R
+5. R-Shiny app development for user interactivity
+
+A generalized development timeframe for this project is shown below:
+
+```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%"}
+library(knitr)
+library(png)
+timeline_path <- "./image/timeline.png"
+include_graphics(timeline_path)
+```
 
 ### Storyboard & Visualization Features
 
-#### Exploratory Data Analysis
-
-Exploratory Data Analysis (EDA) methods in R
+### (A) Exploratory Data Analysis (EDA) methods in R
 
 Data|Proposed Visualisation
 :-:|:---:
@@ -59,10 +70,26 @@ Green Energy Production|![](./image/EDA2.jpg){width=100%}
 Correlation Plot of Drivers|![](./image/EDA3.jpg){width=100%}
 Scatter Plot|![](./image/EDA4.jpg){width=100%}
 
+### (B) Analysis of Panel data regression (using plm package) in R
 
-#### Validation Tests
+```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%"}
+library(knitr)
+library(png)
+model1_path <- "./image/Modeling1.png"
+include_graphics(model1_path)
+```
 
-#### Calibration of Model
+If user(s) prefers to see in terms of bar chart i.e. "Bar" is selected under the View option.
+
+```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%"}
+library(knitr)
+library(png)
+model2_path <- "./image/Modeling2.png"
+include_graphics(model2_path)
+```
+
+### (C) Development of validating checks and model selection in R 
+Validation Tests & Model Selection
 
 ### Proposed R Packages
 #### Data Preparation
@@ -71,16 +98,13 @@ Scatter Plot|![](./image/EDA4.jpg){width=100%}
 #### Panel data regression
 * ExPanDaR: https://cran.r-project.org/web/packages/ExPanDaR
 * plm: https://cran.r-project.org/web/packages/plm
+* stargazer: https://cran.r-project.org/web/packages/stargazer
 
 #### Building Shiny App
 * shiny: https://shiny.rstudio.com
 * shinythemes: https://cran.r-project.org/web/packages/shinythemes
 * shinyWidgets: https://cran.r-project.org/web/packages/shinyWidgets
 * RColorBrewer: https://cran.r-project.org/web/packages/RColorBrewer
-
-### Project Timeline
-
-![](./image/timeline.png){width=100%}
 
 ### Team Members
 * Choong Shi Lian Selene

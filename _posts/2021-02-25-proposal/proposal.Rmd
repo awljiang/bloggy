@@ -50,6 +50,14 @@ The project aims to deliver an R-Shiny app that provides interactive user interf
 
 #### Exploratory Data Analysis
 
+Data|Proposed Visualisation
+:-|:---
+Greenhouse Gases Emission|![](./image/EDA1.jpg){width=100%}
+Green Energy Production|![](./image/EDA2.jpg){width=100%}
+Correlation Plot of Drivers|![](./image/EDA3.jpg){width=100%}
+Scatter Plot|![](./image/EDA4.jpg){width=100%}
+
+
 #### Validation Tests
 
 #### Calibration of Model

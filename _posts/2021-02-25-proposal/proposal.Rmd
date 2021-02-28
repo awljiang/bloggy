@@ -63,7 +63,7 @@ include_graphics(timeline_path)
 
 ### (A) Exploratory Data Analysis (EDA) methods in R
 
-The proposed layout of the R Shiny app consists of 3 tab panels
+The proposed layout of the R Shiny app consists of 3 main tabs in the tab panel
 
 ![](./image/EDA.jpg){width=100%}
 
@@ -73,7 +73,7 @@ Data|Proposed Visualisation
 :-:|:---:
 Greenhouse Gases Emission|![](./image/EDA1.jpg){width=100%}
 Green Energy Production|![](./image/EDA2.jpg){width=100%}
-Correlation Plot of Drivers|![](./image/EDA3.jpg){width=100%}
+Correlation Plot of Drivers and Mitigation|![](./image/EDA3.jpg){width=100%}
 Scatter Plot for Drivers and Mitigation|![](./image/EDA4.jpg){width=100%}
 
 ### (B) Analysis of Panel data regression (using plm package) in R

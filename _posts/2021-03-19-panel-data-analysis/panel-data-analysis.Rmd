@@ -1,0 +1,23 @@
+---
+title: "Estimating the relationship of determinants and Greenhouse Gas Emission levels using Panel Data analysis"
+description: |
+  A short description of the post.
+author:
+  - name: Choong Shi Lian Selene
+    url: {}
+date: 03-19-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+

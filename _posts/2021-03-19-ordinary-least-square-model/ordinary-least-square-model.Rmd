@@ -1,0 +1,58 @@
+---
+title: "Estimating the relationship of determinants and Greenhouse Gas Emission levels using Ordinary Least Square Regression"
+description: |
+  A short description of the post.
+author:
+  - name: Jiang Weiling Angeline
+    url: {}
+date: 03-18-2021
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    self_contained: false
+---
+
+<style>
+h1, h2, h3 {
+text-align: left
+}
+body {
+text-align: justify}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## 1.0 Overview
+
+### 1.1 Core Purpose of DataViz Exercise
+
+<Lit Review>
+
+### 1.2 Components of Visualisation
+
+### 1.3 Sketch of Proposed Visualisation
+
+## 2.0 Interactivity
+
+## 3.0 Step-by-Step Data Visualisation Preparation
+
+### 3.1 Installing and Launching R packages
+
+### 3.2 Data Preparation
+
+#### 3.2.1 Data Source
+
+#### 3.2.2 Loading the dataset onto R
+
+#### 3.2.3 Creating the dataframe for OLS 
+
+### 3.3 Data Visualisations for Aggregated View
+
+### 4.0 Final Visualisation
+
+### 5.0 Major Advantages of Incorporating Interactivity
+
+

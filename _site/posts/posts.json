@@ -1,20 +1,54 @@
 [
   {
-    "path": "posts/welcome/",
-    "title": "Welcome to Visual Analytics Project",
-    "description": "Welcome to our new blog, Visual Analytics Project. We hope you enjoy \nreading what we have to say!",
+    "path": "posts/2021-03-19-panel-data-analysis/",
+    "title": "Estimating the relationship of determinants and Greenhouse Gas Emission levels using Panel Data analysis",
+    "description": "A short description of the post.",
     "author": [
       {
-        "name": "Choong Shi Lian Selene,Jiang Weiling Angeline, Wong Wei Sheng Dylan",
+        "name": "Choong Shi Lian Selene",
         "url": {}
       }
     ],
-    "date": "2021-02-25",
+    "date": "2021-03-19",
     "categories": [],
-    "contents": "\r\n\r\n\r\n\r\n",
+    "contents": "\r\nDistill is a publication format for scientific and technical writing, native to the web.\r\nLearn more about using Distill at https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2021-02-25T21:26:20+08:00",
-    "input_file": {}
+    "last_modified": "2021-03-19T23:22:31+08:00",
+    "input_file": "panel-data-analysis.utf8.md"
+  },
+  {
+    "path": "posts/2021-03-19-ordinary-least-square-model/",
+    "title": "Estimating the relationship of determinants and Greenhouse Gas Emission levels using Ordinary Least Square Regression",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Jiang Weiling Angeline",
+        "url": {}
+      }
+    ],
+    "date": "2021-03-18",
+    "categories": [],
+    "contents": "\r\n\r\nContents\r\n1.0 Overview\r\n1.1 Core Purpose of DataViz Exercise\r\n1.2 Components of Visualisation\r\n1.3 Sketch of Proposed Visualisation\r\n\r\n2.0 Interactivity\r\n3.0 Step-by-Step Data Visualisation Preparation\r\n3.1 Installing and Launching R packages\r\n3.2 Data Preparation\r\n3.3 Data Visualisations for Aggregated View\r\n4.0 Final Visualisation\r\n5.0 Major Advantages of Incorporating Interactivity\r\n\r\n\r\n\r\nh1, h2, h3 {\r\ntext-align: left\r\n}\r\nbody {\r\ntext-align: justify}\r\n1.0 Overview\r\n1.1 Core Purpose of DataViz Exercise\r\n\r\n1.2 Components of Visualisation\r\n1.3 Sketch of Proposed Visualisation\r\n2.0 Interactivity\r\n3.0 Step-by-Step Data Visualisation Preparation\r\n3.1 Installing and Launching R packages\r\n3.2 Data Preparation\r\n3.2.1 Data Source\r\n3.2.2 Loading the dataset onto R\r\n3.2.3 Creating the dataframe for OLS\r\n3.3 Data Visualisations for Aggregated View\r\n4.0 Final Visualisation\r\n5.0 Major Advantages of Incorporating Interactivity\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2021-03-19T23:53:37+08:00",
+    "input_file": "ordinary-least-square-model.utf8.md"
+  },
+  {
+    "path": "posts/2021-03-19-exploration-data-analysis/",
+    "title": "Exploration Data Analysis of factors affecting Greenhouse Gas Emission levels",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Wong Wei Sheng Dylan",
+        "url": {}
+      }
+    ],
+    "date": "2021-03-17",
+    "categories": [],
+    "contents": "\r\nDistill is a publication format for scientific and technical writing, native to the web.\r\nLearn more about using Distill at https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2021-03-19T23:25:26+08:00",
+    "input_file": "exploration-data-analysis.utf8.md"
   },
   {
     "path": "posts/2021-02-25-proposal/",
@@ -32,5 +66,22 @@
     "preview": "posts/2021-02-25-proposal/./image/timeline.png",
     "last_modified": "2021-02-28T20:39:10+08:00",
     "input_file": "proposal.utf8.md"
+  },
+  {
+    "path": "posts/welcome/",
+    "title": "Welcome to Visual Analytics Project",
+    "description": "Welcome to our new blog, Visual Analytics Project. We hope you enjoy \nreading what we have to say!",
+    "author": [
+      {
+        "name": "Choong Shi Lian Selene,Jiang Weiling Angeline, Wong Wei Sheng Dylan",
+        "url": {}
+      }
+    ],
+    "date": "2021-02-24",
+    "categories": [],
+    "contents": "\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2021-03-19T23:28:08+08:00",
+    "input_file": "welcome.utf8.md"
   }
 ]

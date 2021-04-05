@@ -37,18 +37,19 @@ A large amount of climate change related statistics are available on Eurostat, w
 The project aims to deliver an R-Shiny app that provides interactive user interface design to:
 
 * Understand the correlation of factors affecting greenhouse gas emissions
-* Identify important factors which contributes to greenhouse gas emissions using Panel data regression
 * Further analyse the difference in greenhouse gas emissions by country and time period
+* Identify important factors which contributes to greenhouse gas emissions from cross-sectional view using Ordinary Least Square regression and from panel data view using Panel data regression
 
 ### Broad Data Description
-Statistics from Eurostat covering a wide range of domains are used in this R Shiny Application. For our project, we will focus on datasets under greenhouse gas emissions (specifically carbon dioxide emissions), drivers and mitigation for all EU countries. 
+Statistics from Eurostat covering a wide range of domains are used in this R Shiny Application. For our project, we will focus on datasets under greenhouse gas emissions, drivers and mitigation for all EU countries. 
 
 ### Proposed Scope and Methodology
 1. Analysis of Eurostat greenhouse emission dataset with background research
 2. Exploratory Data Analysis (EDA) methods in R
-3. Analysis of Panel data regression (using plm package) in R
-4. Development of validating checks and model selection in R
-5. R-Shiny app development for user interactivity
+3. Analysis of Ordinary Least Square regression in R
+4. Analysis of Panel data regression in R
+5. Development of validating checks and model selection in R for both Ordinary Least Square and Panel regression
+6. R-Shiny app development for user interactivity
 
 A generalized development timeframe for this project is shown below:
 
@@ -76,13 +77,33 @@ Green Energy Production|![](./image/EDA2.jpg){width=100%}
 Correlation Plot of Drivers and Mitigation|![](./image/EDA3.jpg){width=100%}
 Scatter Plot for Drivers and Mitigation|![](./image/EDA4.jpg){width=100%}
 
-### (B) Analysis of Panel data regression (using plm package) in R
+### (B) Analysis of Ordinary Least Square regression in R
+
+The following shows the first module under OLS regression where users can explore different methods to determine the set of predictors for their model. 
 
 ```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%"}
 library(knitr)
 library(png)
-model1_path <- "./image/Modeling1.png"
-include_graphics(model1_path)
+ols1_path <- "./image/OLS_1.png"
+include_graphics(ols1_path)
+```
+
+Thereafter, users will input their preferred dependent and independent variables to generate the regression estimations. At the same time, a series of validation/assumption checks will be in place for the users to determine if the chosen model is appropriate.
+
+```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%"}
+library(knitr)
+library(png)
+ols2_path <- "./image/OLS_2.png"
+include_graphics(ols2_path)
+```
+
+### (C) Analysis of Panel data regression in R
+
+```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%"}
+library(knitr)
+library(png)
+panel1_path <- "./image/Panel_1.png"
+include_graphics(panel1_path)
 ```
 
 If user(s) prefers to see in terms of bar chart i.e. "Bar" is selected under the View option.
@@ -90,11 +111,11 @@ If user(s) prefers to see in terms of bar chart i.e. "Bar" is selected under the
 ```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%"}
 library(knitr)
 library(png)
-model2_path <- "./image/Modeling2.png"
-include_graphics(model2_path)
+panel2_path <- "./image/Panel_2.png"
+include_graphics(panel2_path)
 ```
 
-### (C) Development of validating checks and model selection in R 
+**Development of validating checks and model selection in R** 
 
 To cater to varying statistical knowledge of users, there will be two types of outputs shown - (1) simplified overview of whether the assumptions for the calibrated model is met and (2) detailed outputs from each validation tests.
 
@@ -113,6 +134,12 @@ The list of validation tests for the panel models include:
 ### Proposed R Packages
 #### Data Preparation
 * tidyverse: https://www.tidyverse.org
+
+#### Ordinary Least Square regression
+* olsrr: https://cran.r-project.org/web/packages/olsrr/index.html
+* jtools: https://cran.r-project.org/web/packages/jtools/index.html
+* ggstatsplot: https://cran.r-project.org/web/packages/ggstatsplot/index.html
+* ggstance: https://cran.r-project.org/web/packages/ggstance/index.html
 
 #### Panel data regression
 * ExPanDaR: https://cran.r-project.org/web/packages/ExPanDaR

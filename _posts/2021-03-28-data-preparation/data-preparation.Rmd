@@ -1,0 +1,298 @@
+---
+title: "Data Preparation"
+description: |
+  Details on the data source and the step-by-step guide for data manipulation to merge all datasets into 1 consolidated data for subsquent analyses
+author:
+  - name: Group 2 (Angeline Jiang, Dylan Wong, Selene Choong)
+    url: {}
+date: 03-16-2021
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+### Relevant Literature Reviews
+
+A study conducted by González-Sánchez, M., & Martín-Ortega, J. ([2020](https://doi.org/10.3390/su12031012)) on the determinants of greenhouse gas emissions growth in Europe considered majority of the driver factors available on Eurostat database and found that GDP and final energy intensity are the main drivers for the reduction of greenhouse gas emissions in Europe. Furthermore, energy prices are not significant and heterogeneous results are found for the renewable energy, fuel mix and carbon intensity determinants, pointing to a different behavior at the country level.
+
+Our research value-adds the above paper as we aim to identify an extended list of mitigation factors which could potentially play an important role in the reduction of greenhouse gas emissions in Europe. 
+
+*Extended list of mitigation*
+
+| Variable | Lit Reviews |
+|:-----:| :--------------------------------- |
+| Environmental taxes | Miller, S., & Vela, M. ([2013](https://www.cbd.int/financial/mainstream/idb-tax.pdf)) and European Environment Agency ([1996](https://www.eea.europa.eu/publications/92-9167-000-6)) found that environmental taxes are effective in reducing greenhouse gas emissions. |
+| Liquid biofuels production capacities | Mixed reviews over influence of biofuels in reducing greenhouse gas emissions – dependent on geographical locations and the types of biofuels though most studies such as Menichetti, E., & Otto, M. ([2009](https://ecommons.cornell.edu/bitstream/handle/1813/46285/scope.1245782005.pdf?sequence=2)), Allaire, M., & Brown, S. P. ([2015](https://search-proquest-com.libproxy.smu.edu.sg/docview/2260012797?pq-origsite=primo)) and Hanaki, K., & Portugal-Pereira, J. ([2018](https://doi.org/10.1007/978-4-431-54895-9_6)) found that biofuel contribute to a reduction in greenhouse gas emissions.  |
+| Solar thermal collectors' surface | Solar PV  power generation is  one of  the  pillars of  the  plans to decarbonise the EU’s power supply and its role is highlighted in the European Commission 2018 Communication “A European long-term strategic vision for  a  prosperous, modern, competitive and climate neutral economy”. In addition, Vartiainen, E., Masson, G., Breyer, C., Moser, D., & Román Medina, E. ([2020](https://onlinelibrary.wiley.com/doi/10.1002/pip.3189)) found that recent technology progress positions PV among the most cost-effective electricity generation technologies.|
+| Heat pumps | Bayer, P., Saner, D., Bolay, S., Rybach, L., & Blum, P. ([2012](https://www.sciencedirect.com/science/article/abs/pii/S1364032111004771)) found that heat pumps would contribute over 20% of the EU energy saving goal, 20% of the renewable energy input and 20% of the CO2 emission target. |
+
+### Data Source
+
+All the datasets used for this project is obtained from Eurostat (https://ec.europa.eu/eurostat), the database with European statistics maintained by the statistical office of the European Union. Our group will be focusing on the overall greenhouse gas emissions, excluding Land Use and Land Use Change and Forest (LULUCF) while also exploring into the common greenhouse gases (i.e. carbon dioxide, methane and nitrous oxide).
+
+The list of driver and mitigation variables that would be covered in our project include:
+
+| Category | Variables |
+|:-----:| :--------------------------------- |
+| **Drivers** | 1. Gross Domestic Product (GDP) <br> 2. Final energy intensity <br> 3. Fuel mix <br> 4. Carbon intensity |
+| **Mitigation** | 5. Renewable energy <br> 6. Environmental taxes by economic activity <br> 7. Liquid biofuels production capacities <br> 8. Solar thermal collectors' surface <br> 9. Heat pumps - technical characteristics by technologies |
+
+
+### Datasets Used
+
+Details on the exact datasets used for each variable are listed in the table below:
+
+| Variables | Dataset from EuroStat |
+|:----- | :----- |
+| Greenhouse gas emissions | [env_air_gge](https://ec.europa.eu/eurostat/web/products-datasets/-/env_air_gge) |
+| Gross Domestic Product (GDP) | [nama_10_gdp](https://ec.europa.eu/eurostat/web/products-datasets/-/nama_10_gdp) |
+| Final energy intensity | Computed using [sdg_07_11](https://ec.europa.eu/eurostat/web/products-datasets/-/sdg_07_11) and [nama_10_gdp](https://ec.europa.eu/eurostat/web/products-datasets/-/nama_10_gdp) |
+| Fuel mix | [nrg_ind_fecf](https://ec.europa.eu/eurostat/web/products-datasets/-/nrg_ind_fecf) |
+| Carbon intensity | [sdg_13_20](https://ec.europa.eu/eurostat/web/products-datasets/-/sdg_13_20) |
+| Share of energy from renewable sources | [nrg_ind_ren](https://ec.europa.eu/eurostat/web/products-datasets/-/nrg_ind_ren) |
+| Environmental taxes by economic activity | [env_ac_taxind2](https://ec.europa.eu/eurostat/web/products-datasets/-/env_ac_taxind2) |
+| Liquid biofuels production capacities | [nrg_inf_lbpc](https://ec.europa.eu/eurostat/web/products-datasets/-/nrg_inf_lbpc) | 
+| Solar thermal collectors' surface | [nrg_inf_stcs](https://ec.europa.eu/eurostat/web/products-datasets/-/nrg_inf_stcs) |
+| Heat pumps - technical characteristics by technologies | [nrg_inf_hptc](https://ec.europa.eu/eurostat/web/products-datasets/-/nrg_inf_hptc)|
+
+
+### Step-by-Step Data Preparation
+
+### (1) Installing and launching required R packages
+
+A list of packages are required for the data manipulation exercise. This code chunk installs the required packages and loads them into the RStudio environment.
+
+```{r, echo=TRUE, warning=FALSE}
+packages <- c("tidyverse", "readxl")
+for (p in packages){
+  if(!require(p, character.only = T)){
+    install.packages(p)
+  }
+  library(p, character.only = T)
+}
+```
+
+### (2) Data wrangling
+
+Data was imported using the `read_excel()` function since the downloaded datasets were in .xlsx format. As the downloaded datasets had irrelevant rows and columns, `select()` and `drop_na()` were used to clean up the data. To facilitate the selection of the relevant columns, a list `reqColumns` containing the column names to keep was created.
+
+```{r, echo=TRUE, warning=FALSE}
+reqColumns <- c("TIME", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018")
+```
+
+**Greenhouse gas emissions**
+
+```{r, echo=TRUE, warning=FALSE}
+# Overall greenhouse gases
+dep_GHG <- read_excel("data/DEP (GHG) ENV_AIR_GGE.xlsx", sheet = "Sheet 2", skip = 9) %>% 
+  select(reqColumns) %>% 
+  drop_na(all_of(reqColumns[-1]))
+
+# Carbon dioxide
+dep_CO2 <- read_excel("data/DEP (GHG) ENV_AIR_GGE.xlsx", sheet = "Sheet 11", skip = 9) %>% 
+  select(reqColumns) %>% 
+  drop_na(all_of(reqColumns[-1]))
+
+# Methane (CO2 equivalent)
+dep_CH4 <- read_excel("data/DEP (GHG) ENV_AIR_GGE.xlsx", sheet = "Sheet 29", skip = 9) %>% 
+  select(reqColumns) %>% 
+  drop_na(all_of(reqColumns[-1]))
+
+# Nitrous oxide (CO2 equivalent)
+dep_NO2 <- read_excel("data/DEP (GHG) ENV_AIR_GGE.xlsx", sheet = "Sheet 47", skip = 9) %>% 
+  select(reqColumns) %>% 
+  drop_na(all_of(reqColumns[-1]))
+```
+
+**Gross Domestic Product (GDP)**
+
+```{r, echo=TRUE, warning=FALSE}
+driver_GDP <- read_excel("data/DRIV (GDP) NAMA_10_GDP.xlsx", sheet = "Sheet 2", skip = 8) %>% 
+  select(reqColumns)
+
+# Subset to drop irrelevant rows
+driver_GDP <- driver_GDP[2:46, ]
+```
+
+**Final energy intensity**
+
+As the dataset for final energy intensity is not readily available on Eurostat, computations will be required. Variable will be computed using two separate datasets - final energy consumption and GDP, million purchasing power standards - and the [energy intensity computation](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Energy_intensity) available on Eurostat.
+
+```{r, echo=TRUE, warning=FALSE}
+# Final energy consumption
+driver_FEI_FEC <- read_excel("data/DRIV (EI - FEC) SDG_07_11.xlsx", sheet = "Sheet 1", skip = 7) %>% 
+  select(reqColumns)
+driver_FEI_FEC <- driver_FEI_FEC[2:42, ]
+
+# GDP (in million purchasing power standards)
+driver_FEI_GDP <- read_excel("data/DRIV (GDP) NAMA_10_GDP.xlsx", sheet = "Sheet 3", skip = 8) %>% 
+  select(reqColumns)
+driver_FEI_GDP <- driver_FEI_GDP[2:46, ]
+```
+
+Final energy intensity is computed using the following formula: `1000000*driver_FEI_FEC/driver_FEI_GDP` and results rounded to 2 decimal places. As there are more countries in the GDP dataset, rows with countries not in the final energy consumption dataset were dropped.
+
+```{r, echo=TRUE, warning=FALSE}
+# Keeping only relevant countries from GDP and reorder as per FEC dataset
+driver_FEI_GDP_cleaned <- driver_FEI_GDP %>% 
+  filter(TIME %in% driver_FEI_FEC$TIME) %>%
+  slice(match(driver_FEI_FEC$TIME, TIME))
+
+# Computing the final energy intensity
+driver_FEI <- cbind(driver_FEI_FEC$TIME, round(1000000 * (driver_FEI_FEC[-1]/driver_FEI_GDP_cleaned[-1]), 2))
+```
+
+**Fuel mix**
+
+```{r, echo=TRUE, warning=FALSE}
+driver_FM <- read_excel("data/DRIV (FM) NRG_IND_FECF.xlsx", sheet = "Sheet 1", skip = 9) %>% 
+  select(reqColumns)
+driver_FM <- driver_FM[2:44, ]
+```
+
+**Carbon intensity**
+
+```{r, echo=TRUE, warning=FALSE}
+driver_CI <- read_excel("data/DRIV (CI) SDG_13_20.xlsx", sheet = "Sheet 1", skip = 7) %>% 
+  select(reqColumns)
+driver_CI <- driver_CI[2:35, ]
+```
+
+**Share of energy from renewable sources**
+
+```{r, echo=TRUE, warning=FALSE}
+mitig_RES <- read_excel("data/MITIG (RES) NRG_IND_REN.xlsx", sheet = "Sheet 1", skip = 7) %>% 
+  select(reqColumns)
+mitig_RES <- mitig_RES[2:41, ]
+```
+
+**Environmental taxes by economic activity**
+
+```{r, echo=TRUE, warning=FALSE}
+mitig_ET <- read_excel("data/MITIG (ET) ENV_AC_TAXIND2.xlsx", sheet = "Sheet 65", skip = 9) %>% 
+  select(reqColumns)
+mitig_ET <- mitig_ET[2:38, ]
+```
+
+**Liquid biofuels production capacities**
+
+While Eurostat has distinguished the production capacities by different liquid biofuel types, our group will be analysing this variable at the collective overall level.
+
+```{r, echo=TRUE, warning=FALSE}
+# Pure biogasline
+mitig_LBF_biogasline <- read_excel("data/MITIG (LBF) NRG_INF_LBPC.xlsx", sheet = "Sheet 1", skip = 9) %>% 
+  select(reqColumns)
+mitig_LBF_biogasline <- mitig_LBF_biogasline[2:44, ]
+
+# Pure biodiesels
+mitig_LBF_biodiesels <- read_excel("data/MITIG (LBF) NRG_INF_LBPC.xlsx", sheet = "Sheet 2", skip = 9) %>% 
+  select(reqColumns)
+mitig_LBF_biodiesels <- mitig_LBF_biodiesels[2:44, ]
+
+# Pure bio jet kerosene
+mitig_LBF_bjkerosene <- read_excel("data/MITIG (LBF) NRG_INF_LBPC.xlsx", sheet = "Sheet 3", skip = 9) %>% 
+  select(reqColumns)
+mitig_LBF_bjkerosene <- mitig_LBF_bjkerosene[2:44, ]
+
+# Other liquid biofuels
+mitig_LBF_others <- read_excel("data/MITIG (LBF) NRG_INF_LBPC.xlsx", sheet = "Sheet 4", skip = 9) %>% 
+  select(reqColumns)
+mitig_LBF_others <- mitig_LBF_others[2:44, ]
+```
+
+Summation was performed to get the total value of liquid biofuels production capacities for each country at each year.
+
+```{r, echo=TRUE, warning=FALSE}
+mitig_LBF <- cbind(mitig_LBF_biogasline$TIME, 
+                   (mitig_LBF_biogasline[-1] + mitig_LBF_biodiesels[-1] + mitig_LBF_bjkerosene[-1] + mitig_LBF_others[-1]))
+```
+
+**Solar thermal collectors' surface**
+
+```{r, echo=TRUE, warning=FALSE}
+mitig_ST <- read_excel("data/MITIG (ST) NRG_INF_STCS.xlsx", sheet = "Sheet 1", skip = 8) %>% 
+  select(reqColumns)
+mitig_ST <- mitig_ST[2:44, ]
+```
+
+**Heat pumps - technical characteristics by technologies**
+
+While Eurostat has distinguished the installed thermal capacity by different heat pump technologies, our group will be analysing this variable at the collective overall level.
+
+```{r, echo=TRUE, warning=FALSE}
+# Aerothermal
+mitig_HP_aerothermal <- read_excel("data/MITIG (HP) NRG_INF_HPTC.xlsx", sheet = "Sheet 1", skip = 9) %>% 
+  select(reqColumns)
+mitig_HP_aerothermal <- mitig_HP_aerothermal[2:44, ]
+
+# Geothermal
+mitig_HP_geothermal <- read_excel("data/MITIG (HP) NRG_INF_HPTC.xlsx", sheet = "Sheet 2", skip = 9) %>% 
+  select(reqColumns) 
+mitig_HP_geothermal <- mitig_HP_geothermal[2:44, ]
+
+# Hydrothermal
+mitig_HP_hydrothermal <- read_excel("data/MITIG (HP) NRG_INF_HPTC.xlsx", sheet = "Sheet 3", skip = 9) %>% 
+  select(reqColumns) 
+mitig_HP_hydrothermal <- mitig_HP_hydrothermal[2:44, ]
+```
+
+Summation was performed to get the total value of linstalled thermal capacity across all heat pump technologies for each country at each year.
+
+```{r, echo=TRUE, warning=FALSE}
+mitig_HP <- cbind(mitig_HP_aerothermal$TIME, 
+                  (mitig_HP_aerothermal[-1] + mitig_HP_geothermal[-1] + mitig_HP_hydrothermal[-1]))
+```
+
+### (3) Data merging
+
+Prior to joining the datasets, transposing was first performed to convert each dataset into the format where each row represents the value for a country for a year.
+
+```{r, echo=TRUE, warning=FALSE}
+dep_GHG_transposed <- pivot_longer(dep_GHG, cols = starts_with("2"), names_to = "Year", values_to = "GHG_emissions") %>% rename(Country = TIME)
+dep_CO2_transposed <- pivot_longer(dep_CO2, cols = starts_with("2"), names_to = "Year", values_to = "CO2_emissions") %>% rename(Country = TIME)
+dep_CH4_transposed <- pivot_longer(dep_CH4, cols = starts_with("2"), names_to = "Year", values_to = "CH4_emissions") %>% rename(Country = TIME)
+dep_NO2_transposed <- pivot_longer(dep_NO2, cols = starts_with("2"), names_to = "Year", values_to = "NO2_emissions") %>% rename(Country = TIME)
+
+driver_GDP_transposed <- pivot_longer(driver_GDP, cols = starts_with("2"), names_to = "Year", values_to = "GDP") %>% rename(Country = TIME)
+driver_FEI_transposed <- pivot_longer(driver_FEI, cols = starts_with("2"), names_to = "Year", values_to = "Final_EI") %>% rename(Country = `driver_FEI_FEC$TIME`)
+driver_FM_transposed <- pivot_longer(driver_FM, cols = starts_with("2"), names_to = "Year", values_to = "Fuel_mix") %>% rename(Country = TIME)
+driver_CI_transposed <- pivot_longer(driver_CI, cols = starts_with("2"), names_to = "Year", values_to = "Carbon_intensity") %>% rename(Country = TIME)
+
+mitig_RES_transposed <- pivot_longer(mitig_RES, cols = starts_with("2"), names_to = "Year", values_to = "Renewables_share") %>% rename(Country = TIME)
+mitig_ET_transposed <- pivot_longer(mitig_ET, cols = starts_with("2"), names_to = "Year", values_to = "Envt_taxes") %>% rename(Country = TIME)
+mitig_LBF_transposed <- pivot_longer(mitig_LBF, cols = starts_with("2"), names_to = "Year", values_to = "Liquid_biofuels") %>% rename(Country = `mitig_LBF_biogasline$TIME`)
+mitig_ST_transposed <- pivot_longer(mitig_ST, cols = starts_with("2"), names_to = "Year", values_to = "Solar_thermal") %>% rename(Country = TIME)
+mitig_HP_transposed <- pivot_longer(mitig_HP, cols = starts_with("2"), names_to = "Year", values_to = "Heat_pumps") %>% rename(Country = `mitig_HP_aerothermal$TIME`)
+```
+
+All transposed datasets were merged into 1 consolidated dataset using the function `left_join()` where the greenhouse gas emission dataset will be the primary x dataset for joining to ensure all countries included have the emission data available.
+
+```{r, echo=TRUE, warning=FALSE}
+GHGproj_data <- left_join(dep_GHG_transposed, dep_CO2_transposed, by = c("Year", "Country")) %>% 
+  left_join(., dep_CH4_transposed, by = c("Year", "Country")) %>% 
+  left_join(., dep_NO2_transposed, by = c("Year", "Country")) %>% 
+  left_join(., driver_GDP_transposed, by = c("Year", "Country")) %>% 
+  left_join(., driver_FEI_transposed, by = c("Year", "Country")) %>% 
+  left_join(., driver_FM_transposed, by = c("Year", "Country")) %>% 
+  left_join(., driver_CI_transposed, by = c("Year", "Country")) %>% 
+  left_join(., mitig_RES_transposed, by = c("Year", "Country")) %>% 
+  left_join(., mitig_ET_transposed, by = c("Year", "Country")) %>% 
+  left_join(., mitig_LBF_transposed, by = c("Year", "Country")) %>% 
+  left_join(., mitig_ST_transposed, by = c("Year", "Country")) %>% 
+  left_join(., mitig_HP_transposed, by = c("Year", "Country"))
+```
+
+Consolidated tibble dataframe is exported as a csv file for subsequent analyses.
+
+```{r, echo=TRUE, warning=FALSE}
+write_csv(GHGproj_data, file = "data/GHGproj_data.csv")
+```
+
+

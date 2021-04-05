@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["image/EDA.jpg","image/EDA1.jpg","image/EDA2.jpg","image/EDA3.jpg","image/EDA4.jpg","image/Modeling1.PNG","image/Modeling2.PNG","image/timeline.png","image/Validation.png","proposal_files/anchor-4.2.2/anchor.min.js","proposal_files/bowser-1.9.3/bowser.min.js","proposal_files/distill-2.2.21/template.v2.js","proposal_files/header-attrs-2.6.4/header-attrs.js","proposal_files/header-attrs-2.6/header-attrs.js","proposal_files/header-attrs-2.7/header-attrs.js","proposal_files/jquery-1.11.3/jquery.min.js","proposal_files/popper-2.6.0/popper.min.js","proposal_files/tippy-6.2.7/tippy-bundle.umd.min.js","proposal_files/tippy-6.2.7/tippy-light-border.css","proposal_files/tippy-6.2.7/tippy.css","proposal_files/tippy-6.2.7/tippy.umd.min.js","proposal_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["image/EDA.jpg","image/EDA1.jpg","image/EDA2.jpg","image/EDA3.jpg","image/EDA4.jpg","image/OLS_1.PNG","image/OLS_2.PNG","image/Panel_1.PNG","image/Panel_2.PNG","image/timeline.png","image/Validation.png","proposal_files/anchor-4.2.2/anchor.min.js","proposal_files/bowser-1.9.3/bowser.min.js","proposal_files/distill-2.2.21/template.v2.js","proposal_files/header-attrs-2.6.4/header-attrs.js","proposal_files/header-attrs-2.6/header-attrs.js","proposal_files/header-attrs-2.7/header-attrs.js","proposal_files/jquery-1.11.3/jquery.min.js","proposal_files/popper-2.6.0/popper.min.js","proposal_files/tippy-6.2.7/tippy-bundle.umd.min.js","proposal_files/tippy-6.2.7/tippy-light-border.css","proposal_files/tippy-6.2.7/tippy.css","proposal_files/tippy-6.2.7/tippy.umd.min.js","proposal_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1488,8 +1488,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#proposed-scope-and-methodology">Proposed Scope and Methodology</a></li>
 <li><a href="#storyboard-visualization-features">Storyboard &amp; Visualization Features</a></li>
 <li><a href="#a-exploratory-data-analysis-eda-methods-in-r">(A) Exploratory Data Analysis (EDA) methods in R</a></li>
-<li><a href="#b-analysis-of-panel-data-regression-using-plm-package-in-r">(B) Analysis of Panel data regression (using plm package) in R</a></li>
-<li><a href="#c-development-of-validating-checks-and-model-selection-in-r">(C) Development of validating checks and model selection in R</a></li>
+<li><a href="#b-analysis-of-ordinary-least-square-regression-in-r">(B) Analysis of Ordinary Least Square regression in R</a></li>
+<li><a href="#c-analysis-of-panel-data-regression-in-r">(C) Analysis of Panel data regression in R</a></li>
 <li><a href="#proposed-r-packages">Proposed R Packages</a></li>
 <li><a href="#team-members">Team Members</a></li>
 <li><a href="#references">References</a></li>
@@ -1512,17 +1512,18 @@ text-align: justify}
 <p>The project aims to deliver an R-Shiny app that provides interactive user interface design to:</p>
 <ul>
 <li>Understand the correlation of factors affecting greenhouse gas emissions</li>
-<li>Identify important factors which contributes to greenhouse gas emissions using Panel data regression</li>
 <li>Further analyse the difference in greenhouse gas emissions by country and time period</li>
+<li>Identify important factors which contributes to greenhouse gas emissions from cross-sectional view using Ordinary Least Square regression and from panel data view using Panel data regression</li>
 </ul>
 <h3 id="broad-data-description">Broad Data Description</h3>
-<p>Statistics from Eurostat covering a wide range of domains are used in this R Shiny Application. For our project, we will focus on datasets under greenhouse gas emissions (specifically carbon dioxide emissions), drivers and mitigation for all EU countries.</p>
+<p>Statistics from Eurostat covering a wide range of domains are used in this R Shiny Application. For our project, we will focus on datasets under greenhouse gas emissions, drivers and mitigation for all EU countries.</p>
 <h3 id="proposed-scope-and-methodology">Proposed Scope and Methodology</h3>
 <ol type="1">
 <li>Analysis of Eurostat greenhouse emission dataset with background research</li>
 <li>Exploratory Data Analysis (EDA) methods in R</li>
-<li>Analysis of Panel data regression (using plm package) in R</li>
-<li>Development of validating checks and model selection in R</li>
+<li>Analysis of Ordinary Least Square regression in R</li>
+<li>Analysis of Panel data regression in R</li>
+<li>Development of validating checks and model selection in R for both Ordinary Least Square and Panel regression</li>
 <li>R-Shiny app development for user interactivity</li>
 </ol>
 <p>A generalized development timeframe for this project is shown below:</p>
@@ -1560,15 +1561,24 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<h3 id="b-analysis-of-panel-data-regression-using-plm-package-in-r">(B) Analysis of Panel data regression (using plm package) in R</h3>
+<h3 id="b-analysis-of-ordinary-least-square-regression-in-r">(B) Analysis of Ordinary Least Square regression in R</h3>
+<p>The following shows the first module under OLS regression where users can explore different methods to determine the set of predictors for their model.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="image/Modeling1.PNG" width="100%" height="100%" /></p>
+<p><img src="image/OLS_1.PNG" width="100%" height="100%" /></p>
+</div>
+<p>Thereafter, users will input their preferred dependent and independent variables to generate the regression estimations. At the same time, a series of validation/assumption checks will be in place for the users to determine if the chosen model is appropriate.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="image/OLS_2.PNG" width="100%" height="100%" /></p>
+</div>
+<h3 id="c-analysis-of-panel-data-regression-in-r">(C) Analysis of Panel data regression in R</h3>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="image/Panel_1.PNG" width="100%" height="100%" /></p>
 </div>
 <p>If user(s) prefers to see in terms of bar chart i.e. “Bar” is selected under the View option.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="image/Modeling2.PNG" width="100%" height="100%" /></p>
+<p><img src="image/Panel_2.PNG" width="100%" height="100%" /></p>
 </div>
-<h3 id="c-development-of-validating-checks-and-model-selection-in-r">(C) Development of validating checks and model selection in R</h3>
+<p><strong>Development of validating checks and model selection in R</strong></p>
 <p>To cater to varying statistical knowledge of users, there will be two types of outputs shown - (1) simplified overview of whether the assumptions for the calibrated model is met and (2) detailed outputs from each validation tests.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="image/Validation.png" width="100%" height="100%" /></p>
@@ -1585,6 +1595,13 @@ text-align: justify}
 <h4 id="data-preparation">Data Preparation</h4>
 <ul>
 <li>tidyverse: <a href="https://www.tidyverse.org" class="uri">https://www.tidyverse.org</a></li>
+</ul>
+<h4 id="ordinary-least-square-regression">Ordinary Least Square regression</h4>
+<ul>
+<li>olsrr: <a href="https://cran.r-project.org/web/packages/olsrr/index.html" class="uri">https://cran.r-project.org/web/packages/olsrr/index.html</a></li>
+<li>jtools: <a href="https://cran.r-project.org/web/packages/jtools/index.html" class="uri">https://cran.r-project.org/web/packages/jtools/index.html</a></li>
+<li>ggstatsplot: <a href="https://cran.r-project.org/web/packages/ggstatsplot/index.html" class="uri">https://cran.r-project.org/web/packages/ggstatsplot/index.html</a></li>
+<li>ggstance: <a href="https://cran.r-project.org/web/packages/ggstance/index.html" class="uri">https://cran.r-project.org/web/packages/ggstance/index.html</a></li>
 </ul>
 <h4 id="panel-data-regression">Panel data regression</h4>
 <ul>

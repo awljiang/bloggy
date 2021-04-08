@@ -1,10 +1,10 @@
 ---
 title: "Estimating the relationship of determinants and Greenhouse Gas Emission levels using Ordinary Least Square Regression"
 description: |
-  A short description of the post.
+  The write-up below details the steps taken to explore the different packages available to perform Ordinary Least Square regression model to estimate the relationship of determinants and Greenhouse gas emission levels. This is part of the project deliverables for a project undertaken for the course ISSS608- Visual Analytics offered in SMU MITB. 
 author:
   - name: Jiang Weiling Angeline
-    url: {}
+    url: www.linkedin.com/in/angeline-jiang
 date: 03-18-2021
 output:
   distill::distill_article:
@@ -13,46 +13,503 @@ output:
     self_contained: false
 ---
 
-<style>
-h1, h2, h3 {
-text-align: left
-}
-body {
-text-align: justify}
-</style>
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## 1.0 Overview
+# 1.0 Purpose of DataViz Exercise
 
-### 1.1 Core Purpose of DataViz Exercise
+Ordinary least squares (OLS) regression is a statistical method to estimate the relationship between one or more independent variables and a dependent variable by minimizing the sum of the squares in the difference between the observed and predicted values of the dependent variable based on the best fit straight line. There are a wide range of published papers which explored using OLS to estimate the relationship between various factors and greenhouse gas emissions. Some examples of these papers are listed below:
 
-<Lit Review>
++ Budiono, R., Juahir, H., Mamat, M., Supian, S., & Nurzaman, M. (2019, October). Modeling and analysis of CO2 emissions in million tons of sectoral greenhouse gases in Indonesia. In IOP Conference Series: Materials Science and Engineering (Vol. 621, No. 1, p. 012020). IOP Publishing.
++ Grunewald, N., & Martínez-Zarzoso, I. (2009). Driving factors of carbon dioxide emissions and the impact from Kyoto Protocol.
++ Hang, G., & Yuan-Sheng, J. (2011). The relationship between CO2 emissions, economic scale, technology, income and population in China. Procedia Environmental Sciences, 11, 1183-1188.
 
-### 1.2 Components of Visualisation
+Nonetheless, research papers usually only published the final model used in their analysis (often without the exact code) and omitted the intermediate steps used to derive the final set of predictors. Tests conducted to ensure that OLS assumptions were not violated were also seldom presented in the papers. Hence, this exercise **aims to explore different R packages which are able to run different permutations of OLS models, the necessary list of OLS assumption tests and present results in the form of a visualization**. 
 
-### 1.3 Sketch of Proposed Visualisation
+# 2.0 Step-by-Step Data Preparation for OLS
 
-## 2.0 Interactivity
+## 2.1 Installing and Launching R packages
 
-## 3.0 Step-by-Step Data Visualisation Preparation
+A list of packages are required for this makeover exercise. This code chunk installs the required packages and loads them onto RStudio environment.
 
-### 3.1 Installing and Launching R packages
+```{r, echo=TRUE, warning=FALSE, message = FALSE}
+packages = c('tidyverse', 'olsrr', 'lmtest', 'dplyr', 'ggplot2', 'ggstatsplot', 'ggcorrplot', 
+             'purrr', 'jtools', 'broom.mixed', 'ggstance', 'EnvStats', 'graphics','caret','ppcor')
+for (p in packages){
+  if(!require(p, character.only = T)){
+    install.packages(p)
+  }
+  library(p, character.only = T)
+}
+```
 
-### 3.2 Data Preparation
+## 2.2 Data Source
 
-#### 3.2.1 Data Source
+All the datasets used for this project is obtained from [Eurostat](https://ec.europa.eu/eurostat), the database with European statistics maintained by the statistical office of the European Union. Our group will be focusing on the overall greenhouse gas emissions, excluding Land Use and Land Use Change and Forest (LULUCF) while also exploring into the common greenhouse gases (i.e. carbon dioxide, methane and nitrous oxide).
 
-#### 3.2.2 Loading the dataset onto R
+As multiple data was pulled from Eurostat database, please refer to [Data Preparation page](https://greenhouseemission.netlify.app/posts/2021-03-28-data-preparation/) for the glossary list and steps taken to merge and obtain a single dataset for analysis.
 
-#### 3.2.3 Creating the dataframe for OLS 
+## 2.3 Loading the dataset onto R
 
-### 3.3 Data Visualisations for Aggregated View
+The output shows that all except 'Country' is numeric variable, which is correct. Hence there's no need to change the type of any variable. 
 
-### 4.0 Final Visualisation
+```{r, echo=TRUE, warning=FALSE, message=FALSE}
+# Reading the csv file as a tbl_df
+ghg_2010_2018 <- read_csv("data/GHGproj_data.csv")
 
-### 5.0 Major Advantages of Incorporating Interactivity
+# Inspecting the structure of the dataset
+str(ghg_2010_2018)
+```
+
+## 2.4 Creating the dataframe for OLS 
+
+For the purpose of exploring OLS regression model in this assignment, the building of the OLS model will focus only on 2018 data. Other years of regression model can be run subsequently by filtering the dataset to the specific year itself. 
+
+When importing the dataset earlier, there were records such as "European Union - 27 countries (from 2020)", "European Union - 27 countries (from 2020)" etc, which presents the combination of multiple countries. As such, these records are excluded using the *dplyr()* package to prevent serious correlation with other records (countries). To have a consistent naming of countries, "Germany (until 1990 former territory of the FRG)" was replaced with "Germany" using the *tidyverse()* package.
+
+In addition, instead of having "Country" reflected as a column variable, additional code was ran to reflect the countries as "Row name". Given that the focus of this dataset is on 2018, the "Year" variable can be dropped as it's redundant.
+
+```{r, echo=TRUE, warning=FALSE, message=FALSE }
+ghg_2018 <-  ghg_2010_2018 %>% 
+  filter(Year == 2018) %>% # Subset the dataset to get 2018 records
+  filter(!grepl('European Union', Country)) %>% # Exclude records containing 'European Union' 
+  replace(., (.)=='Germany (until 1990 former territory of the FRG)', "Germany") %>% #Replace country name for Germany 
+  remove_rownames %>% column_to_rownames(var="Country") # Change column "Country" to "Row name"
+
+ghg_2018 <- subset(ghg_2018, select=-c(Year)) # Drop the "Year" variable since it's redundant
+```
+
+**Reviewing the Variables**
+
+**(A) Density plot**
+
+The density plots plotted using *ggplot2()* package showed that the values/scales of "CH4_emissions", "CO2_emissions", "Envt_taxes", "GDP", "GHG_emissions", "Heat_pumps", "Liquid_biofuels", "NO2_emissions" and "Solar_thermal" are very large compared to "Carbon_intensity", Final_EI", "Fuel_mix" and "Renewables_share". Hence, transformation may be applied on the former group of variables for better interpretability of the coefficient in the output.   
+
+To get histogram plot, change "geom_density()" to "geom_histogram()" in the code chunk.
+
+```{r, echo=TRUE, warning=FALSE}
+ghg_2018 %>%
+  keep(is.numeric) %>% # Keep only numeric columns
+  gather() %>% # Convert to key-value pairs
+  ggplot(aes(value)) + # Plot the values
+    facet_wrap(~ key, scales = "free") + # In separate panels
+    geom_density()   # as density
+```
+An example of transformation is by taking "log (base e)" on the variables as shown below, so that the scales of the variables are similar.  
+
+```{r, echo=TRUE, warning=FALSE}
+ghg_2018 %>%
+  keep(is.numeric) %>% 
+  gather() %>% 
+  ggplot(aes(log(value))) + # transformation
+    facet_wrap(~ key, scales = "free") + 
+    geom_density()   
+```
+
+**(B) Correlation plot**
+
+Using the *ggcorrplot()* package, we can plot a correlalogram (with correlation coefficient). If there are NAs present in the selected variables, the legend will display minimum, median, and maximum number of pairs used for correlation tests.
+
+The chart below showed that some predictors are highly correlated with each other (either dark grey or dark red) and hence we will probably expect some predictors to be omitted in the OLS regression output.For example, Envt_taxes and GDP are highly correlated (0.96) and if these two predictors were to be included in the same model, either will be omitted. 
+
+```{r, echo=TRUE, warning=FALSE, fig.height=7, fig.width=7}
+# as a default this function outputs a correlation matrix plot
+ggstatsplot::ggcorrmat(
+  data = ghg_2018,
+  colors = c("#B2182B", "white", "#4D4D4D"),
+  title = "Correlalogram for Greenhouse gas emission 2018 dataset"
+)
+```
+
+**Final dataset for OLS model**
+
+For ease of coding, create a dataframe containing only the transformed variables. In addition, we will focus on using "GHG_emissions" as the dependent variable. To explore other source of emission, one can amend the code accordingly.
+
+```{r, echo=TRUE, warning=FALSE}
+ghg_2018_ols <- log(ghg_2018 + 1) # transform all variables
+ghg_2018_ols <- subset(ghg_2018_ols, select = -c(CO2_emissions, CH4_emissions, NO2_emissions)) # Drop all dependent variables except "GHG_emissions"
+```
+
+# 3.0 Data Visualisation modules
+
+In this section, 2 main modules will be covered, namely (1) Variable Selection and (2) Selected Model. 
+
+For illustration of the different modules, we randomly selected 3 independent variables, namely "GDP", "Final_EI" and "Fuel_mix" to be considered. In the proposed shiny app, there will be a multi-select option for users to decide the independent variables they wish to consider. 
+
+In addition, the *olsrr()* package will be primarily used as it provides the following tools for building OLS regression models using R.
+
++ Comprehensive Regression Output
++ Variable Selection Procedures
++ Heteroskedasticity Tests
++ Collinearity Diagnostics
++ Model Fit Assessment
++ Residual Diagnostics
+
+Nonetheless, other R packages will also be explored to determine the most appropriate data visualization.
+
+## 3.1 Variable Selection
+
+In this section, 6 main methods will be explored to identify the best subset of predictors to include in the model, among all possible subsets of predictors. 
+
+**(i) All possibilities**
+
+All subset regression tests all possible subsets of the set of potential independent variables. If there are k potential independent variables (besides the constant), then there are 2^k distinct subsets of them to be tested. Hence, for this dataset, if all the potential independent variables are include into the model, there will be 2^9 = 512 models generated. 
+
+Base on the plots, model 7 has the highest adjusted R-sqaure and lowest AIC, hence is the better model compared to models 1-6.
+
+```{r, echo=TRUE, warning=FALSE}
+model <- lm(GHG_emissions ~ GDP + Final_EI + Fuel_mix, data = ghg_2018_ols)
+
+# Detailed output
+k <- ols_step_all_possible(model)
+k
+
+# Panel of fit criteria
+plot(k, main = "Panel of fit criteria", xlab="No. of predictors", ylab="Value")
+```
+
+**(ii) Best Subset**
+
+The code chunk below selects the subset of predictors that do the best at meeting some well-defined objective criterion e.g. largest adjusted R-square or smallest AIC etc. From the plot, users will be able to identify the model with the highest adjusted R-square value etc.
+
+```{r, echo=TRUE, warning=FALSE}
+model <- lm(GHG_emissions ~ GDP + Final_EI + Fuel_mix , data = ghg_2018_ols)
+
+# Detailed output
+k <- ols_step_best_subset(model)
+k
+
+# Panel of fit criteria
+plot(k, main = "Panel of fit criteria", xlab="No. of predictors", ylab="Value")
+```
+
+**(iii) Stepwise Forward**
+
+In a step-wise method, we can start with a single predictor and continue to add predictors based on *p-value* until no variable is left. The output plot shows the changes in the criterion value upon adding a predictor which is useful for the users to understand the importance of the predictor added into the model. 
+
+```{r, echo=TRUE, warning=FALSE}
+model <- lm(GHG_emissions ~ GDP + Final_EI + Fuel_mix , data = ghg_2018_ols)
+
+# Selection summary
+k <- ols_step_forward_p(model)
+k
+
+# Plot
+plot(k)
+
+# obtain detailed output
+ols_step_forward_p(model, details = TRUE)
+```
+
+**(iv) Stepwise Backward**
+
+Similarly, we can start with the full list of predictors and remove predictors based on *p-value* until only one variable is left.
+
+```{r, echo=TRUE, warning=FALSE}
+model <- lm(GHG_emissions ~ GDP + Final_EI + Fuel_mix , data = ghg_2018_ols)
+
+# Selection summary
+k <- ols_step_backward_p(model)
+k
+
+# Plot
+plot(k)
+
+# obtain detailed output
+ols_step_backward_p(model, details = TRUE)
+```
+
+**(v) Stepwise AIC Forward**
+
+Alternatively, in a step-wise method, we can start with a single predictor and continue to add predictors based on *AIC value* until no variable is left.
+
+```{r, echo=TRUE, warning=FALSE}
+model <- lm(GHG_emissions ~ GDP + Final_EI + Fuel_mix, data = ghg_2018_ols)
+
+# Selection summary
+k <- ols_step_forward_aic(model)
+k
+
+# Plot
+plot(k)
+
+# obtain detailed output
+ols_step_forward_aic(model, details = TRUE)
+```
+
+**(vi) Stepwise AIC Backward**
+
+Similarly, we can start with the full list of predictors and remove predictors based on *AIC value* until only one variable is left.
+
+```{r, echo=TRUE, warning=FALSE}
+model <- lm(GHG_emissions ~ GDP + Final_EI + Fuel_mix, data = ghg_2018_ols)
+
+# Selection summary
+k <- ols_step_backward_aic(model)
+k
+
+# Plot
+plot(k)
+
+# obtain detailed output
+ols_step_backward_aic(model, details = TRUE)
+```
+
+## 3.2 Selected Models
+
+Assume that from the earlier variable selection module (Section 3.1), the chosen model is "GHG_emissions = GDP + Final_EI + Fuel_mix". 
+
+```{r, echo=TRUE, warning=FALSE, results=FALSE, message=FALSE}
+model <- lm(GHG_emissions ~ GDP + Final_EI + Fuel_mix, data = ghg_2018_ols)
+```
+
+### 3.2.1 Regression Summary
+
+Run the following code chunk to output the regression summary (coefficient, standard errors etc.). Compared to *jtools()* package which only plots the coefficient value and confidence interval, the *ggcoefstats()* package provides a more comprehensive visualisation of the coefficient values along with the t-statistics and p-value for each predictors. In addition, the latter also included the AIC and BIC value of the model.  
+
+```{r, echo=TRUE, warning=FALSE}
+# Tabular output
+ols_regress(GHG_emissions ~ GDP + Final_EI + Fuel_mix, data = ghg_2018_ols)
+
+# Plot coefficients using jtools package
+plot_summs(model, scale = TRUE)
+
+# Plot coefficients using ggcoefstats package
+ggcoefstats(model)
+```
+
+### 3.2.2 Testing for Heteroskedasticity
+
+OLS regression assumes that all residuals are drawn from a population that has a constant variance i.e. homoskedasticity. If the assumption is violated, there is heteroskedasticity problem and the estimators will be inefficient and hypothesis tests will be invalid.
+
+Below presents 3 methods to determine if there is heteroskedasticity problem.
+
+**(i) Bvensch Pagan Test**
+
+Using the *lmtest()* package, it will output the Chi2 or p-value. For the example below, since p-value is >0.05, the variance is constant.
+
+```{r, echo=TRUE, warning=FALSE}
+# Using lmtest package
+bptest(model, studentize = FALSE)
+```
+
+However, compared to *lmtest()* package, the function in *olsrr()* package is able to clearly indicate the null and alternative hypothesis, and the model tested on (shown below). This is more user friendly as users can easily identify the testing hypothesis, hence more preferred.
+
+```{r, echo=TRUE, warning=FALSE}
+# Using fitted values of the model
+ols_test_breusch_pagan(model)
+```
+
+In addition, one can modify the code chunk to make adjustment to the parameters as shown below.
+
+```{r, echo=TRUE, warning=FALSE, results=FALSE, message=FALSE}
+# Using independent variables of the model
+ols_test_breusch_pagan(model, rhs = TRUE)
+
+# Using independent variables of the model and perform multiple tests
+ols_test_breusch_pagan(model, rhs = TRUE, multiple = TRUE)
+
+# Using Bonferroni p-value adjustment
+ols_test_breusch_pagan(model, rhs = TRUE, multiple = TRUE, p.adj = 'bonferroni')
+
+# Using Sidak p-value adjustment
+ols_test_breusch_pagan(model, rhs = TRUE, multiple = TRUE, p.adj = 'sidak')
+
+# Using Holm’s p-value adjustment
+ols_test_breusch_pagan(model, rhs = TRUE, multiple = TRUE, p.adj = 'holm')
+```
+
+**(ii) Score Test**
+
+Alternatively, we can also test for heteroskedasticity under the assumption that the errors are independent and identically distributed (i.i.d.).
+
+From either the Chi2 or p-value, users can determine if the null hypothesis is being rejected and hence if variance is homogenous. For the example below, since p-value is >0.05, we cannot reject the null hypothesis and hence conclude that the variance is homogenous. 
+
+```{r, echo=TRUE, warning=FALSE}
+# Using fitted values of the model
+ols_test_score(model)
+```
+
+In addition, one can modify the code chunk to make adjustment to the parameters as shown below.
+
+```{r, echo=TRUE, warning=FALSE, results=FALSE, message=FALSE}
+# Using independent variables of the model
+ols_test_score(model, rhs = TRUE)
+```
+
+**(iii) F-test**
+
+Instead of using Score test, F-test can also test the assumption of iid. 
+
+```{r, echo=TRUE, warning=FALSE}
+# Using fitted values of the model
+ols_test_f(model)
+```
+
+Similarly, one can modify the code chunk to make adjustment to the parameters as shown below.
+
+```{r, echo=TRUE, warning=FALSE, results=FALSE, message=FALSE}
+# Using independent variables of the model
+ols_test_f(model, rhs = TRUE)
+```
+
+### 3.2.3 Residual Diagnostics
+
+OLS regression assumes that the error has a normal distribution. Below presents 4 methods to detect the violation of normality assumption.
+
+**(i) QQ-plot**
+
+From the QQ-plot, if the data points do not fall near the diagonal line, it can be said that the normality assumption has been violated. 
+
+Using the *EnvStats()* package, we can obtain the Q-Q plot for the residuals.
+
+```{r, echo=TRUE, warning=FALSE}
+res <- residuals(model)
+qqnorm(res, col = "blue")
+qqline(res, col = "red")
+```
+
+However, there's a function in *olsrr()* package which can also output the QQ residual plot. This is more efficient as the plot is coloured. More customization needs to be done if we were to use *EnvStats()* package (shown above).
+
+```{r, echo=TRUE, warning=FALSE}
+ols_plot_resid_qq(model)
+```
+
+**(ii) Normality test**
+
+Alternatively, the normality assumption can also be tested using the code chunk below.
+
+```{r, echo=TRUE, warning=FALSE}
+ols_test_normality(model)
+
+# Correlation between observed residuals and expected residuals under normality.
+ols_test_correlation(model)
+```
+
+**(iii) Residual vs Fitted value**
+
+To detect non-linearity, unequal error variances, and outliers, plot a scatter plot with residual on the y-axis and fitted values on the x-axis.   
+
+```{r, echo=TRUE, warning=FALSE}
+res <- residuals(model)
+fitted <- fitted(model)
+plot(x=unlist(fitted), y=unlist(res), xlab="Fitted Value", ylab="Residual", col="blue")
+abline(h=0, col="red")
+```
+
+However, there's a function in *olsrr()* package which can easy output the residual vs fitted value with a single line of code, which is more efficient. More customization needs to be done if we were to use *graphics()* package (shown above).
+
+```{r, echo=TRUE, warning=FALSE}
+ols_plot_resid_fit(model)
+```
+
+**(iv) Residual Histogram**
+
+A histogram can also be plotted with a single line of code using *olsrr()* package to detect if normality assumption has been violated. 
+
+```{r, echo=TRUE, warning=FALSE}
+ols_plot_resid_hist(model)
+```
+
+### 3.2.4 Collinear Diagnostics
+
+In this module, the following code chunk was explored to detect collinearity between variables. In the presence of multicollinearity, regression estimates are unstable and have high standard errors.
+
+The following chunk of code was ran using *olsrr()* package and showed that the VIFs are less than 4 and hence there is little sign of multicollinearity that requires correction.
+
+```{r, echo=TRUE, warning=FALSE}
+ols_coll_diag(model) #output VIF values and conditional index
+
+# ols_vif_tol(model) to output only the VIF values
+# ols_eigen_cindex(model) to output only the conditional index
+```
+
+Alternatively, we could test multi-collinearity using the vif function in *caret()* package as shown below. Nonetheless, the ols_coll_diag function in *olsrr()* package is still preferred as it provides more information e.g. tolerence and conditional index. This gives user wider option to decide which criterion they would like to use for their evaluation. 
+
+```{r, echo=TRUE, warning=FALSE}
+car::vif(model)
+```
+
+### 3.2.5 Model Fit Assessment
+
+In this module, 3 sub-modules will be explored to determine the fit of the chosen model.
+
+**(i) Residual Fit Spread plot**
+
+Using the *olsrr()* package, we can easily See how much variation in the data is explained by the fit and how much remains in the residuals with just one line of code. If the spread of the residuals is greater than the spread of the centered fit, the model is deemed as inappropriate and users should consider choosing other models (repeat the variable selection module).
+
+```{r, echo=TRUE, warning=FALSE}
+ols_plot_resid_fit_spread(model)
+```
+
+**(ii) Part & Partial Correlations**
+
+The pcor function in the *ppcor()* package can calculate the pairwise partial correlations for each pair of variables given others. In addition, it gives us the p value as well as statistic for each pair of variables.
+
+However, the output shows that there's an error as the pcor function does not allow missing values.
+
+```{r, echo=TRUE, error=TRUE}
+pcor(ghg_2018_ols)
+```
+
+On the contrary, the ols_correlations function in *olsrr()* package is able to handle missing values and computes the relative importance of the independent variables in determining the dependent variable i.e. Greenhouse gas emissions level. 
+
+"Zero Order" shows the Pearson correlation coefficient between the dependent variable and the independent variable i.e. the higher the absolute value, the more correlated the dependent and independent variable are. "Partial" shows how much the estimated independent variable contributes to the variance in Y. While, "Part" shows the unique contribution of independent variables i.e. higher value indicates higher contribution (R-square) in explaining the model.
+
+```{r, echo=TRUE, warning=FALSE}
+ols_correlations(model)
+```
+
+**(iii) Observed vs Predicted plot**
+
+To access the fit of the model, we can plot the observed on the x-axis and fitted values on the y-axis using the plot function in *graphics()* package. A model is deemed as a good fit if the points are close to the diagonal line i.e. R-square will be higher.
+
+```{r, echo=TRUE, warning=FALSE}
+fitted <- fitted(model)
+
+# Exclude Liechtenstein and Switzerland as these two countries were dropped in the ols regression model step due to missing values in the predictors Final_EI and Fuel_mix.
+ghg_2018_ols_v2 <- ghg_2018_ols[-c(29, 31),]
+
+plot(x=ghg_2018_ols_v2$GHG_emissions, y=fitted, ylab="Fitted Value", xlab="GHG_emissions", col="blue")
+abline(a=0, b=1, col="blue") #Add diagonal line
+```
+
+Exploring the *olsrr()* package, there is a function called ols_plot_obs_fit which plots the same graph as above, and includes the regression line (red). This function is preferred compared to plot function shown above as it is a single line code. In addition, the ols_plot_obs_fit function is able to exclude records which were dropped from the OLS model. This is unlike using plot function where additional code is needed to  exclude records with missing values in the predictors.  
+
+```{r, echo=TRUE, warning=FALSE}
+ols_plot_obs_fit(model)
+```
+
+# 4.0 Proposed Visualization
+
+Based on the exploration of different packages shown in Section 2, the proposed visualization for the OLS regression module, the types of data visualizations used, and corresponding rationales are illustrated below:
+
+```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%"}
+library(knitr)
+library(png)
+proposed_visual_1 <- "./image/proposed_visual_1.png"
+include_graphics(proposed_visual_1)
+
+proposed_visual_2 <- "./image/proposed_visual_2.png"
+include_graphics(proposed_visual_2)
+```
+
+**Interactivity** 
+
+The following interactive features (left panel shown above) are proposed to be incorporated in the shiny app to enhance usability and hence user experience: 
+
+1. Users can select the dependent and independent variables to be included in the model, and the year of analysis. 
+2. Users have the option to choose the different types of OLS methods to run to select the suitable list of predictors
+3. Based the list of predictors, users can also choose their preferred choice of test to run to check for any violation of OLS assumptions and check for model fit. 
+
+The application eliminates the need for users to write any code chunks to run different permutations of OLS regression models and/or assumptions test.
+
+**Major Advantages of Incorporating Interactivity**
+
++ Flexible OLS regression analysis: To enable users to explore the different type of OLS regression methods available (e.g. stepwise forward/backward, best subset etc.) without the need to code. In addition, users have the choice of deciding which dependent and independent variables to include for their exploration. 
++ Assumption test modules: To enable users to determine if their chosen model violates the OLS assumptions without having the need to code. In addition, the different sub-modules ensures that all the necessary assumptions are checked. Various tests for each OLS assumption are also presented to give users the option to choose their preferred test. For instance, users can choose between QQ-plot, normality test or residual histogram to determine if there was violation in the normality assumption. 
 
 
+
+Thank you for reading :)

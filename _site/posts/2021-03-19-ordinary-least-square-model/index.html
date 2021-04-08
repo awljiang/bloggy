@@ -87,7 +87,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_meta_tags-->
 <title>Visual Analytics Project: Estimating the relationship of determinants and Greenhouse Gas Emission levels using Ordinary Least Square Regression</title>
 
-<meta property="description" itemprop="description" content="A short description of the post."/>
+<meta property="description" itemprop="description" content="The write-up below details the steps taken to explore the different packages available to perform Ordinary Least Square regression model to estimate the relationship of determinants and Greenhouse gas emission levels. This is part of the project deliverables for a project undertaken for the course ISSS608- Visual Analytics offered in SMU MITB."/>
 
 
 <!--  https://schema.org/Article -->
@@ -98,25 +98,25 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
 <meta property="og:title" content="Visual Analytics Project: Estimating the relationship of determinants and Greenhouse Gas Emission levels using Ordinary Least Square Regression"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="A short description of the post."/>
+<meta property="og:description" content="The write-up below details the steps taken to explore the different packages available to perform Ordinary Least Square regression model to estimate the relationship of determinants and Greenhouse gas emission levels. This is part of the project deliverables for a project undertaken for the course ISSS608- Visual Analytics offered in SMU MITB."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Visual Analytics Project"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary"/>
 <meta property="twitter:title" content="Visual Analytics Project: Estimating the relationship of determinants and Greenhouse Gas Emission levels using Ordinary Least Square Regression"/>
-<meta property="twitter:description" content="A short description of the post."/>
+<meta property="twitter:description" content="The write-up below details the steps taken to explore the different packages available to perform Ordinary Least Square regression model to estimate the relationship of determinants and Greenhouse gas emission levels. This is part of the project deliverables for a project undertaken for the course ISSS608- Visual Analytics offered in SMU MITB."/>
 
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Estimating the relationship of determinants and Greenhouse Gas Emission levels using Ordinary Least Square Regression"]},{"type":"character","attributes":{},"value":["A short description of the post."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Jiang Weiling Angeline"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["03-18-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]},{"type":"logical","attributes":{},"value":[false]}]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Estimating the relationship of determinants and Greenhouse Gas Emission levels using Ordinary Least Square Regression"]},{"type":"character","attributes":{},"value":["The write-up below details the steps taken to explore the different packages available to perform Ordinary Least Square regression model to estimate the relationship of determinants and Greenhouse gas emission levels. This is part of the project deliverables for a project undertaken for the course ISSS608- Visual Analytics offered in SMU MITB."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Jiang Weiling Angeline"]},{"type":"character","attributes":{},"value":["www.linkedin.com/in/angeline-jiang"]}]}]},{"type":"character","attributes":{},"value":["03-18-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]},{"type":"logical","attributes":{},"value":[false]}]}]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["ordinary-least-square-model_files/anchor-4.2.2/anchor.min.js","ordinary-least-square-model_files/bowser-1.9.3/bowser.min.js","ordinary-least-square-model_files/distill-2.2.21/template.v2.js","ordinary-least-square-model_files/header-attrs-2.7/header-attrs.js","ordinary-least-square-model_files/jquery-1.11.3/jquery.min.js","ordinary-least-square-model_files/popper-2.6.0/popper.min.js","ordinary-least-square-model_files/tippy-6.2.7/tippy-bundle.umd.min.js","ordinary-least-square-model_files/tippy-6.2.7/tippy-light-border.css","ordinary-least-square-model_files/tippy-6.2.7/tippy.css","ordinary-least-square-model_files/tippy-6.2.7/tippy.umd.min.js","ordinary-least-square-model_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["data/GHGproj_data.csv","image/proposed_visual_1.PNG","image/proposed_visual_2.PNG","ordinary-least-square-model_files/anchor-4.2.2/anchor.min.js","ordinary-least-square-model_files/bowser-1.9.3/bowser.min.js","ordinary-least-square-model_files/distill-2.2.21/template.v2.js","ordinary-least-square-model_files/figure-html5/unnamed-chunk-10-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-10-2.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-11-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-11-2.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-12-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-12-2.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-13-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-13-2.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-14-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-14-2.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-15-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-15-2.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-16-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-22-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-23-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-24-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-25-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-26-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-27-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-28-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-29-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-30-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-31-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-32-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-33-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-34-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-35-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-4-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-5-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-6-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-7-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-8-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-8-2.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-9-1.png","ordinary-least-square-model_files/figure-html5/unnamed-chunk-9-2.png","ordinary-least-square-model_files/header-attrs-2.7/header-attrs.js","ordinary-least-square-model_files/jquery-1.11.3/jquery.min.js","ordinary-least-square-model_files/popper-2.6.0/popper.min.js","ordinary-least-square-model_files/tippy-6.2.7/tippy-bundle.umd.min.js","ordinary-least-square-model_files/tippy-6.2.7/tippy-light-border.css","ordinary-least-square-model_files/tippy-6.2.7/tippy.css","ordinary-least-square-model_files/tippy-6.2.7/tippy.umd.min.js","ordinary-least-square-model_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2061,7 +2061,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Estimating the relationship of determinants and Greenhouse Gas Emission levels using Ordinary Least Square Regression","description":"A short description of the post.","authors":[{"author":"Jiang Weiling Angeline","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-03-18T00:00:00.000+08:00","citationText":"Angeline, 2021"}
+{"title":"Estimating the relationship of determinants and Greenhouse Gas Emission levels using Ordinary Least Square Regression","description":"The write-up below details the steps taken to explore the different packages available to perform Ordinary Least Square regression model to estimate the relationship of determinants and Greenhouse gas emission levels. This is part of the project deliverables for a project undertaken for the course ISSS608- Visual Analytics offered in SMU MITB.","authors":[{"author":"Jiang Weiling Angeline","authorURL":"www.linkedin.com/in/angeline-jiang","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-03-18T00:00:00.000+08:00","citationText":"Angeline, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2088,11 +2088,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <h1>Estimating the relationship of determinants and Greenhouse Gas Emission levels using Ordinary Least Square Regression</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>A short description of the post.</p></p>
+<p><p>The write-up below details the steps taken to explore the different packages available to perform Ordinary Least Square regression model to estimate the relationship of determinants and Greenhouse gas emission levels. This is part of the project deliverables for a project undertaken for the course ISSS608- Visual Analytics offered in SMU MITB.</p></p>
 </div>
 
 <div class="d-byline">
-  Jiang Weiling Angeline true 
+  Jiang Weiling Angeline www.linkedin.com/in/angeline-jiang 
   
 <br/>03-18-2021
 </div>
@@ -2102,47 +2102,1168 @@ document.addEventListener('DOMContentLoaded', function() {
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#overview">1.0 Overview</a>
+<li><a href="#purpose-of-dataviz-exercise">1.0 Purpose of DataViz Exercise</a></li>
+<li><a href="#step-by-step-data-preparation-for-ols">2.0 Step-by-Step Data Preparation for OLS</a>
 <ul>
-<li><a href="#core-purpose-of-dataviz-exercise">1.1 Core Purpose of DataViz Exercise</a></li>
-<li><a href="#components-of-visualisation">1.2 Components of Visualisation</a></li>
-<li><a href="#sketch-of-proposed-visualisation">1.3 Sketch of Proposed Visualisation</a></li>
+<li><a href="#installing-and-launching-r-packages">2.1 Installing and Launching R packages</a></li>
+<li><a href="#data-source">2.2 Data Source</a></li>
+<li><a href="#loading-the-dataset-onto-r">2.3 Loading the dataset onto R</a></li>
+<li><a href="#creating-the-dataframe-for-ols">2.4 Creating the dataframe for OLS</a></li>
 </ul></li>
-<li><a href="#interactivity">2.0 Interactivity</a></li>
-<li><a href="#step-by-step-data-visualisation-preparation">3.0 Step-by-Step Data Visualisation Preparation</a>
+<li><a href="#data-visualisation-modules">3.0 Data Visualisation modules</a>
 <ul>
-<li><a href="#installing-and-launching-r-packages">3.1 Installing and Launching R packages</a></li>
-<li><a href="#data-preparation">3.2 Data Preparation</a></li>
-<li><a href="#data-visualisations-for-aggregated-view">3.3 Data Visualisations for Aggregated View</a></li>
-<li><a href="#final-visualisation">4.0 Final Visualisation</a></li>
-<li><a href="#major-advantages-of-incorporating-interactivity">5.0 Major Advantages of Incorporating Interactivity</a></li>
+<li><a href="#variable-selection">3.1 Variable Selection</a></li>
+<li><a href="#selected-models">3.2 Selected Models</a>
+<ul>
+<li><a href="#regression-summary">3.2.1 Regression Summary</a></li>
+<li><a href="#testing-for-heteroskedasticity">3.2.2 Testing for Heteroskedasticity</a></li>
+<li><a href="#residual-diagnostics">3.2.3 Residual Diagnostics</a></li>
+<li><a href="#collinear-diagnostics">3.2.4 Collinear Diagnostics</a></li>
+<li><a href="#model-fit-assessment">3.2.5 Model Fit Assessment</a></li>
 </ul></li>
+</ul></li>
+<li><a href="#proposed-visualization">4.0 Proposed Visualization</a></li>
 </ul>
 </nav>
 </div>
-<style>
-h1, h2, h3 {
-text-align: left
-}
-body {
-text-align: justify}
-</style>
-<h2 id="overview">1.0 Overview</h2>
-<h3 id="core-purpose-of-dataviz-exercise">1.1 Core Purpose of DataViz Exercise</h3>
-<p><Lit Review></p>
-<h3 id="components-of-visualisation">1.2 Components of Visualisation</h3>
-<h3 id="sketch-of-proposed-visualisation">1.3 Sketch of Proposed Visualisation</h3>
-<h2 id="interactivity">2.0 Interactivity</h2>
-<h2 id="step-by-step-data-visualisation-preparation">3.0 Step-by-Step Data Visualisation Preparation</h2>
-<h3 id="installing-and-launching-r-packages">3.1 Installing and Launching R packages</h3>
-<h3 id="data-preparation">3.2 Data Preparation</h3>
-<h4 id="data-source">3.2.1 Data Source</h4>
-<h4 id="loading-the-dataset-onto-r">3.2.2 Loading the dataset onto R</h4>
-<h4 id="creating-the-dataframe-for-ols">3.2.3 Creating the dataframe for OLS</h4>
-<h3 id="data-visualisations-for-aggregated-view">3.3 Data Visualisations for Aggregated View</h3>
-<h3 id="final-visualisation">4.0 Final Visualisation</h3>
-<h3 id="major-advantages-of-incorporating-interactivity">5.0 Major Advantages of Incorporating Interactivity</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h1 id="purpose-of-dataviz-exercise">1.0 Purpose of DataViz Exercise</h1>
+<p>Ordinary least squares (OLS) regression is a statistical method to estimate the relationship between one or more independent variables and a dependent variable by minimizing the sum of the squares in the difference between the observed and predicted values of the dependent variable based on the best fit straight line. There are a wide range of published papers which explored using OLS to estimate the relationship between various factors and greenhouse gas emissions. Some examples of these papers are listed below:</p>
+<ul>
+<li>Budiono, R., Juahir, H., Mamat, M., Supian, S., &amp; Nurzaman, M. (2019, October). Modeling and analysis of CO2 emissions in million tons of sectoral greenhouse gases in Indonesia. In IOP Conference Series: Materials Science and Engineering (Vol. 621, No. 1, p. 012020). IOP Publishing.</li>
+<li>Grunewald, N., &amp; Martínez-Zarzoso, I. (2009). Driving factors of carbon dioxide emissions and the impact from Kyoto Protocol.</li>
+<li>Hang, G., &amp; Yuan-Sheng, J. (2011). The relationship between CO2 emissions, economic scale, technology, income and population in China. Procedia Environmental Sciences, 11, 1183-1188.</li>
+</ul>
+<p>Nonetheless, research papers usually only published the final model used in their analysis (often without the exact code) and omitted the intermediate steps used to derive the final set of predictors. Tests conducted to ensure that OLS assumptions were not violated were also seldom presented in the papers. Hence, this exercise <strong>aims to explore different R packages which are able to run different permutations of OLS models, the necessary list of OLS assumption tests and present results in the form of a visualization</strong>.</p>
+<h1 id="step-by-step-data-preparation-for-ols">2.0 Step-by-Step Data Preparation for OLS</h1>
+<h2 id="installing-and-launching-r-packages">2.1 Installing and Launching R packages</h2>
+<p>A list of packages are required for this makeover exercise. This code chunk installs the required packages and loads them onto RStudio environment.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>packages</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'tidyverse'</span>, <span class='st'>'olsrr'</span>, <span class='st'>'lmtest'</span>, <span class='st'>'dplyr'</span>, <span class='st'>'ggplot2'</span>, <span class='st'>'ggstatsplot'</span>, <span class='st'>'ggcorrplot'</span>, 
+             <span class='st'>'purrr'</span>, <span class='st'>'jtools'</span>, <span class='st'>'broom.mixed'</span>, <span class='st'>'ggstance'</span>, <span class='st'>'EnvStats'</span>, <span class='st'>'graphics'</span>,<span class='st'>'caret'</span>,<span class='st'>'ppcor'</span><span class='op'>)</span>
+<span class='kw'>for</span> <span class='op'>(</span><span class='va'>p</span> <span class='kw'>in</span> <span class='va'>packages</span><span class='op'>)</span><span class='op'>{</span>
+  <span class='kw'>if</span><span class='op'>(</span><span class='op'>!</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'>p</span>, character.only <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
+    <span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span>
+  <span class='op'>}</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>p</span>, character.only <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+</div>
+<h2 id="data-source">2.2 Data Source</h2>
+<p>All the datasets used for this project is obtained from <a href="https://ec.europa.eu/eurostat">Eurostat</a>, the database with European statistics maintained by the statistical office of the European Union. Our group will be focusing on the overall greenhouse gas emissions, excluding Land Use and Land Use Change and Forest (LULUCF) while also exploring into the common greenhouse gases (i.e. carbon dioxide, methane and nitrous oxide).</p>
+<p>As multiple data was pulled from Eurostat database, please refer to <a href="https://greenhouseemission.netlify.app/posts/2021-03-28-data-preparation/">Data Preparation page</a> for the glossary list and steps taken to merge and obtain a single dataset for analysis.</p>
+<h2 id="loading-the-dataset-onto-r">2.3 Loading the dataset onto R</h2>
+<p>The output shows that all except ‘Country’ is numeric variable, which is correct. Hence there’s no need to change the type of any variable.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Reading the csv file as a tbl_df</span>
+<span class='va'>ghg_2010_2018</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"data/GHGproj_data.csv"</span><span class='op'>)</span>
+
+<span class='co'># Inspecting the structure of the dataset</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>ghg_2010_2018</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>spec_tbl_df [324 x 15] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ Country         : chr [1:324] &quot;European Union - 27 countries (from 2020)&quot; &quot;European Union - 27 countries (from 2020)&quot; &quot;European Union - 27 countries (from 2020)&quot; &quot;European Union - 27 countries (from 2020)&quot; ...
+ $ Year            : num [1:324] 2010 2011 2012 2013 2014 ...
+ $ GHG_emissions   : num [1:324] 4188244 4075283 3996645 3912623 3776464 ...
+ $ CO2_emissions   : num [1:324] 3443914 3338307 3262594 3181485 3046141 ...
+ $ CH4_emissions   : num [1:324] 427118 419634 416827 411161 406015 ...
+ $ NO2_emissions   : num [1:324] 219323 216187 213789 214272 216858 ...
+ $ GDP             : num [1:324] 10977298 11321811 11388518 11517119 11781640 ...
+ $ Final_EI        : num [1:324] 92.2 85.9 84.3 83.6 77.4 ...
+ $ Fuel_mix        : num [1:324] 2.8 2.88 2.78 2.67 2.62 2.57 2.54 2.53 2.4 NA ...
+ $ Carbon_intensity: num [1:324] 91.9 91.5 90.9 89.5 88.3 88.7 88 86.7 85.2 NA ...
+ $ Renewables_share: num [1:324] 14.4 14.6 16 16.7 17.5 ...
+ $ Envt_taxes      : num [1:324] 259023 271901 278204 284121 291030 ...
+ $ Liquid_biofuels : num [1:324] 29689 28711 28422 29751 29152 ...
+ $ Solar_thermal   : num [1:324] 34488 37949 40587 43246 45425 ...
+ $ Heat_pumps      : num [1:324] 31200 43941 48603 53298 79990 ...
+ - attr(*, &quot;spec&quot;)=
+  .. cols(
+  ..   Country = col_character(),
+  ..   Year = col_double(),
+  ..   GHG_emissions = col_double(),
+  ..   CO2_emissions = col_double(),
+  ..   CH4_emissions = col_double(),
+  ..   NO2_emissions = col_double(),
+  ..   GDP = col_double(),
+  ..   Final_EI = col_double(),
+  ..   Fuel_mix = col_double(),
+  ..   Carbon_intensity = col_double(),
+  ..   Renewables_share = col_double(),
+  ..   Envt_taxes = col_double(),
+  ..   Liquid_biofuels = col_double(),
+  ..   Solar_thermal = col_double(),
+  ..   Heat_pumps = col_double()
+  .. )</code></pre>
+</div>
+<h2 id="creating-the-dataframe-for-ols">2.4 Creating the dataframe for OLS</h2>
+<p>For the purpose of exploring OLS regression model in this assignment, the building of the OLS model will focus only on 2018 data. Other years of regression model can be run subsequently by filtering the dataset to the specific year itself.</p>
+<p>When importing the dataset earlier, there were records such as “European Union - 27 countries (from 2020)”, “European Union - 27 countries (from 2020)” etc, which presents the combination of multiple countries. As such, these records are excluded using the <em>dplyr()</em> package to prevent serious correlation with other records (countries). To have a consistent naming of countries, “Germany (until 1990 former territory of the FRG)” was replaced with “Germany” using the <em>tidyverse()</em> package.</p>
+<p>In addition, instead of having “Country” reflected as a column variable, additional code was ran to reflect the countries as “Row name”. Given that the focus of this dataset is on 2018, the “Year” variable can be dropped as it’s redundant.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ghg_2018</span> <span class='op'>&lt;-</span>  <span class='va'>ghg_2010_2018</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Year</span> <span class='op'>==</span> <span class='fl'>2018</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># Subset the dataset to get 2018 records</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span><span class='op'>(</span><span class='st'>'European Union'</span>, <span class='va'>Country</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># Exclude records containing 'European Union' </span>
+  <span class='fu'><a href='https://rdrr.io/r/base/replace.html'>replace</a></span><span class='op'>(</span><span class='va'>.</span>, <span class='op'>(</span><span class='va'>.</span><span class='op'>)</span><span class='op'>==</span><span class='st'>'Germany (until 1990 former territory of the FRG)'</span>, <span class='st'>"Germany"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'>#Replace country name for Germany </span>
+  <span class='va'>remove_rownames</span> <span class='op'>%&gt;%</span> <span class='fu'>column_to_rownames</span><span class='op'>(</span>var<span class='op'>=</span><span class='st'>"Country"</span><span class='op'>)</span> <span class='co'># Change column "Country" to "Row name"</span>
+
+<span class='va'>ghg_2018</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/subset.html'>subset</a></span><span class='op'>(</span><span class='va'>ghg_2018</span>, select<span class='op'>=</span><span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>Year</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># Drop the "Year" variable since it's redundant</span>
+</code></pre>
+</div>
+</div>
+<p><strong>Reviewing the Variables</strong></p>
+<p><strong>(A) Density plot</strong></p>
+<p>The density plots plotted using <em>ggplot2()</em> package showed that the values/scales of “CH4_emissions”, “CO2_emissions”, “Envt_taxes”, “GDP”, “GHG_emissions”, “Heat_pumps”, “Liquid_biofuels”, “NO2_emissions” and “Solar_thermal” are very large compared to “Carbon_intensity”, Final_EI“,”Fuel_mix" and “Renewables_share”. Hence, transformation may be applied on the former group of variables for better interpretability of the coefficient in the output.</p>
+<p>To get histogram plot, change “geom_density()” to “geom_histogram()” in the code chunk.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ghg_2018</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>keep</span><span class='op'>(</span><span class='va'>is.numeric</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># Keep only numeric columns</span>
+  <span class='fu'>gather</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># Convert to key-value pairs</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>value</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># Plot the values</span>
+    <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span> <span class='va'>key</span>, scales <span class='op'>=</span> <span class='st'>"free"</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># In separate panels</span>
+    <span class='fu'>geom_density</span><span class='op'>(</span><span class='op'>)</span>   <span class='co'># as density</span>
+</code></pre>
+</div>
+<p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<p>An example of transformation is by taking “log (base e)” on the variables as shown below, so that the scales of the variables are similar.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ghg_2018</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>keep</span><span class='op'>(</span><span class='va'>is.numeric</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>gather</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>value</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># transformation</span>
+    <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span> <span class='va'>key</span>, scales <span class='op'>=</span> <span class='st'>"free"</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'>geom_density</span><span class='op'>(</span><span class='op'>)</span>   
+</code></pre>
+</div>
+<p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+</div>
+<p><strong>(B) Correlation plot</strong></p>
+<p>Using the <em>ggcorrplot()</em> package, we can plot a correlalogram (with correlation coefficient). If there are NAs present in the selected variables, the legend will display minimum, median, and maximum number of pairs used for correlation tests.</p>
+<p>The chart below showed that some predictors are highly correlated with each other (either dark grey or dark red) and hence we will probably expect some predictors to be omitted in the OLS regression output.For example, Envt_taxes and GDP are highly correlated (0.96) and if these two predictors were to be included in the same model, either will be omitted.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># as a default this function outputs a correlation matrix plot</span>
+<span class='fu'>ggstatsplot</span><span class='fu'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/ggstatsplot/reference/ggcorrmat.html'>ggcorrmat</a></span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>ghg_2018</span>,
+  colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#B2182B"</span>, <span class='st'>"white"</span>, <span class='st'>"#4D4D4D"</span><span class='op'>)</span>,
+  title <span class='op'>=</span> <span class='st'>"Correlalogram for Greenhouse gas emission 2018 dataset"</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<p><strong>Final dataset for OLS model</strong></p>
+<p>For ease of coding, create a dataframe containing only the transformed variables. In addition, we will focus on using “GHG_emissions” as the dependent variable. To explore other source of emission, one can amend the code accordingly.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ghg_2018_ols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>ghg_2018</span> <span class='op'>+</span> <span class='fl'>1</span><span class='op'>)</span> <span class='co'># transform all variables</span>
+<span class='va'>ghg_2018_ols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/subset.html'>subset</a></span><span class='op'>(</span><span class='va'>ghg_2018_ols</span>, select <span class='op'>=</span> <span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>CO2_emissions</span>, <span class='va'>CH4_emissions</span>, <span class='va'>NO2_emissions</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># Drop all dependent variables except "GHG_emissions"</span>
+</code></pre>
+</div>
+</div>
+<h1 id="data-visualisation-modules">3.0 Data Visualisation modules</h1>
+<p>In this section, 2 main modules will be covered, namely (1) Variable Selection and (2) Selected Model.</p>
+<p>For illustration of the different modules, we randomly selected 3 independent variables, namely “GDP”, “Final_EI” and “Fuel_mix” to be considered. In the proposed shiny app, there will be a multi-select option for users to decide the independent variables they wish to consider.</p>
+<p>In addition, the <em>olsrr()</em> package will be primarily used as it provides the following tools for building OLS regression models using R.</p>
+<ul>
+<li>Comprehensive Regression Output</li>
+<li>Variable Selection Procedures</li>
+<li>Heteroskedasticity Tests</li>
+<li>Collinearity Diagnostics</li>
+<li>Model Fit Assessment</li>
+<li>Residual Diagnostics</li>
+</ul>
+<p>Nonetheless, other R packages will also be explored to determine the most appropriate data visualization.</p>
+<h2 id="variable-selection">3.1 Variable Selection</h2>
+<p>In this section, 6 main methods will be explored to identify the best subset of predictors to include in the model, among all possible subsets of predictors.</p>
+<p><strong>(i) All possibilities</strong></p>
+<p>All subset regression tests all possible subsets of the set of potential independent variables. If there are k potential independent variables (besides the constant), then there are 2^k distinct subsets of them to be tested. Hence, for this dataset, if all the potential independent variables are include into the model, there will be 2^9 = 512 models generated.</p>
+<p>Base on the plots, model 7 has the highest adjusted R-sqaure and lowest AIC, hence is the better model compared to models 1-6.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>GHG_emissions</span> <span class='op'>~</span> <span class='va'>GDP</span> <span class='op'>+</span> <span class='va'>Final_EI</span> <span class='op'>+</span> <span class='va'>Fuel_mix</span>, data <span class='op'>=</span> <span class='va'>ghg_2018_ols</span><span class='op'>)</span>
+
+<span class='co'># Detailed output</span>
+<span class='va'>k</span> <span class='op'>&lt;-</span> <span class='fu'>ols_step_all_possible</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<span class='va'>k</span>
+</code></pre>
+</div>
+<pre><code>  Index N            Predictors  R-Square Adj. R-Square Mallow&#39;s Cp
+1     1 1                   GDP 0.8251792    0.81953986   57.874319
+3     2 1              Fuel_mix 0.1594361    0.13045118  248.904042
+2     3 1              Final_EI 0.1123569    0.08174848  264.357194
+5     4 2          GDP Fuel_mix 0.9171542    0.91123668    2.193035
+4     5 2          GDP Final_EI 0.8578250    0.84766963   21.667079
+6     6 2     Final_EI Fuel_mix 0.2398643    0.18556886  224.504564
+7     7 3 GDP Final_EI Fuel_mix 0.9177423    0.90860259    4.000000</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Panel of fit criteria</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>k</span>, main <span class='op'>=</span> <span class='st'>"Panel of fit criteria"</span>, xlab<span class='op'>=</span><span class='st'>"No. of predictors"</span>, ylab<span class='op'>=</span><span class='st'>"Value"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-8-1.png" width="624" /><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-8-2.png" width="624" /></p>
+</div>
+<p><strong>(ii) Best Subset</strong></p>
+<p>The code chunk below selects the subset of predictors that do the best at meeting some well-defined objective criterion e.g. largest adjusted R-square or smallest AIC etc. From the plot, users will be able to identify the model with the highest adjusted R-square value etc.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>GHG_emissions</span> <span class='op'>~</span> <span class='va'>GDP</span> <span class='op'>+</span> <span class='va'>Final_EI</span> <span class='op'>+</span> <span class='va'>Fuel_mix</span> , data <span class='op'>=</span> <span class='va'>ghg_2018_ols</span><span class='op'>)</span>
+
+<span class='co'># Detailed output</span>
+<span class='va'>k</span> <span class='op'>&lt;-</span> <span class='fu'>ols_step_best_subset</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<span class='va'>k</span>
+</code></pre>
+</div>
+<pre><code>      Best Subsets Regression       
+------------------------------------
+Model Index    Predictors
+------------------------------------
+     1         GDP                   
+     2         GDP Fuel_mix          
+     3         GDP Final_EI Fuel_mix 
+------------------------------------
+
+                                                  Subsets Regression Summary                                                   
+-------------------------------------------------------------------------------------------------------------------------------
+                       Adj.        Pred                                                                                         
+Model    R-Square    R-Square    R-Square     C(p)        AIC        SBIC        SBC       MSEP       FPE       HSP       APC  
+-------------------------------------------------------------------------------------------------------------------------------
+  1        0.8252      0.8195      0.7877    57.8743    78.1392    -18.7605    82.6287    18.3075    0.5883    0.0185    0.1974 
+  2        0.9172      0.9112      0.9032     2.1930    41.6987    -45.4747    47.4346     5.9678    0.2108    0.0071    0.1006 
+  3        0.9177      0.9086      0.8923     4.0000    43.4778    -43.3551    50.6478     6.1533    0.2235    0.0076    0.1066 
+-------------------------------------------------------------------------------------------------------------------------------
+AIC: Akaike Information Criteria 
+ SBIC: Sawa&#39;s Bayesian Information Criteria 
+ SBC: Schwarz Bayesian Criteria 
+ MSEP: Estimated error of prediction, assuming multivariate normality 
+ FPE: Final Prediction Error 
+ HSP: Hocking&#39;s Sp 
+ APC: Amemiya Prediction Criteria </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Panel of fit criteria</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>k</span>, main <span class='op'>=</span> <span class='st'>"Panel of fit criteria"</span>, xlab<span class='op'>=</span><span class='st'>"No. of predictors"</span>, ylab<span class='op'>=</span><span class='st'>"Value"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-9-1.png" width="624" /><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-9-2.png" width="624" /></p>
+</div>
+<p><strong>(iii) Stepwise Forward</strong></p>
+<p>In a step-wise method, we can start with a single predictor and continue to add predictors based on <em>p-value</em> until no variable is left. The output plot shows the changes in the criterion value upon adding a predictor which is useful for the users to understand the importance of the predictor added into the model.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>GHG_emissions</span> <span class='op'>~</span> <span class='va'>GDP</span> <span class='op'>+</span> <span class='va'>Final_EI</span> <span class='op'>+</span> <span class='va'>Fuel_mix</span> , data <span class='op'>=</span> <span class='va'>ghg_2018_ols</span><span class='op'>)</span>
+
+<span class='co'># Selection summary</span>
+<span class='va'>k</span> <span class='op'>&lt;-</span> <span class='fu'>ols_step_forward_p</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<span class='va'>k</span>
+</code></pre>
+</div>
+<pre><code>
+                           Selection Summary                             
+------------------------------------------------------------------------
+        Variable                  Adj.                                      
+Step    Entered     R-Square    R-Square     C(p)        AIC       RMSE     
+------------------------------------------------------------------------
+   1    GDP           0.8252      0.8195    57.8743    78.1392    0.7448    
+   2    Fuel_mix      0.9172      0.9112     2.1930    41.6987    0.4384    
+------------------------------------------------------------------------</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>k</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-10-1.png" width="624" /><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-10-2.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># obtain detailed output</span>
+<span class='fu'>ols_step_forward_p</span><span class='op'>(</span><span class='va'>model</span>, details <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Forward Selection Method    
+---------------------------
+
+Candidate Terms: 
+
+1. GDP 
+2. Final_EI 
+3. Fuel_mix 
+
+We are selecting variables based on p value...
+
+
+Forward Selection: Step 1 
+
+- GDP 
+
+                        Model Summary                         
+-------------------------------------------------------------
+R                       0.908       RMSE               0.745 
+R-Squared               0.825       Coef. Var          6.842 
+Adj. R-Squared          0.820       MSE                0.555 
+Pred R-Squared          0.788       MAE                0.561 
+-------------------------------------------------------------
+ RMSE: Root Mean Square Error 
+ MSE: Mean Square Error 
+ MAE: Mean Absolute Error 
+
+                               ANOVA                                 
+--------------------------------------------------------------------
+               Sum of                                               
+              Squares        DF    Mean Square       F         Sig. 
+--------------------------------------------------------------------
+Regression     81.167         1         81.167    146.324    0.0000 
+Residual       17.196        31          0.555                      
+Total          98.363        32                                     
+--------------------------------------------------------------------
+
+                                  Parameter Estimates                                   
+---------------------------------------------------------------------------------------
+      model      Beta    Std. Error    Std. Beta      t        Sig      lower    upper 
+---------------------------------------------------------------------------------------
+(Intercept)    -1.041         0.994                 -1.047    0.303    -3.069    0.987 
+        GDP     0.983         0.081        0.908    12.096    0.000     0.817    1.148 
+---------------------------------------------------------------------------------------
+
+
+
+Forward Selection: Step 2 
+
+- Fuel_mix 
+
+                        Model Summary                         
+-------------------------------------------------------------
+R                       0.958       RMSE               0.438 
+R-Squared               0.917       Coef. Var          3.959 
+Adj. R-Squared          0.911       MSE                0.192 
+Pred R-Squared          0.903       MAE                0.330 
+-------------------------------------------------------------
+ RMSE: Root Mean Square Error 
+ MSE: Mean Square Error 
+ MAE: Mean Absolute Error 
+
+                               ANOVA                                 
+--------------------------------------------------------------------
+               Sum of                                               
+              Squares        DF    Mean Square       F         Sig. 
+--------------------------------------------------------------------
+Regression     59.588         2         29.794    154.989    0.0000 
+Residual        5.383        28          0.192                      
+Total          64.971        30                                     
+--------------------------------------------------------------------
+
+                                 Parameter Estimates                                   
+--------------------------------------------------------------------------------------
+      model     Beta    Std. Error    Std. Beta      t        Sig      lower    upper 
+--------------------------------------------------------------------------------------
+(Intercept)    0.191         0.643                  0.298    0.768    -1.125    1.508 
+        GDP    0.849         0.053        0.884    16.003    0.000     0.740    0.958 
+   Fuel_mix    0.557         0.124        0.247     4.479    0.000     0.302    0.811 
+--------------------------------------------------------------------------------------
+
+
+
+No more variables to be added.
+
+Variables Entered: 
+
++ GDP 
++ Fuel_mix 
+
+
+Final Model Output 
+------------------
+
+                        Model Summary                         
+-------------------------------------------------------------
+R                       0.958       RMSE               0.438 
+R-Squared               0.917       Coef. Var          3.959 
+Adj. R-Squared          0.911       MSE                0.192 
+Pred R-Squared          0.903       MAE                0.330 
+-------------------------------------------------------------
+ RMSE: Root Mean Square Error 
+ MSE: Mean Square Error 
+ MAE: Mean Absolute Error 
+
+                               ANOVA                                 
+--------------------------------------------------------------------
+               Sum of                                               
+              Squares        DF    Mean Square       F         Sig. 
+--------------------------------------------------------------------
+Regression     59.588         2         29.794    154.989    0.0000 
+Residual        5.383        28          0.192                      
+Total          64.971        30                                     
+--------------------------------------------------------------------
+
+                                 Parameter Estimates                                   
+--------------------------------------------------------------------------------------
+      model     Beta    Std. Error    Std. Beta      t        Sig      lower    upper 
+--------------------------------------------------------------------------------------
+(Intercept)    0.191         0.643                  0.298    0.768    -1.125    1.508 
+        GDP    0.849         0.053        0.884    16.003    0.000     0.740    0.958 
+   Fuel_mix    0.557         0.124        0.247     4.479    0.000     0.302    0.811 
+--------------------------------------------------------------------------------------</code></pre>
+<pre><code>
+                           Selection Summary                             
+------------------------------------------------------------------------
+        Variable                  Adj.                                      
+Step    Entered     R-Square    R-Square     C(p)        AIC       RMSE     
+------------------------------------------------------------------------
+   1    GDP           0.8252      0.8195    57.8743    78.1392    0.7448    
+   2    Fuel_mix      0.9172      0.9112     2.1930    41.6987    0.4384    
+------------------------------------------------------------------------</code></pre>
+</div>
+<p><strong>(iv) Stepwise Backward</strong></p>
+<p>Similarly, we can start with the full list of predictors and remove predictors based on <em>p-value</em> until only one variable is left.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>GHG_emissions</span> <span class='op'>~</span> <span class='va'>GDP</span> <span class='op'>+</span> <span class='va'>Final_EI</span> <span class='op'>+</span> <span class='va'>Fuel_mix</span> , data <span class='op'>=</span> <span class='va'>ghg_2018_ols</span><span class='op'>)</span>
+
+<span class='co'># Selection summary</span>
+<span class='va'>k</span> <span class='op'>&lt;-</span> <span class='fu'>ols_step_backward_p</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<span class='va'>k</span>
+</code></pre>
+</div>
+<pre><code>
+                          Elimination Summary                           
+-----------------------------------------------------------------------
+        Variable                  Adj.                                     
+Step    Removed     R-Square    R-Square     C(p)       AIC       RMSE     
+-----------------------------------------------------------------------
+   1    Final_EI      0.9172      0.9112    2.1930    41.6987    0.4384    
+-----------------------------------------------------------------------</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>k</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-11-1.png" width="624" /><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-11-2.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># obtain detailed output</span>
+<span class='fu'>ols_step_backward_p</span><span class='op'>(</span><span class='va'>model</span>, details <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Backward Elimination Method 
+---------------------------
+
+Candidate Terms: 
+
+1 . GDP 
+2 . Final_EI 
+3 . Fuel_mix 
+
+We are eliminating variables based on p value...
+
+- Final_EI 
+
+Backward Elimination: Step 1 
+
+ Variable Final_EI Removed 
+
+                        Model Summary                         
+-------------------------------------------------------------
+R                       0.958       RMSE               0.438 
+R-Squared               0.917       Coef. Var          3.959 
+Adj. R-Squared          0.911       MSE                0.192 
+Pred R-Squared          0.903       MAE                0.330 
+-------------------------------------------------------------
+ RMSE: Root Mean Square Error 
+ MSE: Mean Square Error 
+ MAE: Mean Absolute Error 
+
+                               ANOVA                                 
+--------------------------------------------------------------------
+               Sum of                                               
+              Squares        DF    Mean Square       F         Sig. 
+--------------------------------------------------------------------
+Regression     59.588         2         29.794    154.989    0.0000 
+Residual        5.383        28          0.192                      
+Total          64.971        30                                     
+--------------------------------------------------------------------
+
+                                 Parameter Estimates                                   
+--------------------------------------------------------------------------------------
+      model     Beta    Std. Error    Std. Beta      t        Sig      lower    upper 
+--------------------------------------------------------------------------------------
+(Intercept)    0.191         0.643                  0.298    0.768    -1.125    1.508 
+        GDP    0.849         0.053        0.884    16.003    0.000     0.740    0.958 
+   Fuel_mix    0.557         0.124        0.247     4.479    0.000     0.302    0.811 
+--------------------------------------------------------------------------------------
+
+
+
+No more variables satisfy the condition of p value = 0.3
+
+
+Variables Removed: 
+
+- Final_EI 
+
+
+Final Model Output 
+------------------
+
+                        Model Summary                         
+-------------------------------------------------------------
+R                       0.958       RMSE               0.438 
+R-Squared               0.917       Coef. Var          3.959 
+Adj. R-Squared          0.911       MSE                0.192 
+Pred R-Squared          0.903       MAE                0.330 
+-------------------------------------------------------------
+ RMSE: Root Mean Square Error 
+ MSE: Mean Square Error 
+ MAE: Mean Absolute Error 
+
+                               ANOVA                                 
+--------------------------------------------------------------------
+               Sum of                                               
+              Squares        DF    Mean Square       F         Sig. 
+--------------------------------------------------------------------
+Regression     59.588         2         29.794    154.989    0.0000 
+Residual        5.383        28          0.192                      
+Total          64.971        30                                     
+--------------------------------------------------------------------
+
+                                 Parameter Estimates                                   
+--------------------------------------------------------------------------------------
+      model     Beta    Std. Error    Std. Beta      t        Sig      lower    upper 
+--------------------------------------------------------------------------------------
+(Intercept)    0.191         0.643                  0.298    0.768    -1.125    1.508 
+        GDP    0.849         0.053        0.884    16.003    0.000     0.740    0.958 
+   Fuel_mix    0.557         0.124        0.247     4.479    0.000     0.302    0.811 
+--------------------------------------------------------------------------------------</code></pre>
+<pre><code>
+                          Elimination Summary                           
+-----------------------------------------------------------------------
+        Variable                  Adj.                                     
+Step    Removed     R-Square    R-Square     C(p)       AIC       RMSE     
+-----------------------------------------------------------------------
+   1    Final_EI      0.9172      0.9112    2.1930    41.6987    0.4384    
+-----------------------------------------------------------------------</code></pre>
+</div>
+<p><strong>(v) Stepwise AIC Forward</strong></p>
+<p>Alternatively, in a step-wise method, we can start with a single predictor and continue to add predictors based on <em>AIC value</em> until no variable is left.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>GHG_emissions</span> <span class='op'>~</span> <span class='va'>GDP</span> <span class='op'>+</span> <span class='va'>Final_EI</span> <span class='op'>+</span> <span class='va'>Fuel_mix</span>, data <span class='op'>=</span> <span class='va'>ghg_2018_ols</span><span class='op'>)</span>
+
+<span class='co'># Selection summary</span>
+<span class='va'>k</span> <span class='op'>&lt;-</span> <span class='fu'>ols_step_forward_aic</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<span class='va'>k</span>
+</code></pre>
+</div>
+<pre><code>
+                       Selection Summary                        
+---------------------------------------------------------------
+Variable      AIC      Sum Sq     RSS       R-Sq      Adj. R-Sq 
+---------------------------------------------------------------
+GDP          78.139    81.167    17.196    0.82518      0.81954 
+Fuel_mix     41.699    59.588     5.383    0.91715      0.91124 
+---------------------------------------------------------------</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>k</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-12-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># obtain detailed output</span>
+<span class='fu'>ols_step_forward_aic</span><span class='op'>(</span><span class='va'>model</span>, details <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Forward Selection Method 
+------------------------
+
+Candidate Terms: 
+
+1 . GDP 
+2 . Final_EI 
+3 . Fuel_mix 
+
+ Step 0: AIC = 133.691 
+ GHG_emissions ~ 1 
+
+--------------------------------------------------------------------
+Variable     DF      AIC      Sum Sq     RSS      R-Sq     Adj. R-Sq 
+--------------------------------------------------------------------
+GDP           1     78.139    81.167    17.196    0.825        0.820 
+Fuel_mix      1    111.529    10.359    54.612    0.159        0.130 
+Final_EI      1    113.218     7.300    57.671    0.112        0.082 
+--------------------------------------------------------------------
+
+
+- GDP 
+
+
+ Step 1 : AIC = 78.13917 
+ GHG_emissions ~ GDP 
+
+-------------------------------------------------------------------
+Variable     DF     AIC      Sum Sq      RSS     R-Sq     Adj. R-Sq 
+-------------------------------------------------------------------
+Fuel_mix      1    41.699    -21.578    5.383    0.917        0.911 
+Final_EI      1    58.441    -25.433    9.237    0.858        0.848 
+-------------------------------------------------------------------
+
+- Fuel_mix 
+
+
+ Step 2 : AIC = 41.69868 
+ GHG_emissions ~ GDP + Fuel_mix 
+
+------------------------------------------------------------------
+Variable     DF     AIC      Sum Sq     RSS     R-Sq     Adj. R-Sq 
+------------------------------------------------------------------
+Final_EI      1    43.478     0.038    5.344    0.918        0.909 
+------------------------------------------------------------------
+
+
+No more variables to be added.
+
+Variables Entered: 
+
+- GDP 
+- Fuel_mix 
+
+
+Final Model Output 
+------------------
+
+                        Model Summary                         
+-------------------------------------------------------------
+R                       0.958       RMSE               0.438 
+R-Squared               0.917       Coef. Var          3.959 
+Adj. R-Squared          0.911       MSE                0.192 
+Pred R-Squared          0.903       MAE                0.330 
+-------------------------------------------------------------
+ RMSE: Root Mean Square Error 
+ MSE: Mean Square Error 
+ MAE: Mean Absolute Error 
+
+                               ANOVA                                 
+--------------------------------------------------------------------
+               Sum of                                               
+              Squares        DF    Mean Square       F         Sig. 
+--------------------------------------------------------------------
+Regression     59.588         2         29.794    154.989    0.0000 
+Residual        5.383        28          0.192                      
+Total          64.971        30                                     
+--------------------------------------------------------------------
+
+                                 Parameter Estimates                                   
+--------------------------------------------------------------------------------------
+      model     Beta    Std. Error    Std. Beta      t        Sig      lower    upper 
+--------------------------------------------------------------------------------------
+(Intercept)    0.191         0.643                  0.298    0.768    -1.125    1.508 
+        GDP    0.849         0.053        0.884    16.003    0.000     0.740    0.958 
+   Fuel_mix    0.557         0.124        0.247     4.479    0.000     0.302    0.811 
+--------------------------------------------------------------------------------------</code></pre>
+<pre><code>
+                       Selection Summary                        
+---------------------------------------------------------------
+Variable      AIC      Sum Sq     RSS       R-Sq      Adj. R-Sq 
+---------------------------------------------------------------
+GDP          78.139    81.167    17.196    0.82518      0.81954 
+Fuel_mix     41.699    59.588     5.383    0.91715      0.91124 
+---------------------------------------------------------------</code></pre>
+</div>
+<p><strong>(vi) Stepwise AIC Backward</strong></p>
+<p>Similarly, we can start with the full list of predictors and remove predictors based on <em>AIC value</em> until only one variable is left.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>GHG_emissions</span> <span class='op'>~</span> <span class='va'>GDP</span> <span class='op'>+</span> <span class='va'>Final_EI</span> <span class='op'>+</span> <span class='va'>Fuel_mix</span>, data <span class='op'>=</span> <span class='va'>ghg_2018_ols</span><span class='op'>)</span>
+
+<span class='co'># Selection summary</span>
+<span class='va'>k</span> <span class='op'>&lt;-</span> <span class='fu'>ols_step_backward_aic</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<span class='va'>k</span>
+</code></pre>
+</div>
+<pre><code>
+                  Backward Elimination Summary                   
+---------------------------------------------------------------
+Variable       AIC       RSS     Sum Sq     R-Sq      Adj. R-Sq 
+---------------------------------------------------------------
+Full Model    43.478    5.344    59.627    0.91774      0.90860 
+Final_EI      41.699    5.383    59.588    0.91715      0.91124 
+---------------------------------------------------------------</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>k</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-13-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># obtain detailed output</span>
+<span class='fu'>ols_step_backward_aic</span><span class='op'>(</span><span class='va'>model</span>, details <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Backward Elimination Method 
+---------------------------
+
+Candidate Terms: 
+
+1 . GDP 
+2 . Final_EI 
+3 . Fuel_mix 
+
+ Step 0: AIC = 43.47784 
+ GHG_emissions ~ GDP + Final_EI + Fuel_mix 
+
+--------------------------------------------------------------------
+Variable     DF      AIC      Sum Sq     RSS      R-Sq     Adj. R-Sq 
+--------------------------------------------------------------------
+Final_EI     1      41.699     0.038     5.383    0.917        0.911 
+Fuel_mix     1      58.441     3.893     9.237    0.858        0.848 
+GDP          1     110.411    44.042    49.387    0.240        0.186 
+--------------------------------------------------------------------
+
+
+Variables Removed: 
+
+- Final_EI 
+
+
+  Step 1 : AIC = 41.69868 
+ GHG_emissions ~ GDP + Fuel_mix 
+
+---------------------------------------------------------------------
+Variable     DF      AIC      Sum Sq      RSS      R-Sq     Adj. R-Sq 
+---------------------------------------------------------------------
+Fuel_mix     1      78.139    -21.578    17.196    0.825        0.820 
+GDP          1     111.529     49.230    54.612    0.159        0.130 
+---------------------------------------------------------------------
+
+
+No more variables to be removed.
+
+Variables Removed: 
+
+- Final_EI 
+
+
+Final Model Output 
+------------------
+
+                        Model Summary                         
+-------------------------------------------------------------
+R                       0.958       RMSE               0.438 
+R-Squared               0.917       Coef. Var          3.959 
+Adj. R-Squared          0.911       MSE                0.192 
+Pred R-Squared          0.903       MAE                0.330 
+-------------------------------------------------------------
+ RMSE: Root Mean Square Error 
+ MSE: Mean Square Error 
+ MAE: Mean Absolute Error 
+
+                               ANOVA                                 
+--------------------------------------------------------------------
+               Sum of                                               
+              Squares        DF    Mean Square       F         Sig. 
+--------------------------------------------------------------------
+Regression     59.588         2         29.794    154.989    0.0000 
+Residual        5.383        28          0.192                      
+Total          64.971        30                                     
+--------------------------------------------------------------------
+
+                                 Parameter Estimates                                   
+--------------------------------------------------------------------------------------
+      model     Beta    Std. Error    Std. Beta      t        Sig      lower    upper 
+--------------------------------------------------------------------------------------
+(Intercept)    0.191         0.643                  0.298    0.768    -1.125    1.508 
+        GDP    0.849         0.053        0.884    16.003    0.000     0.740    0.958 
+   Fuel_mix    0.557         0.124        0.247     4.479    0.000     0.302    0.811 
+--------------------------------------------------------------------------------------</code></pre>
+<pre><code>
+                  Backward Elimination Summary                   
+---------------------------------------------------------------
+Variable       AIC       RSS     Sum Sq     R-Sq      Adj. R-Sq 
+---------------------------------------------------------------
+Full Model    43.478    5.344    59.627    0.91774      0.90860 
+Final_EI      41.699    5.383    59.588    0.91715      0.91124 
+---------------------------------------------------------------</code></pre>
+</div>
+<h2 id="selected-models">3.2 Selected Models</h2>
+<p>Assume that from the earlier variable selection module (Section 3.1), the chosen model is “GHG_emissions = GDP + Final_EI + Fuel_mix”.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>GHG_emissions</span> <span class='op'>~</span> <span class='va'>GDP</span> <span class='op'>+</span> <span class='va'>Final_EI</span> <span class='op'>+</span> <span class='va'>Fuel_mix</span>, data <span class='op'>=</span> <span class='va'>ghg_2018_ols</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="regression-summary">3.2.1 Regression Summary</h3>
+<p>Run the following code chunk to output the regression summary (coefficient, standard errors etc.). Compared to <em>jtools()</em> package which only plots the coefficient value and confidence interval, the <em>ggcoefstats()</em> package provides a more comprehensive visualisation of the coefficient values along with the t-statistics and p-value for each predictors. In addition, the latter also included the AIC and BIC value of the model.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Tabular output</span>
+<span class='fu'>ols_regress</span><span class='op'>(</span><span class='va'>GHG_emissions</span> <span class='op'>~</span> <span class='va'>GDP</span> <span class='op'>+</span> <span class='va'>Final_EI</span> <span class='op'>+</span> <span class='va'>Fuel_mix</span>, data <span class='op'>=</span> <span class='va'>ghg_2018_ols</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>                        Model Summary                         
+-------------------------------------------------------------
+R                       0.958       RMSE               0.445 
+R-Squared               0.918       Coef. Var          4.018 
+Adj. R-Squared          0.909       MSE                0.198 
+Pred R-Squared          0.892       MAE                0.331 
+-------------------------------------------------------------
+ RMSE: Root Mean Square Error 
+ MSE: Mean Square Error 
+ MAE: Mean Absolute Error 
+
+                               ANOVA                                 
+--------------------------------------------------------------------
+               Sum of                                               
+              Squares        DF    Mean Square       F         Sig. 
+--------------------------------------------------------------------
+Regression     59.627         3         19.876    100.412    0.0000 
+Residual        5.344        27          0.198                      
+Total          64.971        30                                     
+--------------------------------------------------------------------
+
+                                  Parameter Estimates                                   
+---------------------------------------------------------------------------------------
+      model      Beta    Std. Error    Std. Beta      t        Sig      lower    upper 
+---------------------------------------------------------------------------------------
+(Intercept)    -0.481         1.664                 -0.289    0.775    -3.895    2.933 
+        GDP     0.858         0.058        0.893    14.917    0.000     0.740    0.976 
+   Final_EI     0.128         0.291        0.026     0.439    0.664    -0.469    0.724 
+   Fuel_mix     0.561         0.127        0.249     4.435    0.000     0.301    0.821 
+---------------------------------------------------------------------------------------</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot coefficients using jtools package</span>
+<span class='fu'>plot_summs</span><span class='op'>(</span><span class='va'>model</span>, scale <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-15-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot coefficients using ggcoefstats package</span>
+<span class='fu'>ggcoefstats</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-15-2.png" width="624" /></p>
+</div>
+<h3 id="testing-for-heteroskedasticity">3.2.2 Testing for Heteroskedasticity</h3>
+<p>OLS regression assumes that all residuals are drawn from a population that has a constant variance i.e. homoskedasticity. If the assumption is violated, there is heteroskedasticity problem and the estimators will be inefficient and hypothesis tests will be invalid.</p>
+<p>Below presents 3 methods to determine if there is heteroskedasticity problem.</p>
+<p><strong>(i) Bvensch Pagan Test</strong></p>
+<p>Using the <em>lmtest()</em> package, it will output the Chi2 or p-value. For the example below, since p-value is &gt;0.05, the variance is constant.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using lmtest package</span>
+<span class='fu'>bptest</span><span class='op'>(</span><span class='va'>model</span>, studentize <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Breusch-Pagan test
+
+data:  model
+BP = 0.91198, df = 3, p-value = 0.8225</code></pre>
+</div>
+<p>However, compared to <em>lmtest()</em> package, the function in <em>olsrr()</em> package is able to clearly indicate the null and alternative hypothesis, and the model tested on (shown below). This is more user friendly as users can easily identify the testing hypothesis, hence more preferred.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using fitted values of the model</span>
+<span class='fu'>ols_test_breusch_pagan</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+ Breusch Pagan Test for Heteroskedasticity
+ -----------------------------------------
+ Ho: the variance is constant            
+ Ha: the variance is not constant        
+
+                  Data                    
+ -----------------------------------------
+ Response : GHG_emissions 
+ Variables: fitted values of GHG_emissions 
+
+        Test Summary         
+ ----------------------------
+ DF            =    1 
+ Chi2          =    0.235397 
+ Prob &gt; Chi2   =    0.6275506 </code></pre>
+</div>
+<p>In addition, one can modify the code chunk to make adjustment to the parameters as shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using independent variables of the model</span>
+<span class='fu'>ols_test_breusch_pagan</span><span class='op'>(</span><span class='va'>model</span>, rhs <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+
+<span class='co'># Using independent variables of the model and perform multiple tests</span>
+<span class='fu'>ols_test_breusch_pagan</span><span class='op'>(</span><span class='va'>model</span>, rhs <span class='op'>=</span> <span class='cn'>TRUE</span>, multiple <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+
+<span class='co'># Using Bonferroni p-value adjustment</span>
+<span class='fu'>ols_test_breusch_pagan</span><span class='op'>(</span><span class='va'>model</span>, rhs <span class='op'>=</span> <span class='cn'>TRUE</span>, multiple <span class='op'>=</span> <span class='cn'>TRUE</span>, p.adj <span class='op'>=</span> <span class='st'>'bonferroni'</span><span class='op'>)</span>
+
+<span class='co'># Using Sidak p-value adjustment</span>
+<span class='fu'>ols_test_breusch_pagan</span><span class='op'>(</span><span class='va'>model</span>, rhs <span class='op'>=</span> <span class='cn'>TRUE</span>, multiple <span class='op'>=</span> <span class='cn'>TRUE</span>, p.adj <span class='op'>=</span> <span class='st'>'sidak'</span><span class='op'>)</span>
+
+<span class='co'># Using Holm’s p-value adjustment</span>
+<span class='fu'>ols_test_breusch_pagan</span><span class='op'>(</span><span class='va'>model</span>, rhs <span class='op'>=</span> <span class='cn'>TRUE</span>, multiple <span class='op'>=</span> <span class='cn'>TRUE</span>, p.adj <span class='op'>=</span> <span class='st'>'holm'</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p><strong>(ii) Score Test</strong></p>
+<p>Alternatively, we can also test for heteroskedasticity under the assumption that the errors are independent and identically distributed (i.i.d.).</p>
+<p>From either the Chi2 or p-value, users can determine if the null hypothesis is being rejected and hence if variance is homogenous. For the example below, since p-value is &gt;0.05, we cannot reject the null hypothesis and hence conclude that the variance is homogenous.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using fitted values of the model</span>
+<span class='fu'>ols_test_score</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+ Score Test for Heteroskedasticity
+ ---------------------------------
+ Ho: Variance is homogenous
+ Ha: Variance is not homogenous
+
+ Variables: fitted values of GHG_emissions 
+
+        Test Summary         
+ ----------------------------
+ DF            =    1 
+ Chi2          =    0.2979123 
+ Prob &gt; Chi2   =    0.5851942 </code></pre>
+</div>
+<p>In addition, one can modify the code chunk to make adjustment to the parameters as shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using independent variables of the model</span>
+<span class='fu'>ols_test_score</span><span class='op'>(</span><span class='va'>model</span>, rhs <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p><strong>(iii) F-test</strong></p>
+<p>Instead of using Score test, F-test can also test the assumption of iid.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using fitted values of the model</span>
+<span class='fu'>ols_test_f</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+ F Test for Heteroskedasticity
+ -----------------------------
+ Ho: Variance is homogenous
+ Ha: Variance is not homogenous
+
+ Variables: fitted values of GHG_emissions 
+
+      Test Summary        
+ -------------------------
+ Num DF     =    1 
+ Den DF     =    29 
+ F          =    0.2813963 
+ Prob &gt; F   =    0.5998264 </code></pre>
+</div>
+<p>Similarly, one can modify the code chunk to make adjustment to the parameters as shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using independent variables of the model</span>
+<span class='fu'>ols_test_f</span><span class='op'>(</span><span class='va'>model</span>, rhs <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="residual-diagnostics">3.2.3 Residual Diagnostics</h3>
+<p>OLS regression assumes that the error has a normal distribution. Below presents 4 methods to detect the violation of normality assumption.</p>
+<p><strong>(i) QQ-plot</strong></p>
+<p>From the QQ-plot, if the data points do not fall near the diagonal line, it can be said that the normality assumption has been violated.</p>
+<p>Using the <em>EnvStats()</em> package, we can obtain the Q-Q plot for the residuals.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/qqnorm.html'>qqnorm</a></span><span class='op'>(</span><span class='va'>res</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/qqnorm.html'>qqline</a></span><span class='op'>(</span><span class='va'>res</span>, col <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-23-1.png" width="624" /></p>
+</div>
+<p>However, there’s a function in <em>olsrr()</em> package which can also output the QQ residual plot. This is more efficient as the plot is coloured. More customization needs to be done if we were to use <em>EnvStats()</em> package (shown above).</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ols_plot_resid_qq</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-24-1.png" width="624" /></p>
+</div>
+<p><strong>(ii) Normality test</strong></p>
+<p>Alternatively, the normality assumption can also be tested using the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ols_test_normality</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>-----------------------------------------------
+       Test             Statistic       pvalue  
+-----------------------------------------------
+Shapiro-Wilk              0.9636         0.3625 
+Kolmogorov-Smirnov        0.0996         0.8883 
+Cramer-von Mises          4.0754         0.0000 
+Anderson-Darling          0.3697         0.4046 
+-----------------------------------------------</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Correlation between observed residuals and expected residuals under normality.</span>
+<span class='fu'>ols_test_correlation</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 0.9847335</code></pre>
+</div>
+<p><strong>(iii) Residual vs Fitted value</strong></p>
+<p>To detect non-linearity, unequal error variances, and outliers, plot a scatter plot with residual on the y-axis and fitted values on the x-axis.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<span class='va'>fitted</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='va'>fitted</span><span class='op'>)</span>, y<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='va'>res</span><span class='op'>)</span>, xlab<span class='op'>=</span><span class='st'>"Fitted Value"</span>, ylab<span class='op'>=</span><span class='st'>"Residual"</span>, col<span class='op'>=</span><span class='st'>"blue"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>h<span class='op'>=</span><span class='fl'>0</span>, col<span class='op'>=</span><span class='st'>"red"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-26-1.png" width="624" /></p>
+</div>
+<p>However, there’s a function in <em>olsrr()</em> package which can easy output the residual vs fitted value with a single line of code, which is more efficient. More customization needs to be done if we were to use <em>graphics()</em> package (shown above).</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ols_plot_resid_fit</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-27-1.png" width="624" /></p>
+</div>
+<p><strong>(iv) Residual Histogram</strong></p>
+<p>A histogram can also be plotted with a single line of code using <em>olsrr()</em> package to detect if normality assumption has been violated.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ols_plot_resid_hist</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-28-1.png" width="624" /></p>
+</div>
+<h3 id="collinear-diagnostics">3.2.4 Collinear Diagnostics</h3>
+<p>In this module, the following code chunk was explored to detect collinearity between variables. In the presence of multicollinearity, regression estimates are unstable and have high standard errors.</p>
+<p>The following chunk of code was ran using <em>olsrr()</em> package and showed that the VIFs are less than 4 and hence there is little sign of multicollinearity that requires correction.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ols_coll_diag</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span> <span class='co'>#output VIF values and conditional index</span>
+</code></pre>
+</div>
+<pre><code>Tolerance and Variance Inflation Factor
+---------------------------------------
+  Variables Tolerance      VIF
+1       GDP 0.8502620 1.176108
+2  Final_EI 0.8600236 1.162759
+3  Fuel_mix 0.9643066 1.037015
+
+
+Eigenvalue and Condition Index
+------------------------------
+   Eigenvalue Condition Index    intercept          GDP     Final_EI
+1 3.728424273        1.000000 0.0001625225 0.0008966271 0.0002740949
+2 0.256834939        3.810093 0.0006613313 0.0028267622 0.0012910893
+3 0.013294254       16.746756 0.0071802453 0.6118807156 0.0942064483
+4 0.001446534       50.768964 0.9919959010 0.3843958951 0.9042283675
+     Fuel_mix
+1 0.017894663
+2 0.951913455
+3 0.025820588
+4 0.004371294</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># ols_vif_tol(model) to output only the VIF values</span>
+<span class='co'># ols_eigen_cindex(model) to output only the conditional index</span>
+</code></pre>
+</div>
+</div>
+<p>Alternatively, we could test multi-collinearity using the vif function in <em>caret()</em> package as shown below. Nonetheless, the ols_coll_diag function in <em>olsrr()</em> package is still preferred as it provides more information e.g. tolerence and conditional index. This gives user wider option to decide which criterion they would like to use for their evaluation.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>car</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/car/man/vif.html'>vif</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>     GDP Final_EI Fuel_mix 
+1.176108 1.162759 1.037015 </code></pre>
+</div>
+<h3 id="model-fit-assessment">3.2.5 Model Fit Assessment</h3>
+<p>In this module, 3 sub-modules will be explored to determine the fit of the chosen model.</p>
+<p><strong>(i) Residual Fit Spread plot</strong></p>
+<p>Using the <em>olsrr()</em> package, we can easily See how much variation in the data is explained by the fit and how much remains in the residuals with just one line of code. If the spread of the residuals is greater than the spread of the centered fit, the model is deemed as inappropriate and users should consider choosing other models (repeat the variable selection module).</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ols_plot_resid_fit_spread</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-31-1.png" width="624" /></p>
+</div>
+<p><strong>(ii) Part &amp; Partial Correlations</strong></p>
+<p>The pcor function in the <em>ppcor()</em> package can calculate the pairwise partial correlations for each pair of variables given others. In addition, it gives us the p value as well as statistic for each pair of variables.</p>
+<p>However, the output shows that there’s an error as the pcor function does not allow missing values.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>pcor</span><span class='op'>(</span><span class='va'>ghg_2018_ols</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Error in if (det(cvx) &lt; .Machine$double.eps) {: missing value where TRUE/FALSE needed</code></pre>
+</div>
+<p>On the contrary, the ols_correlations function in <em>olsrr()</em> package is able to handle missing values and computes the relative importance of the independent variables in determining the dependent variable i.e. Greenhouse gas emissions level.</p>
+<p>“Zero Order” shows the Pearson correlation coefficient between the dependent variable and the independent variable i.e. the higher the absolute value, the more correlated the dependent and independent variable are. “Partial” shows how much the estimated independent variable contributes to the variance in Y. While, “Part” shows the unique contribution of independent variables i.e. higher value indicates higher contribution (R-square) in explaining the model.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ols_correlations</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>               Correlations                
+------------------------------------------
+Variable    Zero Order    Partial    Part  
+------------------------------------------
+GDP              0.926      0.944    0.823 
+Final_EI        -0.335      0.084    0.024 
+Fuel_mix         0.399      0.649    0.245 
+------------------------------------------</code></pre>
+</div>
+<p><strong>(iii) Observed vs Predicted plot</strong></p>
+<p>To access the fit of the model, we can plot the observed on the x-axis and fitted values on the y-axis using the plot function in <em>graphics()</em> package. A model is deemed as a good fit if the points are close to the diagonal line i.e. R-square will be higher.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fitted</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+
+<span class='co'># Exclude Liechtenstein and Switzerland as these two countries were dropped in the ols regression model step due to missing values in the predictors Final_EI and Fuel_mix.</span>
+<span class='va'>ghg_2018_ols_v2</span> <span class='op'>&lt;-</span> <span class='va'>ghg_2018_ols</span><span class='op'>[</span><span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>29</span>, <span class='fl'>31</span><span class='op'>)</span>,<span class='op'>]</span>
+
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>ghg_2018_ols_v2</span><span class='op'>$</span><span class='va'>GHG_emissions</span>, y<span class='op'>=</span><span class='va'>fitted</span>, ylab<span class='op'>=</span><span class='st'>"Fitted Value"</span>, xlab<span class='op'>=</span><span class='st'>"GHG_emissions"</span>, col<span class='op'>=</span><span class='st'>"blue"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>a<span class='op'>=</span><span class='fl'>0</span>, b<span class='op'>=</span><span class='fl'>1</span>, col<span class='op'>=</span><span class='st'>"blue"</span><span class='op'>)</span> <span class='co'>#Add diagonal line</span>
+</code></pre>
+</div>
+<p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-34-1.png" width="624" /></p>
+</div>
+<p>Exploring the <em>olsrr()</em> package, there is a function called ols_plot_obs_fit which plots the same graph as above, and includes the regression line (red). This function is preferred compared to plot function shown above as it is a single line code. In addition, the ols_plot_obs_fit function is able to exclude records which were dropped from the OLS model. This is unlike using plot function where additional code is needed to exclude records with missing values in the predictors.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ols_plot_obs_fit</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-35-1.png" width="624" /></p>
+</div>
+<h1 id="proposed-visualization">4.0 Proposed Visualization</h1>
+<p>Based on the exploration of different packages shown in Section 2, the proposed visualization for the OLS regression module, the types of data visualizations used, and corresponding rationales are illustrated below:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="image/proposed_visual_1.PNG" width="100%" height="100%" /><img src="image/proposed_visual_2.PNG" width="100%" height="100%" /></p>
+</div>
+<p><strong>Interactivity</strong></p>
+<p>The following interactive features (left panel shown above) are proposed to be incorporated in the shiny app to enhance usability and hence user experience:</p>
+<ol type="1">
+<li>Users can select the dependent and independent variables to be included in the model, and the year of analysis.</li>
+<li>Users have the option to choose the different types of OLS methods to run to select the suitable list of predictors</li>
+<li>Based the list of predictors, users can also choose their preferred choice of test to run to check for any violation of OLS assumptions and check for model fit.</li>
+</ol>
+<p>The application eliminates the need for users to write any code chunks to run different permutations of OLS regression models and/or assumptions test.</p>
+<p><strong>Major Advantages of Incorporating Interactivity</strong></p>
+<ul>
+<li>Flexible OLS regression analysis: To enable users to explore the different type of OLS regression methods available (e.g. stepwise forward/backward, best subset etc.) without the need to code. In addition, users have the choice of deciding which dependent and independent variables to include for their exploration.</li>
+<li>Assumption test modules: To enable users to determine if their chosen model violates the OLS assumptions without having the need to code. In addition, the different sub-modules ensures that all the necessary assumptions are checked. Various tests for each OLS assumption are also presented to give users the option to choose their preferred test. For instance, users can choose between QQ-plot, normality test or residual histogram to determine if there was violation in the normality assumption.</li>
+</ul>
+<p>Thank you for reading :)</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

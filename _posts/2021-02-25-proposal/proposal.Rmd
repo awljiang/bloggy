@@ -79,7 +79,7 @@ Scatter Plot for Drivers and Mitigation|![](./image/EDA4.jpg){width=100%}
 
 ### (B) Analysis of Ordinary Least Square regression in R
 
-The following shows the first module under OLS regression where users can explore different methods to determine the set of predictors for their model. 
+The following shows the proposed first module under OLS regression where users can explore different methods to determine the set of predictors for their model. Proposed type of visualization and rationales are as follow: 
 
 ```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%"}
 library(knitr)

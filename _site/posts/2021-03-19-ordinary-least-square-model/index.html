@@ -2126,6 +2126,13 @@ document.addEventListener('DOMContentLoaded', function() {
 </ul>
 </nav>
 </div>
+<style>
+h1, h2, h3 {
+text-align: left
+}
+body {
+text-align: justify}
+</style>
 <h1 id="purpose-of-dataviz-exercise">1.0 Purpose of DataViz Exercise</h1>
 <p>Ordinary least squares (OLS) regression is a statistical method to estimate the relationship between one or more independent variables and a dependent variable by minimizing the sum of the squares in the difference between the observed and predicted values of the dependent variable based on the best fit straight line. There are a wide range of published papers which explored using OLS to estimate the relationship between various factors and greenhouse gas emissions. Some examples of these papers are listed below:</p>
 <ul>
@@ -2155,7 +2162,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>As multiple data was pulled from Eurostat database, please refer to <a href="https://greenhouseemission.netlify.app/posts/2021-03-28-data-preparation/">Data Preparation page</a> for the glossary list and steps taken to merge and obtain a single dataset for analysis.</p>
 <h2 id="loading-the-dataset-onto-r">2.3 Loading the dataset onto R</h2>
 <p>The output shows that all except ‘Country’ is numeric variable, which is correct. Hence there’s no need to change the type of any variable.</p>
-<div class="layout-chunk" data-layout="l-body">
+<div class="layout-chunk" data-layout="l-body-outset">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Reading the csv file as a tbl_df</span>
 <span class='va'>ghg_2010_2018</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"data/GHGproj_data.csv"</span><span class='op'>)</span>
@@ -2264,7 +2271,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ghg_2018_ols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>ghg_2018</span> <span class='op'>+</span> <span class='fl'>1</span><span class='op'>)</span> <span class='co'># transform all variables</span>
-<span class='va'>ghg_2018_ols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/subset.html'>subset</a></span><span class='op'>(</span><span class='va'>ghg_2018_ols</span>, select <span class='op'>=</span> <span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>CO2_emissions</span>, <span class='va'>CH4_emissions</span>, <span class='va'>NO2_emissions</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># Drop all dependent variables except "GHG_emissions"</span>
+
+<span class='co'># Drop all dependent variables except "GHG_emissions"</span>
+<span class='va'>ghg_2018_ols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/subset.html'>subset</a></span><span class='op'>(</span><span class='va'>ghg_2018_ols</span>, select <span class='op'>=</span> <span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>CO2_emissions</span>, <span class='va'>CH4_emissions</span>, <span class='va'>NO2_emissions</span><span class='op'>)</span><span class='op'>)</span> 
 </code></pre>
 </div>
 </div>
@@ -3227,7 +3236,8 @@ Fuel_mix         0.399      0.649    0.245
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fitted</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 
-<span class='co'># Exclude Liechtenstein and Switzerland as these two countries were dropped in the ols regression model step due to missing values in the predictors Final_EI and Fuel_mix.</span>
+<span class='co'># Exclude Liechtenstein and Switzerland as these two countries were dropped in the </span>
+<span class='co'># ols regression model step due to missing values in the predictors Final_EI and Fuel_mix.</span>
 <span class='va'>ghg_2018_ols_v2</span> <span class='op'>&lt;-</span> <span class='va'>ghg_2018_ols</span><span class='op'>[</span><span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>29</span>, <span class='fl'>31</span><span class='op'>)</span>,<span class='op'>]</span>
 
 <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>ghg_2018_ols_v2</span><span class='op'>$</span><span class='va'>GHG_emissions</span>, y<span class='op'>=</span><span class='va'>fitted</span>, ylab<span class='op'>=</span><span class='st'>"Fitted Value"</span>, xlab<span class='op'>=</span><span class='st'>"GHG_emissions"</span>, col<span class='op'>=</span><span class='st'>"blue"</span><span class='op'>)</span>
@@ -3245,7 +3255,7 @@ Fuel_mix         0.399      0.649    0.245
 <p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-35-1.png" width="624" /></p>
 </div>
 <h1 id="proposed-visualization">4.0 Proposed Visualization</h1>
-<p>Based on the exploration of different packages shown in Section 2, the proposed visualization for the OLS regression module, the types of data visualizations used, and corresponding rationales are illustrated below:</p>
+<p>Based on the exploration of different packages shown in Section 3, the proposed visualization for the OLS regression module, the types of data visualizations used, and corresponding rationales are illustrated below:</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="image/proposed_visual_1.PNG" width="100%" height="100%" /><img src="image/proposed_visual_2.PNG" width="100%" height="100%" /></p>
 </div>
@@ -3253,15 +3263,21 @@ Fuel_mix         0.399      0.649    0.245
 <p>The following interactive features (left panel shown above) are proposed to be incorporated in the shiny app to enhance usability and hence user experience:</p>
 <ol type="1">
 <li>Users can select the dependent and independent variables to be included in the model, and the year of analysis.</li>
-<li>Users have the option to choose the different types of OLS methods to run to select the suitable list of predictors</li>
-<li>Based the list of predictors, users can also choose their preferred choice of test to run to check for any violation of OLS assumptions and check for model fit.</li>
+<li>Users have the option to choose the different types of OLS methods to run to select the suitable list of predictors. List of methods are (i) All possibilities, (ii) Best subset, (iii) Stepwise forward/backward and (iv) Stepwise AIC forward/backward.</li>
+<li>Based on the list of predictors, users can also choose their preferred choice of test to run to check for any violation of OLS assumptions and check for model fit. List of tests are
+<ul>
+<li>Heteroskedasticity test: Bvensch Pagan Test, Score test, F-test</li>
+<li>Residual diagnostics: QQ-plot, Normality test, Residual Histogram, Residual vs Fitted value</li>
+<li>Collinear diagnostics</li>
+<li>Model fit assessment: Residual Fit Spreadplot, Part &amp; Partial Correlations, Observed vs Predicted plot</li>
+</ul></li>
 </ol>
 <p>The application eliminates the need for users to write any code chunks to run different permutations of OLS regression models and/or assumptions test.</p>
 <p><strong>Major Advantages of Incorporating Interactivity</strong></p>
-<ul>
+<ol type="1">
 <li>Flexible OLS regression analysis: To enable users to explore the different type of OLS regression methods available (e.g. stepwise forward/backward, best subset etc.) without the need to code. In addition, users have the choice of deciding which dependent and independent variables to include for their exploration.</li>
 <li>Assumption test modules: To enable users to determine if their chosen model violates the OLS assumptions without having the need to code. In addition, the different sub-modules ensures that all the necessary assumptions are checked. Various tests for each OLS assumption are also presented to give users the option to choose their preferred test. For instance, users can choose between QQ-plot, normality test or residual histogram to determine if there was violation in the normality assumption.</li>
-</ul>
+</ol>
 <p>Thank you for reading :)</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

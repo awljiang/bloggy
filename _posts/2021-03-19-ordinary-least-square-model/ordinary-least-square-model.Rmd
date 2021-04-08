@@ -13,6 +13,14 @@ output:
     self_contained: false
 ---
 
+<style>
+h1, h2, h3 {
+text-align: left
+}
+body {
+text-align: justify}
+</style>
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
@@ -54,7 +62,7 @@ As multiple data was pulled from Eurostat database, please refer to [Data Prepar
 
 The output shows that all except 'Country' is numeric variable, which is correct. Hence there's no need to change the type of any variable. 
 
-```{r, echo=TRUE, warning=FALSE, message=FALSE}
+```{r, echo=TRUE, warning=FALSE, message=FALSE, layout="l-body-outset"}
 # Reading the csv file as a tbl_df
 ghg_2010_2018 <- read_csv("data/GHGproj_data.csv")
 
@@ -128,7 +136,9 @@ For ease of coding, create a dataframe containing only the transformed variables
 
 ```{r, echo=TRUE, warning=FALSE}
 ghg_2018_ols <- log(ghg_2018 + 1) # transform all variables
-ghg_2018_ols <- subset(ghg_2018_ols, select = -c(CO2_emissions, CH4_emissions, NO2_emissions)) # Drop all dependent variables except "GHG_emissions"
+
+# Drop all dependent variables except "GHG_emissions"
+ghg_2018_ols <- subset(ghg_2018_ols, select = -c(CO2_emissions, CH4_emissions, NO2_emissions)) 
 ```
 
 # 3.0 Data Visualisation modules
@@ -468,7 +478,8 @@ To access the fit of the model, we can plot the observed on the x-axis and fitte
 ```{r, echo=TRUE, warning=FALSE}
 fitted <- fitted(model)
 
-# Exclude Liechtenstein and Switzerland as these two countries were dropped in the ols regression model step due to missing values in the predictors Final_EI and Fuel_mix.
+# Exclude Liechtenstein and Switzerland as these two countries were dropped in the 
+# ols regression model step due to missing values in the predictors Final_EI and Fuel_mix.
 ghg_2018_ols_v2 <- ghg_2018_ols[-c(29, 31),]
 
 plot(x=ghg_2018_ols_v2$GHG_emissions, y=fitted, ylab="Fitted Value", xlab="GHG_emissions", col="blue")
@@ -483,7 +494,7 @@ ols_plot_obs_fit(model)
 
 # 4.0 Proposed Visualization
 
-Based on the exploration of different packages shown in Section 2, the proposed visualization for the OLS regression module, the types of data visualizations used, and corresponding rationales are illustrated below:
+Based on the exploration of different packages shown in Section 3, the proposed visualization for the OLS regression module, the types of data visualizations used, and corresponding rationales are illustrated below:
 
 ```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%"}
 library(knitr)
@@ -500,15 +511,19 @@ include_graphics(proposed_visual_2)
 The following interactive features (left panel shown above) are proposed to be incorporated in the shiny app to enhance usability and hence user experience: 
 
 1. Users can select the dependent and independent variables to be included in the model, and the year of analysis. 
-2. Users have the option to choose the different types of OLS methods to run to select the suitable list of predictors
-3. Based the list of predictors, users can also choose their preferred choice of test to run to check for any violation of OLS assumptions and check for model fit. 
+2. Users have the option to choose the different types of OLS methods to run to select the suitable list of predictors. List of methods are (i) All possibilities, (ii) Best subset, (iii) Stepwise forward/backward and (iv) Stepwise AIC forward/backward. 
+3. Based on the list of predictors, users can also choose their preferred choice of test to run to check for any violation of OLS assumptions and check for model fit. List of tests are
+    + Heteroskedasticity test: Bvensch Pagan Test, Score test, F-test
+    + Residual diagnostics: QQ-plot, Normality test, Residual Histogram, Residual vs Fitted value
+    + Collinear diagnostics
+    + Model fit assessment: Residual Fit Spreadplot, Part & Partial Correlations, Observed vs Predicted plot
 
 The application eliminates the need for users to write any code chunks to run different permutations of OLS regression models and/or assumptions test.
 
 **Major Advantages of Incorporating Interactivity**
 
-+ Flexible OLS regression analysis: To enable users to explore the different type of OLS regression methods available (e.g. stepwise forward/backward, best subset etc.) without the need to code. In addition, users have the choice of deciding which dependent and independent variables to include for their exploration. 
-+ Assumption test modules: To enable users to determine if their chosen model violates the OLS assumptions without having the need to code. In addition, the different sub-modules ensures that all the necessary assumptions are checked. Various tests for each OLS assumption are also presented to give users the option to choose their preferred test. For instance, users can choose between QQ-plot, normality test or residual histogram to determine if there was violation in the normality assumption. 
+1. Flexible OLS regression analysis: To enable users to explore the different type of OLS regression methods available (e.g. stepwise forward/backward, best subset etc.) without the need to code. In addition, users have the choice of deciding which dependent and independent variables to include for their exploration. 
+2. Assumption test modules: To enable users to determine if their chosen model violates the OLS assumptions without having the need to code. In addition, the different sub-modules ensures that all the necessary assumptions are checked. Various tests for each OLS assumption are also presented to give users the option to choose their preferred test. For instance, users can choose between QQ-plot, normality test or residual histogram to determine if there was violation in the normality assumption. 
 
 
 

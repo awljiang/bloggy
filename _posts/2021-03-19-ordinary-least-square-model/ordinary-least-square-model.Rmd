@@ -119,7 +119,7 @@ ghg_2018 %>%
 
 Using the *ggcorrplot()* package, we can plot a correlalogram (with correlation coefficient). If there are NAs present in the selected variables, the legend will display minimum, median, and maximum number of pairs used for correlation tests.
 
-The chart below showed that some predictors are highly correlated with each other (either dark grey or dark red) and hence we will probably expect some predictors to be omitted in the OLS regression output.For example, Envt_taxes and GDP are highly correlated (0.96) and if these two predictors were to be included in the same model, either will be omitted. 
+The chart below showed that some predictors are highly correlated with each other (either dark grey or dark red) and hence we will probably expect some predictors to be omitted in the OLS regression output. For example, Envt_taxes and GDP are highly correlated (0.96) and if these two predictors were to be included in the same model, either will be omitted. 
 
 ```{r, echo=TRUE, warning=FALSE, fig.height=7, fig.width=7}
 # as a default this function outputs a correlation matrix plot
@@ -164,9 +164,9 @@ In this section, 6 main methods will be explored to identify the best subset of 
 
 **(i) All possibilities**
 
-All subset regression tests all possible subsets of the set of potential independent variables. If there are k potential independent variables (besides the constant), then there are 2^k distinct subsets of them to be tested. Hence, for this dataset, if all the potential independent variables are include into the model, there will be 2^9 = 512 models generated. 
+All subset regression tests all possible subsets of the set of potential independent variables. If there are k potential independent variables (besides the constant), then there are 2^k distinct subsets of them to be tested. Hence, for this dataset, if all the 9 potential independent variables are include into the model, there will be 2^9 = 512 models generated. 
 
-Base on the plots, model 7 has the highest adjusted R-sqaure and lowest AIC, hence is the better model compared to models 1-6.
+Base on the plots, model 4 has the highest adjusted R-sqaure and lowest AIC, hence is the better model compared to other models.
 
 ```{r, echo=TRUE, warning=FALSE}
 model <- lm(GHG_emissions ~ GDP + Final_EI + Fuel_mix, data = ghg_2018_ols)
@@ -276,7 +276,9 @@ model <- lm(GHG_emissions ~ GDP + Final_EI + Fuel_mix, data = ghg_2018_ols)
 
 ### 3.2.1 Regression Summary
 
-Run the following code chunk to output the regression summary (coefficient, standard errors etc.). Compared to *jtools()* package which only plots the coefficient value and confidence interval, the *ggcoefstats()* package provides a more comprehensive visualisation of the coefficient values along with the t-statistics and p-value for each predictors. In addition, the latter also included the AIC and BIC value of the model.  
+Run the following code chunk to output the regression summary (coefficient, standard errors etc.). 
+
+Compared to *jtools()* package which only plots the coefficient value and confidence interval, the *ggcoefstats()* package provides a more comprehensive visualization of the coefficient values along with the t-statistics and p-value for each predictors. In addition, the latter also included the AIC and BIC value of the model and hence more is a more preferred visualization.
 
 ```{r, echo=TRUE, warning=FALSE}
 # Tabular output
@@ -307,6 +309,7 @@ bptest(model, studentize = FALSE)
 However, compared to *lmtest()* package, the function in *olsrr()* package is able to clearly indicate the null and alternative hypothesis, and the model tested on (shown below). This is more user friendly as users can easily identify the testing hypothesis, hence more preferred.
 
 ```{r, echo=TRUE, warning=FALSE}
+# Using olsrr package
 # Using fitted values of the model
 ols_test_breusch_pagan(model)
 ```
@@ -337,6 +340,7 @@ Alternatively, we can also test for heteroskedasticity under the assumption that
 From either the Chi2 or p-value, users can determine if the null hypothesis is being rejected and hence if variance is homogenous. For the example below, since p-value is >0.05, we cannot reject the null hypothesis and hence conclude that the variance is homogenous. 
 
 ```{r, echo=TRUE, warning=FALSE}
+# Using olsrr package
 # Using fitted values of the model
 ols_test_score(model)
 ```
@@ -353,6 +357,7 @@ ols_test_score(model, rhs = TRUE)
 Instead of using Score test, F-test can also test the assumption of iid. 
 
 ```{r, echo=TRUE, warning=FALSE}
+# Using olsrr package
 # Using fitted values of the model
 ols_test_f(model)
 ```
@@ -375,14 +380,16 @@ From the QQ-plot, if the data points do not fall near the diagonal line, it can 
 Using the *EnvStats()* package, we can obtain the Q-Q plot for the residuals.
 
 ```{r, echo=TRUE, warning=FALSE}
+# Using EnvStats package
 res <- residuals(model)
 qqnorm(res, col = "blue")
 qqline(res, col = "red")
 ```
 
-However, there's a function in *olsrr()* package which can also output the QQ residual plot. This is more efficient as the plot is coloured. More customization needs to be done if we were to use *EnvStats()* package (shown above).
+However, there's a function in *olsrr()* package which can also output the QQ residual plot. This is more efficient as more customization needs to be done if we were to use *EnvStats()* package (shown above).
 
 ```{r, echo=TRUE, warning=FALSE}
+# Using olsrr package
 ols_plot_resid_qq(model)
 ```
 
@@ -391,6 +398,7 @@ ols_plot_resid_qq(model)
 Alternatively, the normality assumption can also be tested using the code chunk below.
 
 ```{r, echo=TRUE, warning=FALSE}
+# Using olsrr package
 ols_test_normality(model)
 
 # Correlation between observed residuals and expected residuals under normality.
@@ -402,6 +410,7 @@ ols_test_correlation(model)
 To detect non-linearity, unequal error variances, and outliers, plot a scatter plot with residual on the y-axis and fitted values on the x-axis.   
 
 ```{r, echo=TRUE, warning=FALSE}
+#Using graphics package
 res <- residuals(model)
 fitted <- fitted(model)
 plot(x=unlist(fitted), y=unlist(res), xlab="Fitted Value", ylab="Residual", col="blue")
@@ -411,6 +420,7 @@ abline(h=0, col="red")
 However, there's a function in *olsrr()* package which can easy output the residual vs fitted value with a single line of code, which is more efficient. More customization needs to be done if we were to use *graphics()* package (shown above).
 
 ```{r, echo=TRUE, warning=FALSE}
+# Using olsrr package
 ols_plot_resid_fit(model)
 ```
 
@@ -419,6 +429,7 @@ ols_plot_resid_fit(model)
 A histogram can also be plotted with a single line of code using *olsrr()* package to detect if normality assumption has been violated. 
 
 ```{r, echo=TRUE, warning=FALSE}
+# Using olsrr package
 ols_plot_resid_hist(model)
 ```
 
@@ -429,6 +440,7 @@ In this module, the following code chunk was explored to detect collinearity bet
 The following chunk of code was ran using *olsrr()* package and showed that the VIFs are less than 4 and hence there is little sign of multicollinearity that requires correction.
 
 ```{r, echo=TRUE, warning=FALSE}
+# Using olsrr package
 ols_coll_diag(model) #output VIF values and conditional index
 
 # ols_vif_tol(model) to output only the VIF values
@@ -438,6 +450,7 @@ ols_coll_diag(model) #output VIF values and conditional index
 Alternatively, we could test multi-collinearity using the vif function in *caret()* package as shown below. Nonetheless, the ols_coll_diag function in *olsrr()* package is still preferred as it provides more information e.g. tolerence and conditional index. This gives user wider option to decide which criterion they would like to use for their evaluation. 
 
 ```{r, echo=TRUE, warning=FALSE}
+# Using caret package
 car::vif(model)
 ```
 
@@ -450,6 +463,7 @@ In this module, 3 sub-modules will be explored to determine the fit of the chose
 Using the *olsrr()* package, we can easily See how much variation in the data is explained by the fit and how much remains in the residuals with just one line of code. If the spread of the residuals is greater than the spread of the centered fit, the model is deemed as inappropriate and users should consider choosing other models (repeat the variable selection module).
 
 ```{r, echo=TRUE, warning=FALSE}
+# Using olsrr package
 ols_plot_resid_fit_spread(model)
 ```
 
@@ -460,6 +474,7 @@ The pcor function in the *ppcor()* package can calculate the pairwise partial co
 However, the output shows that there's an error as the pcor function does not allow missing values.
 
 ```{r, echo=TRUE, error=TRUE}
+# Using ppcor package
 pcor(ghg_2018_ols)
 ```
 
@@ -468,6 +483,7 @@ On the contrary, the ols_correlations function in *olsrr()* package is able to h
 "Zero Order" shows the Pearson correlation coefficient between the dependent variable and the independent variable i.e. the higher the absolute value, the more correlated the dependent and independent variable are. "Partial" shows how much the estimated independent variable contributes to the variance in Y. While, "Part" shows the unique contribution of independent variables i.e. higher value indicates higher contribution (R-square) in explaining the model.
 
 ```{r, echo=TRUE, warning=FALSE}
+# Using olsrr package
 ols_correlations(model)
 ```
 
@@ -482,6 +498,7 @@ fitted <- fitted(model)
 # ols regression model step due to missing values in the predictors Final_EI and Fuel_mix.
 ghg_2018_ols_v2 <- ghg_2018_ols[-c(29, 31),]
 
+# Using graphics package
 plot(x=ghg_2018_ols_v2$GHG_emissions, y=fitted, ylab="Fitted Value", xlab="GHG_emissions", col="blue")
 abline(a=0, b=1, col="blue") #Add diagonal line
 ```
@@ -489,6 +506,7 @@ abline(a=0, b=1, col="blue") #Add diagonal line
 Exploring the *olsrr()* package, there is a function called ols_plot_obs_fit which plots the same graph as above, and includes the regression line (red). This function is preferred compared to plot function shown above as it is a single line code. In addition, the ols_plot_obs_fit function is able to exclude records which were dropped from the OLS model. This is unlike using plot function where additional code is needed to  exclude records with missing values in the predictors.  
 
 ```{r, echo=TRUE, warning=FALSE}
+# Using olsrr package
 ols_plot_obs_fit(model)
 ```
 
@@ -512,11 +530,7 @@ The following interactive features (left panel shown above) are proposed to be i
 
 1. Users can select the dependent and independent variables to be included in the model, and the year of analysis. 
 2. Users have the option to choose the different types of OLS methods to run to select the suitable list of predictors. List of methods are (i) All possibilities, (ii) Best subset, (iii) Stepwise forward/backward and (iv) Stepwise AIC forward/backward. 
-3. Based on the list of predictors, users can also choose their preferred choice of test to run to check for any violation of OLS assumptions and check for model fit. List of tests are
-    + Heteroskedasticity test: Bvensch Pagan Test, Score test, F-test
-    + Residual diagnostics: QQ-plot, Normality test, Residual Histogram, Residual vs Fitted value
-    + Collinear diagnostics
-    + Model fit assessment: Residual Fit Spreadplot, Part & Partial Correlations, Observed vs Predicted plot
+3. Based on the list of predictors, users can also choose their preferred choice of test to run to check for any violation of OLS assumptions and check for model fit. List of tests are (i) Heteroskedasticity test (Bvensch Pagan Test; Score test; F-test), (ii) Residual diagnostics (QQ-plot; Normality test; Residual Histogram; Residual vs Fitted value), (iii) Collinear diagnostics and (iv) Model fit assessment (Residual Fit Spreadplot; Part & Partial Correlations; Observed vs Predicted plot).
 
 The application eliminates the need for users to write any code chunks to run different permutations of OLS regression models and/or assumptions test.
 

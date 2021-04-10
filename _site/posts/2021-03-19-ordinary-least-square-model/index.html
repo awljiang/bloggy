@@ -2253,7 +2253,7 @@ text-align: justify}
 </div>
 <p><strong>(B) Correlation plot</strong></p>
 <p>Using the <em>ggcorrplot()</em> package, we can plot a correlalogram (with correlation coefficient). If there are NAs present in the selected variables, the legend will display minimum, median, and maximum number of pairs used for correlation tests.</p>
-<p>The chart below showed that some predictors are highly correlated with each other (either dark grey or dark red) and hence we will probably expect some predictors to be omitted in the OLS regression output.For example, Envt_taxes and GDP are highly correlated (0.96) and if these two predictors were to be included in the same model, either will be omitted.</p>
+<p>The chart below showed that some predictors are highly correlated with each other (either dark grey or dark red) and hence we will probably expect some predictors to be omitted in the OLS regression output. For example, Envt_taxes and GDP are highly correlated (0.96) and if these two predictors were to be included in the same model, either will be omitted.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># as a default this function outputs a correlation matrix plot</span>
@@ -2293,8 +2293,8 @@ text-align: justify}
 <h2 id="variable-selection">3.1 Variable Selection</h2>
 <p>In this section, 6 main methods will be explored to identify the best subset of predictors to include in the model, among all possible subsets of predictors.</p>
 <p><strong>(i) All possibilities</strong></p>
-<p>All subset regression tests all possible subsets of the set of potential independent variables. If there are k potential independent variables (besides the constant), then there are 2^k distinct subsets of them to be tested. Hence, for this dataset, if all the potential independent variables are include into the model, there will be 2^9 = 512 models generated.</p>
-<p>Base on the plots, model 7 has the highest adjusted R-sqaure and lowest AIC, hence is the better model compared to models 1-6.</p>
+<p>All subset regression tests all possible subsets of the set of potential independent variables. If there are k potential independent variables (besides the constant), then there are 2^k distinct subsets of them to be tested. Hence, for this dataset, if all the 9 potential independent variables are include into the model, there will be 2^9 = 512 models generated.</p>
+<p>Base on the plots, model 4 has the highest adjusted R-sqaure and lowest AIC, hence is the better model compared to other models.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>GHG_emissions</span> <span class='op'>~</span> <span class='va'>GDP</span> <span class='op'>+</span> <span class='va'>Final_EI</span> <span class='op'>+</span> <span class='va'>Fuel_mix</span>, data <span class='op'>=</span> <span class='va'>ghg_2018_ols</span><span class='op'>)</span>
@@ -2904,7 +2904,8 @@ Final_EI      41.699    5.383    59.588    0.91715      0.91124
 </div>
 </div>
 <h3 id="regression-summary">3.2.1 Regression Summary</h3>
-<p>Run the following code chunk to output the regression summary (coefficient, standard errors etc.). Compared to <em>jtools()</em> package which only plots the coefficient value and confidence interval, the <em>ggcoefstats()</em> package provides a more comprehensive visualisation of the coefficient values along with the t-statistics and p-value for each predictors. In addition, the latter also included the AIC and BIC value of the model.</p>
+<p>Run the following code chunk to output the regression summary (coefficient, standard errors etc.).</p>
+<p>Compared to <em>jtools()</em> package which only plots the coefficient value and confidence interval, the <em>ggcoefstats()</em> package provides a more comprehensive visualization of the coefficient values along with the t-statistics and p-value for each predictors. In addition, the latter also included the AIC and BIC value of the model and hence more is a more preferred visualization.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Tabular output</span>
@@ -2974,7 +2975,8 @@ BP = 0.91198, df = 3, p-value = 0.8225</code></pre>
 <p>However, compared to <em>lmtest()</em> package, the function in <em>olsrr()</em> package is able to clearly indicate the null and alternative hypothesis, and the model tested on (shown below). This is more user friendly as users can easily identify the testing hypothesis, hence more preferred.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using fitted values of the model</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using olsrr package</span>
+<span class='co'># Using fitted values of the model</span>
 <span class='fu'>ols_test_breusch_pagan</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -3020,7 +3022,8 @@ BP = 0.91198, df = 3, p-value = 0.8225</code></pre>
 <p>From either the Chi2 or p-value, users can determine if the null hypothesis is being rejected and hence if variance is homogenous. For the example below, since p-value is &gt;0.05, we cannot reject the null hypothesis and hence conclude that the variance is homogenous.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using fitted values of the model</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using olsrr package</span>
+<span class='co'># Using fitted values of the model</span>
 <span class='fu'>ols_test_score</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -3050,7 +3053,8 @@ BP = 0.91198, df = 3, p-value = 0.8225</code></pre>
 <p>Instead of using Score test, F-test can also test the assumption of iid.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using fitted values of the model</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using olsrr package</span>
+<span class='co'># Using fitted values of the model</span>
 <span class='fu'>ols_test_f</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -3084,17 +3088,19 @@ BP = 0.91198, df = 3, p-value = 0.8225</code></pre>
 <p>Using the <em>EnvStats()</em> package, we can obtain the Q-Q plot for the residuals.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using EnvStats package</span>
+<span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/stats/qqnorm.html'>qqnorm</a></span><span class='op'>(</span><span class='va'>res</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/stats/qqnorm.html'>qqline</a></span><span class='op'>(</span><span class='va'>res</span>, col <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-23-1.png" width="624" /></p>
 </div>
-<p>However, there’s a function in <em>olsrr()</em> package which can also output the QQ residual plot. This is more efficient as the plot is coloured. More customization needs to be done if we were to use <em>EnvStats()</em> package (shown above).</p>
+<p>However, there’s a function in <em>olsrr()</em> package which can also output the QQ residual plot. This is more efficient as more customization needs to be done if we were to use <em>EnvStats()</em> package (shown above).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ols_plot_resid_qq</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using olsrr package</span>
+<span class='fu'>ols_plot_resid_qq</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-24-1.png" width="624" /></p>
@@ -3103,7 +3109,8 @@ BP = 0.91198, df = 3, p-value = 0.8225</code></pre>
 <p>Alternatively, the normality assumption can also be tested using the code chunk below.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ols_test_normality</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using olsrr package</span>
+<span class='fu'>ols_test_normality</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>-----------------------------------------------
@@ -3125,7 +3132,8 @@ Anderson-Darling          0.3697         0.4046
 <p>To detect non-linearity, unequal error variances, and outliers, plot a scatter plot with residual on the y-axis and fitted values on the x-axis.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#Using graphics package</span>
+<span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 <span class='va'>fitted</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='va'>fitted</span><span class='op'>)</span>, y<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='va'>res</span><span class='op'>)</span>, xlab<span class='op'>=</span><span class='st'>"Fitted Value"</span>, ylab<span class='op'>=</span><span class='st'>"Residual"</span>, col<span class='op'>=</span><span class='st'>"blue"</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>h<span class='op'>=</span><span class='fl'>0</span>, col<span class='op'>=</span><span class='st'>"red"</span><span class='op'>)</span>
@@ -3136,7 +3144,8 @@ Anderson-Darling          0.3697         0.4046
 <p>However, there’s a function in <em>olsrr()</em> package which can easy output the residual vs fitted value with a single line of code, which is more efficient. More customization needs to be done if we were to use <em>graphics()</em> package (shown above).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ols_plot_resid_fit</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using olsrr package</span>
+<span class='fu'>ols_plot_resid_fit</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-27-1.png" width="624" /></p>
@@ -3145,7 +3154,8 @@ Anderson-Darling          0.3697         0.4046
 <p>A histogram can also be plotted with a single line of code using <em>olsrr()</em> package to detect if normality assumption has been violated.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ols_plot_resid_hist</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using olsrr package</span>
+<span class='fu'>ols_plot_resid_hist</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-28-1.png" width="624" /></p>
@@ -3155,7 +3165,8 @@ Anderson-Darling          0.3697         0.4046
 <p>The following chunk of code was ran using <em>olsrr()</em> package and showed that the VIFs are less than 4 and hence there is little sign of multicollinearity that requires correction.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ols_coll_diag</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span> <span class='co'>#output VIF values and conditional index</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using olsrr package</span>
+<span class='fu'>ols_coll_diag</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span> <span class='co'>#output VIF values and conditional index</span>
 </code></pre>
 </div>
 <pre><code>Tolerance and Variance Inflation Factor
@@ -3187,7 +3198,8 @@ Eigenvalue and Condition Index
 <p>Alternatively, we could test multi-collinearity using the vif function in <em>caret()</em> package as shown below. Nonetheless, the ols_coll_diag function in <em>olsrr()</em> package is still preferred as it provides more information e.g. tolerence and conditional index. This gives user wider option to decide which criterion they would like to use for their evaluation.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>car</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/car/man/vif.html'>vif</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using caret package</span>
+<span class='fu'>car</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/car/man/vif.html'>vif</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>     GDP Final_EI Fuel_mix 
@@ -3199,7 +3211,8 @@ Eigenvalue and Condition Index
 <p>Using the <em>olsrr()</em> package, we can easily See how much variation in the data is explained by the fit and how much remains in the residuals with just one line of code. If the spread of the residuals is greater than the spread of the centered fit, the model is deemed as inappropriate and users should consider choosing other models (repeat the variable selection module).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ols_plot_resid_fit_spread</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using olsrr package</span>
+<span class='fu'>ols_plot_resid_fit_spread</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-31-1.png" width="624" /></p>
@@ -3209,7 +3222,8 @@ Eigenvalue and Condition Index
 <p>However, the output shows that there’s an error as the pcor function does not allow missing values.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>pcor</span><span class='op'>(</span><span class='va'>ghg_2018_ols</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using ppcor package</span>
+<span class='fu'>pcor</span><span class='op'>(</span><span class='va'>ghg_2018_ols</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>Error in if (det(cvx) &lt; .Machine$double.eps) {: missing value where TRUE/FALSE needed</code></pre>
@@ -3218,7 +3232,8 @@ Eigenvalue and Condition Index
 <p>“Zero Order” shows the Pearson correlation coefficient between the dependent variable and the independent variable i.e. the higher the absolute value, the more correlated the dependent and independent variable are. “Partial” shows how much the estimated independent variable contributes to the variance in Y. While, “Part” shows the unique contribution of independent variables i.e. higher value indicates higher contribution (R-square) in explaining the model.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ols_correlations</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using olsrr package</span>
+<span class='fu'>ols_correlations</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>               Correlations                
@@ -3240,6 +3255,7 @@ Fuel_mix         0.399      0.649    0.245
 <span class='co'># ols regression model step due to missing values in the predictors Final_EI and Fuel_mix.</span>
 <span class='va'>ghg_2018_ols_v2</span> <span class='op'>&lt;-</span> <span class='va'>ghg_2018_ols</span><span class='op'>[</span><span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>29</span>, <span class='fl'>31</span><span class='op'>)</span>,<span class='op'>]</span>
 
+<span class='co'># Using graphics package</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>ghg_2018_ols_v2</span><span class='op'>$</span><span class='va'>GHG_emissions</span>, y<span class='op'>=</span><span class='va'>fitted</span>, ylab<span class='op'>=</span><span class='st'>"Fitted Value"</span>, xlab<span class='op'>=</span><span class='st'>"GHG_emissions"</span>, col<span class='op'>=</span><span class='st'>"blue"</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>a<span class='op'>=</span><span class='fl'>0</span>, b<span class='op'>=</span><span class='fl'>1</span>, col<span class='op'>=</span><span class='st'>"blue"</span><span class='op'>)</span> <span class='co'>#Add diagonal line</span>
 </code></pre>
@@ -3249,7 +3265,8 @@ Fuel_mix         0.399      0.649    0.245
 <p>Exploring the <em>olsrr()</em> package, there is a function called ols_plot_obs_fit which plots the same graph as above, and includes the regression line (red). This function is preferred compared to plot function shown above as it is a single line code. In addition, the ols_plot_obs_fit function is able to exclude records which were dropped from the OLS model. This is unlike using plot function where additional code is needed to exclude records with missing values in the predictors.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ols_plot_obs_fit</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using olsrr package</span>
+<span class='fu'>ols_plot_obs_fit</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="ordinary-least-square-model_files/figure-html5/unnamed-chunk-35-1.png" width="624" /></p>
@@ -3264,13 +3281,7 @@ Fuel_mix         0.399      0.649    0.245
 <ol type="1">
 <li>Users can select the dependent and independent variables to be included in the model, and the year of analysis.</li>
 <li>Users have the option to choose the different types of OLS methods to run to select the suitable list of predictors. List of methods are (i) All possibilities, (ii) Best subset, (iii) Stepwise forward/backward and (iv) Stepwise AIC forward/backward.</li>
-<li>Based on the list of predictors, users can also choose their preferred choice of test to run to check for any violation of OLS assumptions and check for model fit. List of tests are
-<ul>
-<li>Heteroskedasticity test: Bvensch Pagan Test, Score test, F-test</li>
-<li>Residual diagnostics: QQ-plot, Normality test, Residual Histogram, Residual vs Fitted value</li>
-<li>Collinear diagnostics</li>
-<li>Model fit assessment: Residual Fit Spreadplot, Part &amp; Partial Correlations, Observed vs Predicted plot</li>
-</ul></li>
+<li>Based on the list of predictors, users can also choose their preferred choice of test to run to check for any violation of OLS assumptions and check for model fit. List of tests are (i) Heteroskedasticity test (Bvensch Pagan Test; Score test; F-test), (ii) Residual diagnostics (QQ-plot; Normality test; Residual Histogram; Residual vs Fitted value), (iii) Collinear diagnostics and (iv) Model fit assessment (Residual Fit Spreadplot; Part &amp; Partial Correlations; Observed vs Predicted plot).</li>
 </ol>
 <p>The application eliminates the need for users to write any code chunks to run different permutations of OLS regression models and/or assumptions test.</p>
 <p><strong>Major Advantages of Incorporating Interactivity</strong></p>

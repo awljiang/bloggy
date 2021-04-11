@@ -1,23 +1,772 @@
 ---
-title: "Estimating the relationship of determinants and Greenhouse Gas Emission levels using Panel Data analysis"
+title: "Determining the Drivers of Greenhouse Gas Emissions for European Countries using Panel Data Analysis"
 description: |
-  A short description of the post.
+  This post details the preliminary investigation on the drivers of greenhouse gas emissions in European countries through the use of panel data analysis in R. The assignment is part of the Shiny-based Visual Analytics Application project undertaken for the course of ISSS608 Visual Analytics and Applications offered by SMU MITB.
 author:
   - name: Choong Shi Lian Selene
-    url: {}
+    url: https://www.linkedin.com/in/selenechoong/
 date: 03-19-2021
 output:
   distill::distill_article:
+    css: styles.css
+    toc: true
+    toc_depth: 4
     self_contained: false
+    highlight: haddock
+    highlight_downlit: false
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Distill is a publication format for scientific and technical writing, native to the web.
+# 1.0 Overview
 
-Learn more about using Distill at <https://rstudio.github.io/distill>.
+## 1.1 Background
+
+Climate change is affecting every parts of the world, causing dire consequences from more frequent extreme weather events to rising sea levels. In December 2020, the European Union (EU) leaders committed to an ambitious goal of reducing greenhouse gases by 55% by 2030 to tackle climate change. The European Union has been collating climate change-related data across various domains covering greenhouse gas (GHG) emission levels, drivers and mitigation of these emissions, and publishing the data on Eurostat. The statistics allowed for analysing and monitoring of climate change, which is essential for tracking EU’s progress towards achieving its 2030 goal.
+
+## 1.2 Purpose of Visualisation
+
+Panel data analysis is a statistical method to analyse longitudinal data that contains observations with multiple dimensions measured repeatedly over time. Many papers have been published by different authors on investigating the determinants of greenhouse gas emissions in the EU through panel data models. Some examples of these papers are listed below:
+
+- González-Sánchez, M., & Martín-Ortega, J. (2020). Greenhouse Gas Emissions Growth in Europe: A Comparative Analysis of Determinants. Sustainability (Basel, Switzerland), 12(3), 1012–. https://doi.org/10.3390/su12031012
+- Dogan, E., & Seker, F. (2016). An investigation on the determinants of carbon emissions for OECD countries: empirical evidence from panel models robust to heterogeneity and cross-sectional dependence. Environmental Science and Pollution Research International, 23(14), 14646–14655. https://doi.org/10.1007/s11356-016-6632-2
+- Azevedo, I., Horta, I., & Leal, V. (2017). Analysis of the relationship between local climate change mitigation actions and greenhouse gas emissions – Empirical insights. Energy Policy, 111, 204–213. https://doi.org/10.1016/j.enpol.2017.09.032
+
+Tabular forms were often adopted when presenting the findings from the panel models as well as the results of the various validation tests performed for the panel models. This exercise aims to visualise the results of the panel models and the validation tests interactively, to allow readers to easily interpret the results and identify the determinants of greenhouse gas emissions for each EU country.
 
 
+# 2.0 Step-by-step Preparation
+
+## 2.1 Installing and launching R packages
+
+In this exercise, a list of panel data modelling and visualisation packages will be installed and launched. Besides these packages, tidyverse will also be installed and launched for data wrangling and preparation. The code chunk below installs the required packages and loads them into the RStudio Environment.
+
+- `tidyverse` for data extraction, wrangling and exploration
+- `plm` for estimating and validating panel data analysis
+- `ggplot2` and `ggstatplot` for creating visualisations
+- `colorspace` for selection of colours and palettes for visualisation
+- `ExPanDaR` for exploratory data analysis for panel data
+- `bayesforecast` for plotting of partial autocorrelation plots for serial correlation test
+- `car` for plotting scatterplot for test of poolability
+- `gplots` for plotting heterogeneity plots for Hausman test
+
+
+```{r, eval=TRUE, echo=TRUE}
+# Creating a list of the names of packages required
+packages <- c("tidyverse", "plm", "ggplot2", "ggstatsplot", "colorspace", "ExPanDaR", 
+              "bayesforecast", "car", "gplots")
+
+# Installing and launching the packages
+for (p in packages){
+  if (!require(p,character.only=T)){
+    install.packages(p)
+  }
+  library(p, character.only=T)
+}
+```
+
+## 2.2 Data Preparation
+
+### 2.2.1 The Data
+
+Datasets used in this exercise is obtained from Eurostat (https://ec.europa.eu/eurostat), the database with European statistics maintained by the statistical office of the European Union. The following datasets have been used - Greenhouse gas emissions, Gross Domestic Product (GDP), Final energy intensity, Fuel mix, Carbon intensity, Share of energy from renewable sources, Environmental taxes by economic activity, Liquid biofuels production capacities, Solar thermal collectors' surface and Heat pumps - technical characteristics by technologies.
+
+Individual datasets have been wrangled and merged into one consolidated csv dataset. More details on the data preparation process can be found on the [Data Preparation post](https://greenhouseemission.netlify.app/posts/2021-03-28-data-preparation/). The final consolidated dataset that was used in this exercise can be found on our group's github.
+
+### 2.2.2 Importing dataset into R
+
+Data will be imported into RStudio environment by using `read_csv()` of **readr**, and data will be imported as a tibble dataframe.
+
+```{r, eval=TRUE, echo=TRUE}
+GHG_EU <- read_csv("data/GHGproj_data.csv")
+```
+
+### 2.2.3 Reviewing the imported dataset
+
+Next, we will examine the structure of the dataframe using `glimpse()` of **dplyr**.
+
+```{r, eval=TRUE, echo=TRUE}
+dplyr::glimpse(GHG_EU)
+```
+
+Reviewing the dataframe showed that it contains all the listed datasets above as individual columns with data spanning from Year 2010 to 2018. Apart from overall greenhouse gas emissions *(GHG_emissions)*, there was also data on individual gases such as carbon dioxide *(CO2_emissions)*, methane *(CH4_emissions)* and nitrogen dioxide *(NO2_emissions)*. Further inspection also showed that:
+
+- The dataframe contains data at both the regional and country levels. The regional levels (i.e. "European Union - 27 countries (from 2020)", "European Union - 28 countries (2013-2020) and Iceland under the Kyoto Protocol" and "European Union - 28 countries (2013-2020)") will not be used in this analysis. Hence, `filter()` of **dplyr** will be used to keep only the relevant country data.
+- Germany was labelled with a long name of "Germany (until 1990 former territory of the FRG)" which will be recoded using a combination of `mutate()` and `recode()` of **dplyr**.
+
+```{r, eval=TRUE, echo=TRUE}
+# Filtering and recoding the dataframe
+GHG_EU_cleaned <- GHG_EU %>% 
+  # remove regional levels
+  filter(!Country %in% c("European Union - 27 countries (from 2020)", 
+                         "European Union - 28 countries (2013-2020) and Iceland under the Kyoto Protocol", 
+                         "European Union - 28 countries (2013-2020)")) %>% 
+  # recode Germany label
+  mutate(Country = dplyr::recode(Country, "Germany (until 1990 former territory of the FRG)" = "Germany"))
+
+
+# Checking the cleaned dataframe
+glimpse(GHG_EU_cleaned)
+```
+
+To determine if the data frame is a balanced or unbalanced panel data, a quick check of missing values was performed using `prepare_missing_values_graph()` of **ExPanDaR**. As the plot shows that there is some missing data, unbalanced panel data analysis will be performed.
+
+```{r, eval=TRUE, echo=TRUE}
+ExPanDaR::prepare_missing_values_graph(GHG_EU_cleaned, ts_id = "Year")
+```
+
+## 2.3 Exploring Correlation betwen Variables in the Panel Data
+
+Prior to running the panel data regression, relationship between the variables in the dataframe was first investigated using `ggcorrmat()` of "ggstatsplot" to identify multicollinearity issues among the predictor variables.
+
+```{r, eval=TRUE, echo=TRUE, fig.height=7, fig.width=7}
+ggstatsplot::ggcorrmat(data = GHG_EU_cleaned, 
+          cor.vars = c(GHG_emissions:Heat_pumps), 
+          cor.vars.names = c("GHG emissions", "CO2 emissions", "CH4 emissions", "NO2 emissions", 
+                             "GDP", "final energy intensity", "fuel mix", "carbon intensity", 
+                             "renewable energy share", "environmental taxes", "liquid biofuels", 
+                             "solar thermal", "heat pumps"), 
+          title = "Relationship between GHG and drivers/ mitigation variables", 
+          colors = divergingx_hcl(3, palette = "TealRose", rev = TRUE)) +
+  theme(axis.text.y = element_text(size = 10), 
+        axis.text.x = element_text(angle = 90, hjust = 1, size = 10))
+```
+
+Correlation matrix plot showed that *GDP* and *Environmental Taxes* were highly correlated with each other. As *GDP* has a stronger correlation with the outcome variables, this variable will be included instead of *Environmental Taxes*. For the purpose of this exercise, we will only focus on the outcome variable of *GHG_emissions*, along with the following list of predictor variables - *GDP*, *Final_EI*, *Fuel_mix*, *Carbon_intensity*, *Renewables_share*, *Liquid_biofuels*, *Solar_thermal* and *Heat_pumps*.
+
+The column *Envt_taxes* will be excluded from the dataframe using `select()` of **dplyr**. Column to dropped can be indicated with a minus sign as shown below.
+
+```{r, eval=TRUE, echo=TRUE}
+# Removing the correlated variable of Environmental Taxes
+GHG_EU_final <- GHG_EU_cleaned %>% 
+  select(-Envt_taxes)
+
+# Inspecting the remaining columns
+dplyr::glimpse(GHG_EU_final)
+```
+
+## 2.4 Panel Data Modelling
+
+The **plm** package will be used for building the panel data models. Multiple arguments can be changed when using the `plm()` function of the package to allow us to estimate different basic panel models and introduce individual and/or time effects. For the random effects model, the estimator of the parameter can also be varied. The arguments which we will cover and their respective values are listed below.
+
+| Argument | Value |
+| :--: | :---------- |
+| **model** | - the fixed effects model ("within") <br> - the error components model ("random") <br> * the pooling model is covered in a separate post |
+| **effect** | - individual effect ("individual") <br> - time effect ("time") <br> - two-ways effects ("twoways") |
+| **random.method** | - from Swamy and Arora ("swar") <br> - from Wallace and Hussain ("walhus") <br> - from Amemiya ("amemiya") <br> - Nerlove ("nerlove") |
+
+Each of the model sub-sections below will display the code chunks to run the individual models, where each pane will show the variation for the relevant effects (and random.method for random effects model). All of these fields will be dynamic in the final R Shiny application.
+
+### 2.4.1 Visualising Panel Modelling Output
+
+Apart from presenting the panel modelling results in tabular forms, visualisations will be explored using the **ggstatsplot** package. The code chunks to visualise the results of the models are shown in each pane.
+
+### 2.4.2 Fixed Effects Model
+
+The fixed effects model takes into consideration individual differences over time. The model assumes correlation between the individuals' error term and predictor variables, and no correlation between time-invariant and the individuals' other characteristics. Model argument in the `plm()` of **plm** will be set as "within" to run the fixed effects model. 
+
+```{r panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+
+::::: {.panelset}
+
+::: {.panel}
+
+#### Individual Effect {.panel-name}
+
+Set by using the effect argument to be "individual", the individual effect captures effects that are specific to some panel unit but constant over time.
+
+```{r, eval=TRUE, echo=TRUE}
+# Running the model
+GHG_fe_indiv <- plm(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+                    Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+                    data = GHG_EU_final, index = c("Country", "Year"), 
+                    model = "within", effect = "individual")
+
+# Generating the dot-and-whisker plot for regression coefficient estimates
+ggstatsplot::ggcoefstats(x = GHG_fe_indiv, output = "plot") + 
+  scale_y_discrete(labels=c("Final_EI" = "final energy intensity", 
+                            "Fuel_mix" = "fuel mix", 
+                            "Carbon_intensity" = "carbon intensity", 
+                            "Renewables_share" = "renewable energy share", 
+                            "Liquid_biofuels" = "liquid biofuels", 
+                            "Solar_thermal" = "solar thermal", 
+                            "Heat_pumps" = "heat pumps"))
+```
+
+The detailed statistical output of the fixed effects model with individual effect is shown below.
+
+```{r, eval=TRUE, echo=TRUE}
+summary(GHG_fe_indiv)
+```
+
+:::
+
+::: {.panel}
+
+#### Time Effect {.panel-name}
+
+Set by using the effect argument to be "time", the  time effect captures effects that are specific to some time period but constant over panel units.
+
+```{r, eval=TRUE, echo=TRUE}
+# Running the model
+GHG_fe_time <- plm(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+                   Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+                   data = GHG_EU_final, index = c("Country", "Year"), 
+                   model = "within", effect = "time")
+
+# Generating the dot-and-whisker plot for regression coefficient estimates
+ggstatsplot::ggcoefstats(x = GHG_fe_time, output = "plot") + 
+  scale_y_discrete(labels=c("Final_EI" = "final energy intensity", 
+                            "Fuel_mix" = "fuel mix", 
+                            "Carbon_intensity" = "carbon intensity", 
+                            "Renewables_share" = "renewable energy share", 
+                            "Liquid_biofuels" = "liquid biofuels", 
+                            "Solar_thermal" = "solar thermal", 
+                            "Heat_pumps" = "heat pumps"))
+```
+
+The detailed statistical output of the fixed effects model with time effect is shown below.
+
+```{r, eval=TRUE, echo=TRUE}
+summary(GHG_fe_time)
+```
+
+:::
+
+::: {.panel}
+
+#### Twoways Effects {.panel-name}
+
+Set by using the effect argument to be "twoways", the two-ways effect captures both the individual and time effects.
+
+```{r, eval=TRUE, echo=TRUE}
+# Running the model
+GHG_fe_twoways <- plm(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+                      Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+                      data = GHG_EU_final, index = c("Country", "Year"), 
+                      model = "within", effect = "twoways")
+
+# Generating the dot-and-whisker plot for regression coefficient estimates
+ggstatsplot::ggcoefstats(x = GHG_fe_twoways, output = "plot") + 
+  scale_y_discrete(labels=c("Final_EI" = "final energy intensity", 
+                            "Fuel_mix" = "fuel mix", 
+                            "Carbon_intensity" = "carbon intensity", 
+                            "Renewables_share" = "renewable energy share", 
+                            "Liquid_biofuels" = "liquid biofuels", 
+                            "Solar_thermal" = "solar thermal", 
+                            "Heat_pumps" = "heat pumps"))
+```
+
+The detailed statistical output of the fixed effects model with two-ways effect is shown below.
+
+```{r, eval=TRUE, echo=TRUE}
+summary(GHG_fe_twoways)
+```
+
+:::
+
+:::::
+
+(Note: To run the model with the individual gases as the outcome variable, the term y in the formula argument of `plm()` can be replaced with the variable name of the other gases. Visualisation of regression coefficient estimates can be performed using the same code chunk and replacing the x value in the `ggcoefstats()`.)
+
+### 2.4.3 Random Effects Model
+
+The random effects model builds on the fixed effects model, but considers unique errors to be uncorrelated with the regressors. The model assumes that the variations across individuals to be random and uncorrelated with the predictor variables. Model argument in the `plm()` of **plm** will be set as "random" to run the random effects model.
+
+The default for the effect argument (i.e. individual) will be used in the code chunks shown but the other two effects of time and twoways will be tested to check on the model feasibility.
+
+::::: {.panelset}
+
+::: {.panel}
+
+#### Swamy-Arora {.panel-name}
+
+Set by using the random.method argument to be "swar", the Swamy-Arora estimator of the error component variances uses error terms from the fixed effects model and the residuals from the "between" regression model.
+
+```{r, eval=TRUE, echo=TRUE}
+# Running the model
+GHG_re_swar <- plm(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+                   Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+                   data = GHG_EU_final, index = c("Country", "Year"), 
+                   model = "random", effect = "individual", random.method = "swar")
+
+# Generating the dot-and-whisker plot for regression coefficient estimates
+ggstatsplot::ggcoefstats(x = GHG_re_swar, output = "plot", palette = "Paired") + 
+  scale_y_discrete(labels=c("Final_EI" = "final energy intensity", 
+                            "Fuel_mix" = "fuel mix", 
+                            "Carbon_intensity" = "carbon intensity", 
+                            "Renewables_share" = "renewable energy share", 
+                            "Liquid_biofuels" = "liquid biofuels", 
+                            "Solar_thermal" = "solar thermal", 
+                            "Heat_pumps" = "heat pumps"))
+```
+
+The detailed statistical output of the random effects model using Swamy-Arora estimator is shown below.
+
+```{r, eval=TRUE, echo=TRUE}
+summary(GHG_re_swar)
+```
+
+Both time effect and twoways effect models were not applicable when performing estimation of the variance of the error components using the Swamy-Arora estimator. 
+
+:::
+
+::: {.panel}
+
+#### Wallace-Hussain {.panel-name}
+
+Set by using the random.method argument to be "walhus", the Wallace-Hussain estimator of the error component variances uses error terms from the pooled ordinary least squares (OLS) model.
+
+
+```{r, eval=TRUE, echo=TRUE}
+# Running the model
+GHG_re_walh <- plm(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+                   Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+                   data = GHG_EU_final, index = c("Country", "Year"), 
+                   model = "random", effect = "individual", random.method = "walhus")
+
+# Generating the dot-and-whisker plot for regression coefficient estimates
+ggstatsplot::ggcoefstats(x = GHG_re_walh, output = "plot", palette = "Paired") + 
+  scale_y_discrete(labels=c("Final_EI" = "final energy intensity", 
+                            "Fuel_mix" = "fuel mix", 
+                            "Carbon_intensity" = "carbon intensity", 
+                            "Renewables_share" = "renewable energy share", 
+                            "Liquid_biofuels" = "liquid biofuels", 
+                            "Solar_thermal" = "solar thermal", 
+                            "Heat_pumps" = "heat pumps"))
+```
+
+The detailed statistical output of the random effects model using Wallace-Hussian estimator is shown below.
+
+```{r, eval=TRUE, echo=TRUE}
+summary(GHG_re_walh)
+```
+
+Both time effect and twoways effect models could be used when performing estimation of the variance of the error components using the Wallace-Hussain estimator. The code chunks to run the models are shown below.
+
+```{r, eval=TRUE, echo=TRUE}
+# Time Effect
+GHG_re_time_walh <- plm(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+                        Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+                        data = GHG_EU_final, index = c("Country", "Year"), 
+                        model = "random", effect = "time", random.method = "walhus")
+# Two-ways Effect
+GHG_re_twoways_walh <- plm(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+                           Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+                           data = GHG_EU_final, index = c("Country", "Year"), 
+                           model = "random", effect = "twoways", random.method = "walhus")
+
+```
+
+:::
+
+::: {.panel}
+
+#### Amemiya {.panel-name}
+
+Set by using the random.method argument to be "amemiya", the Amemiya estimator of the error component variances uses error terms from the fixed effect model and estimated individual-specific component.
+
+```{r, eval=TRUE, echo=TRUE}
+# Running the model
+GHG_re_amemiya <- plm(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+                      Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+                      data = GHG_EU_final, index = c("Country", "Year"), 
+                      model = "random", effect = "individual", random.method = "amemiya")
+
+# Generating the dot-and-whisker plot for regression coefficient estimates
+ggstatsplot::ggcoefstats(x = GHG_re_amemiya, output = "plot", palette = "Paired") + 
+  scale_y_discrete(labels=c("Final_EI" = "final energy intensity", 
+                            "Fuel_mix" = "fuel mix", 
+                            "Carbon_intensity" = "carbon intensity", 
+                            "Renewables_share" = "renewable energy share", 
+                            "Liquid_biofuels" = "liquid biofuels", 
+                            "Solar_thermal" = "solar thermal", 
+                            "Heat_pumps" = "heat pumps"))
+```
+
+The detailed statistical output of the random effects model using Amemiya estimator is shown below.
+
+```{r, eval=TRUE, echo=TRUE}
+summary(GHG_re_amemiya)
+```
+
+Both time effect and twoways effect models could also be used when performing estimation of the variance of the error components using the Amemiya estimator. The code chunks to run the models are shown below.
+
+```{r, eval=TRUE, echo=TRUE}
+# Time Effect
+GHG_re_time_amem <- plm(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+                        Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+                        data = GHG_EU_final, index = c("Country", "Year"), 
+                        model = "random", effect = "time", random.method = "amemiya")
+# Two-ways Effect
+GHG_re_twoways_amem <- plm(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+                           Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+                           data = GHG_EU_final, index = c("Country", "Year"), 
+                           model = "random", effect = "twoways", random.method = "amemiya")
+
+```
+
+:::
+
+::: {.panel}
+
+#### Nerlove {.panel-name}
+
+Set by using the random.method argument to be "nerlove", the Nerlove estimator of the error component variances uses error terms and estimated individual-specific component from the fixed effect model as well.
+
+```{r, eval=TRUE, echo=TRUE}
+# Running the model
+GHG_re_nerlove <- plm(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+                      Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+                      data = GHG_EU_final, index = c("Country", "Year"), 
+                      model = "random", effect = "individual", random.method = "nerlove")
+
+# Generating the dot-and-whisker plot for regression coefficient estimates
+ggstatsplot::ggcoefstats(x = GHG_re_nerlove, output = "plot", palette = "Paired") + 
+  scale_y_discrete(labels=c("Final_EI" = "final energy intensity", 
+                            "Fuel_mix" = "fuel mix", 
+                            "Carbon_intensity" = "carbon intensity", 
+                            "Renewables_share" = "renewable energy share", 
+                            "Liquid_biofuels" = "liquid biofuels", 
+                            "Solar_thermal" = "solar thermal", 
+                            "Heat_pumps" = "heat pumps"))
+```
+
+The detailed statistical output of the random effects model using Nerlove's estimator is shown below.
+
+```{r, eval=TRUE, echo=TRUE}
+summary(GHG_re_nerlove)
+```
+
+Both time effect and twoways effect models could also be used when performing estimation of the variance of the error components using the Nerlove's estimator. The code chunks to run the models are shown below.
+
+```{r, eval=TRUE, echo=TRUE}
+# Time Effect
+GHG_re_time_nerl <- plm(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+                        Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+                        data = GHG_EU_final, index = c("Country", "Year"), 
+                        model = "random", effect = "time", random.method = "nerlove")
+# Two-ways Effect
+GHG_re_twoways_nerl <- plm(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+                           Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+                           data = GHG_EU_final, index = c("Country", "Year"), 
+                           model = "random", effect = "twoways", random.method = "nerlove")
+```
+
+:::
+
+:::::
+
+(Note: Likewise, to run the model with the individual gases as the outcome variable, the term y in the formula argument of `plm()` can be replaced with the variable name of the other gases. Visualisation of regression coefficient estimates can be performed using the same code chunk and replacing the x value in the `ggcoefstats()`.)
+
+
+## 2.5 Tests for Assumptions
+
+Additional diagnostic tests were performed to check if the panel dataset complies with the various assumptions. The diagnostic tests that would be covered include Test of Normality, Test of Serial Correlation and Test for Heteroskedasticity. For the tests, the fixed effect model is used for illustration.
+
+### 2.5.1 Test of Normality
+
+Regressions are by default assumed to have errors that are normally distributed. To detect if there is any violation of normality assumptions, there are three different visual representations. Prior to generating the charts visualised using functions of **ggplot2**, a dataframe containing the residuals and fitted values was created.
+
+```{r, eval=TRUE, echo=TRUE}
+resfit_df <- data.frame(index = attr(resid(GHG_fe_indiv), "index"), 
+                        residual = resid(GHG_fe_indiv), 
+                        fitted = fitted(GHG_fe_indiv)) %>% 
+  rename(country = index.Country, year = index.Year)
+```
+
+::::: {.panelset}
+
+::: {.panel}
+
+#### Residual QQ Plot {.panel-name}
+
+The residual QQ plot can be used to visually assess if the residuals are normally distributed (i.e. data points closely following the straight diagonal line). The plot can be generated using `stat_qq()` and `stat_gg_line()` of **ggplot2**, setting the sample argument as the residual column. To create individual plots for each country, `facet_wrap()` was used.
+
+```{r, eval=TRUE, echo=TRUE}
+ggplot2::ggplot(data = resfit_df, aes(sample = residual)) + 
+  stat_qq(color = "cornflowerblue") +
+  stat_qq_line(color = "darkslategray") + 
+  facet_wrap(~ country) +
+  ggtitle("Residual QQ Plot by Country")
+```
+
+:::
+
+::: {.panel}
+
+#### Residual vs Fitted Value Plot {.panel-name}
+
+The residual vs fitted value plot allows for visual inspection of normality assumption violation by seeing if the residuals spread randomly around the zero line forming an approximate horizontal band and there is no visible outliers. The plot can be generated using `geom_point()` of **ggplot2**, setting the x and y arguments as the fitted and residual columns respectively.
+
+```{r, eval=TRUE, echo=TRUE, warning=FALSE}
+ggplot2::ggplot(data = resfit_df) + 
+  geom_point(mapping = aes(x = fitted, y = residual), color = "cornflowerblue") + 
+  geom_hline(yintercept = 0, color = "darkslategray")  + 
+  facet_wrap(~ country) +
+  ggtitle("Residual vs Fitted Value Plot by Country")
+```
+
+:::
+
+::: {.panel}
+
+#### Residual Histogram {.panel-name}
+
+The residual histogram is also another alternative to visually detect if the residuals are normally distributed (i.e. distribution of histogram follows a normal distribution curve). The histogram can be generated using `geom_histogram()` of **ggplot2**, setting the x argument as the residual column.
+
+```{r, eval=TRUE, echo=TRUE, warning=FALSE}
+ggplot2::ggplot(data = resfit_df) + 
+  geom_histogram(mapping = aes(x = residual), fill = "cornflowerblue")  + 
+  facet_wrap(~ country) +
+  ggtitle("Residual Histogram by Country")
+```
+:::
+
+:::::
+
+
+### 2.5.2 Test of Serial Correlation
+
+Test of serial correlation is performed to identify the presence of time-invariant error component, or typically the presence of idiosyncratic error terms. 
+
+::::: {.panelset}
+
+::: {.panel}
+
+#### Unobserved Effect Test {.panel-name}
+
+The Wooldridge's Test for Unobserved Effects in Panel Models is a semi-parametric test to detect if there are unobserved effects in panel models. The null hypothesis assumes that the covariance matrix of the residuals is equal to its diagonal.
+
+```{r, eval=TRUE, echo=TRUE}
+plm::pwtest(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+            Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+            data = GHG_EU_final)
+```
+
+:::
+
+::: {.panel}
+
+#### Locally Robust Tests {.panel-name}
+
+The test is a joint Lagrange Multiplier test for random effects and serial correlation. The null hypothesis assumes normality and homoscedasticity of the idiosyncratic errors.
+
+```{r, eval=TRUE, echo=TRUE}
+plm::pbsytest(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+              Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+              data = GHG_EU_final)
+```
+:::
+
+::: {.panel}
+
+#### Breusch-Godfrey/Wooldridge Test {.panel-name}
+
+The Breusch-Godfrey/Wooldridge Test is a general serial correlation test that is applicable for random effects, fixed effects or pooling models. Higher-order serial correlation can also be tested by setting the order argument. The null hypothesis assumes no serial correlation in idiosyncratic errors.
+
+```{r, eval=TRUE, echo=TRUE}
+plm::pbgtest(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+             Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+             data = GHG_EU_final)
+```
+:::
+
+::: {.panel}
+
+#### Correlogram of PACF {.panel-name}
+
+Plotting the correlogram of the partial autocorrelation function allows for visual detection of the correlation of a variable with itself at different time lags. Having any significant spike that extends beyond the significant limits indicate the presence of correlation for that lag.
+
+(Note: As `facet_wrap()` of **ggplot2** is not supported by **bayesforecast**, individual datasets by country need to be created to plot the PACF plot for each country. The code for one country is shown below.)
+
+```{r, eval=TRUE, echo=TRUE}
+belgium_res <- resfit_df %>% filter(country == "Belgium")
+bayesforecast::ggpacf(belgium_res$residual) + 
+  ggtitle("PACF plot for Belgium")
+```
+
+:::
+
+:::::
+
+
+### 2.5.3 Test for Heteroscedasticity
+
+Regression assumes homoscedasticity among residuals (i.e. all residuals are drawn from a population with a constant variance). If heteroscedasticity is detected, robust covariance matrix can be used to account for it.
+
+::::: {.panelset}
+
+::: {.panel}
+
+#### Breusch-Pagan Test {.panel-name} 
+
+The Breusch-Pagan Test is a statistical test for heteroscedasticity, where the null hypothesis assumes presence of heteroscedasticity.
+
+```{r, eval=TRUE, echo=TRUE}
+lmtest:::bptest(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+                Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps +
+                factor(Country), data = GHG_EU_final, studentize = F)
+```
+
+:::
+
+::: {.panel}
+
+#### Residual vs Fitted Value Plot {.panel-name}
+
+The residual vs fitted value plot can also be used for detecting heteroscedasticity visually. If the variance of the residuals increases as the fitted values increases (i.e. cone shaped pattern), it indicates the presence of heteroskedasticity.
+
+```{r, eval=TRUE, echo=TRUE, warning=FALSE}
+ggplot2::ggplot(data = resfit_df) + 
+  geom_point(mapping = aes(x = fitted, y = residual), color = "cornflowerblue") + 
+  geom_hline(yintercept = 0, color = "darkslategray") + 
+  ggtitle("Residual vs Fitted Value Plot")
+```
+:::
+
+:::::
+
+
+## 2.6 Model Selection
+
+When running panel regression models, there are three key models to select - fixed effect model, random effect model and pooled OLS model. The following tests below helps to identify the suitable model.
+
+### 2.6.1 Pooled OLS or Fixed Effect Model
+
+**Statistical Test: Test of Poolability**
+
+Tests of poolability performed using the F test of stability (or Chow test) for the coefficients can be used to determine if pooled effect or fixed effect is more appropriate. The test can be done using `pooltest()` from **plm**. The null hypothesis is the pooled effect model.
+
+(Note: Due to insufficient number of observations in the current dataset, the maximum number of x variables that can be included is 6 variables. This limitation needs to be accounted for when building the R Shiny application. For testing, variables with least missing data were kept in the test i.e. GDP, final energy intensity, fuel mix, carbon intensity, solar thermal and heat pumps).
+
+```{r, eval=TRUE, echo=TRUE}
+plm::pooltest(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + Solar_thermal + Heat_pumps,
+              data = GHG_EU_final, index = c("Country", "Year"), model = "within")
+```
+
+**Visualisation: Scatterplot with OLS Regression**
+
+To visualise poolability, the scatterplot for each country and the OLS regression line is plotted in one chart to display comparison of the trends. The combined plot was generated using `scatterplot()` of **car** and `abline()` of **graphics**. For the purpose of this exercise, only GDP was used as the predictor variable.
+
+```{r, eval=TRUE, echo=TRUE, fig.height=10, fig.width=10}
+# Running the Pooled OLS model
+olsfitted <- lm(GHG_emissions ~ GDP + factor(Country) -1, data = GHG_EU_final)
+
+# Creating of dataframe for subsequent visualisation
+GHG_EU_final$index <- rownames(GHG_EU_final) # adding index for matching
+pooldf <- data.frame(yhat = olsfitted$fitted.values)
+pooldf <- pooldf %>% 
+  bind_cols(index = rownames(pooldf)) %>% 
+  left_join(GHG_EU_final, by = c("index"))
+
+# Generating the plot
+car::scatterplot(yhat ~ GDP|Country, data = pooldf, xlab = "GDP", ylab = "Fitted Values", smooth = FALSE)
+graphics::abline(lm(GHG_emissions ~ GDP, data = pooldf), lwd = 3, col = "darkslategray")
+```
+
+The current visualisation might not be easy for detecting poolability and hence will recommend to keep to the statistical test instead.
+
+### 2.6.2 Fixed Effect or Random Effect Model
+
+**Statistical Test: Hausman Test**
+
+The Hausman Test, which evaluates if the unique errors are correlated with the predictor variables, is performed to determine if the fixed effect or random effect model should be used. The test can be done using `phtest()` from **plm**, with the first argument being a fixed effect model and the second argument a random effect model. The null hypothesis assumes that the preferred model is random effects.
+
+```{r, eval=TRUE, echo=TRUE}
+phtest(GHG_fe_indiv, GHG_re_amemiya)
+```
+**Visualisation: Heterogeneity across Years and Countries**
+
+To visually assess if fixed or random effects is more appropriate, the means and error bars for each year/ country can be plotted to determine presence of heterogeneity across years and countries. The plot was generated using `
+
+visualise poolability, the scatterplot for each country and the OLS regression line is plotted in one chart to display comparison of the trends. The combined plot will be generated using `scatterplot()` of **car** and `abline()` of **graphics**. For the purpose of this exercise, only GDP will be used as the predictor variable.
+
+(Note: Due to the large number of countries, the heterogeneity plot across countries will appear overly cluttered when all countries were included. Should the plot be included in the Shiny application, selection of countries up to a max of 10 should be allowed.)
+
+```{r, eval=TRUE, echo=TRUE}
+# Heterogeneity across years
+gplots::plotmeans(GHG_emissions ~ Year, data = GHG_EU_final, 
+                  main="Heterogeineity across years", 
+                  col = "deepskyblue3", barcol = "cornflowerblue", 
+                  ylab = "GHG emissions")
+
+# Heterogeneity across countries
+GHG_subset <- GHG_EU_final %>% filter(Country %in% c("Belgium", "Denmark", "Greece", "Austria", 
+                                                     "Finland", "Sweden", "Switzerland"))
+gplots::plotmeans(GHG_emissions ~ Country, data = GHG_subset, 
+                  main="Heterogeineity across countries", 
+                  col = "deepskyblue3", barcol = "cornflowerblue", 
+                  ylab = "GHG emissions")
+```
+
+### 2.6.3 Random Effect or Pooled OLS Model
+
+**Statistical Test: Lagrange Multiplier Test**
+
+The Lagrange Multiplier Test can be used to determine if a fixed effect model or a pooled OLS model is more appropriate. The test can be done using `plmtest()` from **plm**. The null hypothesis assumes that the variances across entities is zero, meaning no significant difference across individuals (i.e. no panel effect).
+
+The first argument of the function is a pooling model. The type *("honda", "bp", "kw", "ghm")* and effects *("individual", "time", "twoways")* arguments can be added to indicate the type of test to be computed and the effects tested respectively. Since effects argument has been included in the models, the argument will follow according to the calibrated model specifications. For the purpose of this exercise, the calibrated model is assumed to have individual effects and only Honda test (type = "honda") will be tested. Other tests can be run by changing the type argument.
+
+```{r, eval=TRUE, echo=TRUE}
+# Running the pooled OLS model
+poolmodel <- plm(GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+                 Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps,
+                 data = GHG_EU_final, index = c("Country", "Year"), 
+                 model = "pooling")
+
+# Lagrange Multiplier Test
+plm::plmtest(poolmodel, effect="individual", type="honda")
+```
+
+**Visualisation: Variance Plots**
+
+To explore visualising the variances across entities, the box/violin plot for group comparisons in within-subjects will be used. The plot was generated using `ggwithinstats()` of **ggstatsplot**. For the purpose of this exercise, the earlier dataset of GHG_subset with selected countries will be used.
+
+(Note: Due to the large number of countries, the plot across countries will appear overly cluttered when all countries were included. Should the plot be included in the Shiny application, selection of countries up to a max of 10 should be allowed.)
+
+```{r, eval=TRUE, echo=TRUE}
+ggstatsplot::ggwithinstats(data = GHG_subset, x = Country, y = GHG_emissions, 
+                           type = "np", pairwise.comparisons = FALSE)
+```
+
+# 3.0 Final Components of Visualisation
+
+Several visualisation ideas were initially explored but not all intended visualisations could be eventually created after the tests performed in this exercise. Following all the exploration done in the sections above, the final panel model module will include the following components below.
+
+- Calibration of specifications of panel data model: model-related (i.e. model, effect) and data-related (i.e. year, country, predictor and outcome variables)
+- Output of panel models in statistical form with regression coefficient estimates plot
+- Tests for violation of regression assumptions
+- Model selection between fixed effect, random effect and OLS models
+
+## 3.1 Storyboard for Proposed Design
+
+A draft proposed layout of the module in the dashboard can be found below. Each of the pane will follow a similar layout of selecting the relevant specifications on the left panel and displaying the visualisation along with the statistical output on the right area.
+
+```{r, echo=FALSE, message=FALSE, layout="l-body-outset"}
+knitr::include_graphics("images/sketch_2.jpg")
+```
+
+## 3.2 Interactivity
+
+The subsequent R Shiny application built will help to introduce interactivity to the model calibration with the following selection options offered to the users.
+
+- Parameters for inclusion in the model which cover Year (between 2010 to 2018) and Countries (among the 33 countries)
+- Predictor variables (type of greenhouse gases) and outcome variables of interest to be studied
+- Model (fixed effect or random effect) along with other model specifications that include the effects (individual/ time/ two-ways) and the estimator for the random effect model (among the 4 estimators)
+
+Instead of having only standard specifications for the models, the users can now decide on their preferred models and parameters to generate the relevant panel models then interactively modify the models and parameters, should they hope to explore other model types and specifications.
+
+## 3.3 Reflections on Visualisation and Interactivity
+
+**Visualisation**
+
+Regression and validation test outputs are often presented in tabular forms containing the statistical outputs making it less interesting for users when interpreting the results, particularly for non-technical users who might be searching only for the p-value in the output. While there are several existing packages to support performing panel data regression and the relevant tests (such as **plm**), there is currently no package that supports visualisations the panel data regression and test outputs. Several visualisations using existing visualisation packages in R have been explored which could allow users to more easily spot the results. However, there are limitations for some of the tests where visualising using existing R packages could not produce useful or easily interpretable charts.
+
+**Interactivity**
+
+Introducing interactivity in the form of model selection allowed for users to enjoy the flexibility of building any model of interest and modifying selected attributes according to preference. This can help to contribute to better user engagement where users do not need to filter through a whole chunk of static visualisations to search for the model of interest, but could instead generate them on the fly. It also allow non-technical users to perform panel data regressions and the relevant tests without having to execute complex codes. Panel data regression can be more easily accesible to users of all levels.

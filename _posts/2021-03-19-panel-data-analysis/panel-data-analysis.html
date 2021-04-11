@@ -53,41 +53,36 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ad0000; } /* Alert */
-code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
-code span.bn { color: #ad0000; } /* BaseN */
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #007ba5; } /* ControlFlow */
-code span.ch { color: #20794d; } /* Char */
-code span.cn { color: #8f5902; } /* Constant */
-code span.co { color: #5e5e5e; } /* Comment */
-code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-code span.dt { color: #ad0000; } /* DataType */
-code span.dv { color: #ad0000; } /* DecVal */
-code span.er { color: #ad0000; } /* Error */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
-code span.fl { color: #ad0000; } /* Float */
-code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
-code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #007ba5; } /* Keyword */
-code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #007ba5; } /* Other */
-code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
-code span.ss { color: #20794d; } /* SpecialString */
-code span.st { color: #20794d; } /* String */
-code span.va { color: #111111; } /* Variable */
-code span.vs { color: #20794d; } /* VerbatimString */
-code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Estimating the relationship of determinants and Greenhouse Gas Emission levels using Panel Data analysis</title>
+  <title>Determining the Drivers of Greenhouse Gas Emissions for European Countries using Panel Data Analysis</title>
 
-  <meta property="description" itemprop="description" content="A short description of the post."/>
+  <meta property="description" itemprop="description" content="This post details the preliminary investigation on the drivers of greenhouse gas emissions in European countries through the use of panel data analysis in R. The assignment is part of the Shiny-based Visual Analytics Application project undertaken for the course of ISSS608 Visual Analytics and Applications offered by SMU MITB."/>
 
 
   <!--  https://schema.org/Article -->
@@ -96,26 +91,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <meta name="article:author" content="Choong Shi Lian Selene"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Estimating the relationship of determinants and Greenhouse Gas Emission levels using Panel Data analysis"/>
+  <meta property="og:title" content="Determining the Drivers of Greenhouse Gas Emissions for European Countries using Panel Data Analysis"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="A short description of the post."/>
+  <meta property="og:description" content="This post details the preliminary investigation on the drivers of greenhouse gas emissions in European countries through the use of panel data analysis in R. The assignment is part of the Shiny-based Visual Analytics Application project undertaken for the course of ISSS608 Visual Analytics and Applications offered by SMU MITB."/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Estimating the relationship of determinants and Greenhouse Gas Emission levels using Panel Data analysis"/>
-  <meta property="twitter:description" content="A short description of the post."/>
+  <meta property="twitter:title" content="Determining the Drivers of Greenhouse Gas Emissions for European Countries using Panel Data Analysis"/>
+  <meta property="twitter:description" content="This post details the preliminary investigation on the drivers of greenhouse gas emissions in European countries through the use of panel data analysis in R. The assignment is part of the Shiny-based Visual Analytics Application project undertaken for the course of ISSS608 Visual Analytics and Applications offered by SMU MITB."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Estimating the relationship of determinants and Greenhouse Gas Emission levels using Panel Data analysis"]},{"type":"character","attributes":{},"value":["A short description of the post.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Choong Shi Lian Selene"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["03-19-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Determining the Drivers of Greenhouse Gas Emissions for European Countries using Panel Data Analysis"]},{"type":"character","attributes":{},"value":["This post details the preliminary investigation on the drivers of greenhouse gas emissions in European countries through the use of panel data analysis in R. The assignment is part of the Shiny-based Visual Analytics Application project undertaken for the course of ISSS608 Visual Analytics and Applications offered by SMU MITB.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Choong Shi Lian Selene"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/selenechoong/"]}]}]},{"type":"character","attributes":{},"value":["03-19-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["css","toc","toc_depth","self_contained","highlight","highlight_downlit"]}},"value":[{"type":"character","attributes":{},"value":["styles.css"]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[4]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["haddock"]},{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"NULL"}
+  {"type":"character","attributes":{},"value":["data/GHGproj_data.csv","images/sketch.jpg","images/sketch_2.JPG","panel-data-analysis_files/anchor-4.2.2/anchor.min.js","panel-data-analysis_files/bowser-1.9.3/bowser.min.js","panel-data-analysis_files/distill-2.2.21/template.v2.js","panel-data-analysis_files/figure-html5/unnamed-chunk-10-1.png","panel-data-analysis_files/figure-html5/unnamed-chunk-12-1.png","panel-data-analysis_files/figure-html5/unnamed-chunk-14-1.png","panel-data-analysis_files/figure-html5/unnamed-chunk-16-1.png","panel-data-analysis_files/figure-html5/unnamed-chunk-19-1.png","panel-data-analysis_files/figure-html5/unnamed-chunk-22-1.png","panel-data-analysis_files/figure-html5/unnamed-chunk-26-1.png","panel-data-analysis_files/figure-html5/unnamed-chunk-27-1.png","panel-data-analysis_files/figure-html5/unnamed-chunk-28-1.png","panel-data-analysis_files/figure-html5/unnamed-chunk-32-1.png","panel-data-analysis_files/figure-html5/unnamed-chunk-34-1.png","panel-data-analysis_files/figure-html5/unnamed-chunk-36-1.png","panel-data-analysis_files/figure-html5/unnamed-chunk-38-1.png","panel-data-analysis_files/figure-html5/unnamed-chunk-38-2.png","panel-data-analysis_files/figure-html5/unnamed-chunk-40-1.png","panel-data-analysis_files/figure-html5/unnamed-chunk-5-1.png","panel-data-analysis_files/figure-html5/unnamed-chunk-6-1.png","panel-data-analysis_files/figure-html5/unnamed-chunk-8-1.png","panel-data-analysis_files/header-attrs-2.7/header-attrs.js","panel-data-analysis_files/jquery-1.11.3/jquery.min.js","panel-data-analysis_files/panelset-0.2.6/panelset.css","panel-data-analysis_files/panelset-0.2.6/panelset.js","panel-data-analysis_files/popper-2.6.0/popper.min.js","panel-data-analysis_files/tippy-6.2.7/tippy-bundle.umd.min.js","panel-data-analysis_files/tippy-6.2.7/tippy-light-border.css","panel-data-analysis_files/tippy-6.2.7/tippy.css","panel-data-analysis_files/tippy-6.2.7/tippy.umd.min.js","panel-data-analysis_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1434,6 +1429,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--/radix_placeholder_distill-->
   <script src="panel-data-analysis_files/header-attrs-2.7/header-attrs.js"></script>
+  <link href="panel-data-analysis_files/panelset-0.2.6/panelset.css" rel="stylesheet" />
+  <script src="panel-data-analysis_files/panelset-0.2.6/panelset.js"></script>
   <script src="panel-data-analysis_files/jquery-1.11.3/jquery.min.js"></script>
   <script src="panel-data-analysis_files/popper-2.6.0/popper.min.js"></script>
   <link href="panel-data-analysis_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1446,6 +1443,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
+  <link rel="stylesheet" href="styles.css" type="text/css"/>
 
 </head>
 
@@ -1454,7 +1452,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Estimating the relationship of determinants and Greenhouse Gas Emission levels using Panel Data analysis","description":"A short description of the post.","authors":[{"author":"Choong Shi Lian Selene","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-03-19T00:00:00.000+08:00","citationText":"Selene, 2021"}
+{"title":"Determining the Drivers of Greenhouse Gas Emissions for European Countries using Panel Data Analysis","description":"This post details the preliminary investigation on the drivers of greenhouse gas emissions in European countries through the use of panel data analysis in R. The assignment is part of the Shiny-based Visual Analytics Application project undertaken for the course of ISSS608 Visual Analytics and Applications offered by SMU MITB.","authors":[{"author":"Choong Shi Lian Selene","authorURL":"https://www.linkedin.com/in/selenechoong/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-03-19T00:00:00.000+08:00","citationText":"Selene, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1464,22 +1462,1006 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Estimating the relationship of determinants and Greenhouse Gas Emission levels using Panel Data analysis</h1>
+<h1>Determining the Drivers of Greenhouse Gas Emissions for European Countries using Panel Data Analysis</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>A short description of the post.</p></p>
+<p><p>This post details the preliminary investigation on the drivers of greenhouse gas emissions in European countries through the use of panel data analysis in R. The assignment is part of the Shiny-based Visual Analytics Application project undertaken for the course of ISSS608 Visual Analytics and Applications offered by SMU MITB.</p></p>
 </div>
 
 <div class="d-byline">
-  Choong Shi Lian Selene true 
+  Choong Shi Lian Selene <a href="https://www.linkedin.com/in/selenechoong/" class="uri">https://www.linkedin.com/in/selenechoong/</a> 
   
 <br/>03-19-2021
 </div>
 
 <div class="d-article">
-<p>Distill is a publication format for scientific and technical writing, native to the web.</p>
-<p>Learn more about using Distill at <a href="https://rstudio.github.io/distill" class="uri">https://rstudio.github.io/distill</a>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#overview">1.0 Overview</a>
+<ul>
+<li><a href="#background">1.1 Background</a></li>
+<li><a href="#purpose-of-visualisation">1.2 Purpose of Visualisation</a></li>
+</ul></li>
+<li><a href="#step-by-step-preparation">2.0 Step-by-step Preparation</a>
+<ul>
+<li><a href="#installing-and-launching-r-packages">2.1 Installing and launching R packages</a></li>
+<li><a href="#data-preparation">2.2 Data Preparation</a>
+<ul>
+<li><a href="#the-data">2.2.1 The Data</a></li>
+<li><a href="#importing-dataset-into-r">2.2.2 Importing dataset into R</a></li>
+<li><a href="#reviewing-the-imported-dataset">2.2.3 Reviewing the imported dataset</a></li>
+</ul></li>
+<li><a href="#exploring-correlation-betwen-variables-in-the-panel-data">2.3 Exploring Correlation betwen Variables in the Panel Data</a></li>
+<li><a href="#panel-data-modelling">2.4 Panel Data Modelling</a>
+<ul>
+<li><a href="#visualising-panel-modelling-output">2.4.1 Visualising Panel Modelling Output</a></li>
+<li><a href="#fixed-effects-model">2.4.2 Fixed Effects Model</a></li>
+<li><a href="#random-effects-model">2.4.3 Random Effects Model</a></li>
+</ul></li>
+<li><a href="#tests-for-assumptions">2.5 Tests for Assumptions</a>
+<ul>
+<li><a href="#test-of-normality">2.5.1 Test of Normality</a></li>
+<li><a href="#test-of-serial-correlation">2.5.2 Test of Serial Correlation</a></li>
+<li><a href="#test-for-heteroscedasticity">2.5.3 Test for Heteroscedasticity</a></li>
+</ul></li>
+<li><a href="#model-selection">2.6 Model Selection</a>
+<ul>
+<li><a href="#pooled-ols-or-fixed-effect-model">2.6.1 Pooled OLS or Fixed Effect Model</a></li>
+<li><a href="#fixed-effect-or-random-effect-model">2.6.2 Fixed Effect or Random Effect Model</a></li>
+<li><a href="#random-effect-or-pooled-ols-model">2.6.3 Random Effect or Pooled OLS Model</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#final-components-of-visualisation">3.0 Final Components of Visualisation</a>
+<ul>
+<li><a href="#storyboard-for-proposed-design">3.1 Storyboard for Proposed Design</a></li>
+<li><a href="#interactivity">3.2 Interactivity</a></li>
+<li><a href="#reflections-on-visualisation-and-interactivity">3.3 Reflections on Visualisation and Interactivity</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<h1 id="overview">1.0 Overview</h1>
+<h2 id="background">1.1 Background</h2>
+<p>Climate change is affecting every parts of the world, causing dire consequences from more frequent extreme weather events to rising sea levels. In December 2020, the European Union (EU) leaders committed to an ambitious goal of reducing greenhouse gases by 55% by 2030 to tackle climate change. The European Union has been collating climate change-related data across various domains covering greenhouse gas (GHG) emission levels, drivers and mitigation of these emissions, and publishing the data on Eurostat. The statistics allowed for analysing and monitoring of climate change, which is essential for tracking EU’s progress towards achieving its 2030 goal.</p>
+<h2 id="purpose-of-visualisation">1.2 Purpose of Visualisation</h2>
+<p>Panel data analysis is a statistical method to analyse longitudinal data that contains observations with multiple dimensions measured repeatedly over time. Many papers have been published by different authors on investigating the determinants of greenhouse gas emissions in the EU through panel data models. Some examples of these papers are listed below:</p>
+<ul>
+<li>González-Sánchez, M., &amp; Martín-Ortega, J. (2020). Greenhouse Gas Emissions Growth in Europe: A Comparative Analysis of Determinants. Sustainability (Basel, Switzerland), 12(3), 1012–. <a href="https://doi.org/10.3390/su12031012" class="uri">https://doi.org/10.3390/su12031012</a></li>
+<li>Dogan, E., &amp; Seker, F. (2016). An investigation on the determinants of carbon emissions for OECD countries: empirical evidence from panel models robust to heterogeneity and cross-sectional dependence. Environmental Science and Pollution Research International, 23(14), 14646–14655. <a href="https://doi.org/10.1007/s11356-016-6632-2" class="uri">https://doi.org/10.1007/s11356-016-6632-2</a></li>
+<li>Azevedo, I., Horta, I., &amp; Leal, V. (2017). Analysis of the relationship between local climate change mitigation actions and greenhouse gas emissions – Empirical insights. Energy Policy, 111, 204–213. <a href="https://doi.org/10.1016/j.enpol.2017.09.032" class="uri">https://doi.org/10.1016/j.enpol.2017.09.032</a></li>
+</ul>
+<p>Tabular forms were often adopted when presenting the findings from the panel models as well as the results of the various validation tests performed for the panel models. This exercise aims to visualise the results of the panel models and the validation tests interactively, to allow readers to easily interpret the results and identify the determinants of greenhouse gas emissions for each EU country.</p>
+<h1 id="step-by-step-preparation">2.0 Step-by-step Preparation</h1>
+<h2 id="installing-and-launching-r-packages">2.1 Installing and launching R packages</h2>
+<p>In this exercise, a list of panel data modelling and visualisation packages will be installed and launched. Besides these packages, tidyverse will also be installed and launched for data wrangling and preparation. The code chunk below installs the required packages and loads them into the RStudio Environment.</p>
+<ul>
+<li><code>tidyverse</code> for data extraction, wrangling and exploration</li>
+<li><code>plm</code> for estimating and validating panel data analysis</li>
+<li><code>ggplot2</code> and <code>ggstatplot</code> for creating visualisations</li>
+<li><code>colorspace</code> for selection of colours and palettes for visualisation</li>
+<li><code>ExPanDaR</code> for exploratory data analysis for panel data</li>
+<li><code>bayesforecast</code> for plotting of partial autocorrelation plots for serial correlation test</li>
+<li><code>car</code> for plotting scatterplot for test of poolability</li>
+<li><code>gplots</code> for plotting heterogeneity plots for Hausman test</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a list of the names of packages required</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;plm&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;ggstatsplot&quot;</span>, <span class="st">&quot;colorspace&quot;</span>, <span class="st">&quot;ExPanDaR&quot;</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;bayesforecast&quot;</span>, <span class="st">&quot;car&quot;</span>, <span class="st">&quot;gplots&quot;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Installing and launching the packages</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (p <span class="cf">in</span> packages){</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(p,<span class="at">character.only=</span>T)){</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(p)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(p, <span class="at">character.only=</span>T)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<h2 id="data-preparation">2.2 Data Preparation</h2>
+<h3 id="the-data">2.2.1 The Data</h3>
+<p>Datasets used in this exercise is obtained from Eurostat (<a href="https://ec.europa.eu/eurostat" class="uri">https://ec.europa.eu/eurostat</a>), the database with European statistics maintained by the statistical office of the European Union. The following datasets have been used - Greenhouse gas emissions, Gross Domestic Product (GDP), Final energy intensity, Fuel mix, Carbon intensity, Share of energy from renewable sources, Environmental taxes by economic activity, Liquid biofuels production capacities, Solar thermal collectors’ surface and Heat pumps - technical characteristics by technologies.</p>
+<p>Individual datasets have been wrangled and merged into one consolidated csv dataset. More details on the data preparation process can be found on the <a href="https://greenhouseemission.netlify.app/posts/2021-03-28-data-preparation/">Data Preparation post</a>. The final consolidated dataset that was used in this exercise can be found on our group’s github.</p>
+<h3 id="importing-dataset-into-r">2.2.2 Importing dataset into R</h3>
+<p>Data will be imported into RStudio environment by using <code>read_csv()</code> of <strong>readr</strong>, and data will be imported as a tibble dataframe.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>GHG_EU <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/GHGproj_data.csv&quot;</span>)</span></code></pre></div>
+</div>
+<h3 id="reviewing-the-imported-dataset">2.2.3 Reviewing the imported dataset</h3>
+<p>Next, we will examine the structure of the dataframe using <code>glimpse()</code> of <strong>dplyr</strong>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(GHG_EU)</span></code></pre></div>
+<pre><code>Rows: 324
+Columns: 15
+$ Country          &lt;chr&gt; &quot;European Union - 27 countries (from 2020)&quot;~
+$ Year             &lt;dbl&gt; 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2~
+$ GHG_emissions    &lt;dbl&gt; 4188244, 4075283, 3996645, 3912623, 3776464~
+$ CO2_emissions    &lt;dbl&gt; 3443914, 3338307, 3262594, 3181485, 3046141~
+$ CH4_emissions    &lt;dbl&gt; 427117.5, 419634.2, 416826.8, 411161.3, 406~
+$ NO2_emissions    &lt;dbl&gt; 219323.1, 216186.6, 213789.2, 214272.4, 216~
+$ GDP              &lt;dbl&gt; 10977298, 11321811, 11388518, 11517119, 117~
+$ Final_EI         &lt;dbl&gt; 92.24, 85.89, 84.28, 83.56, 77.43, 75.05, 7~
+$ Fuel_mix         &lt;dbl&gt; 2.80, 2.88, 2.78, 2.67, 2.62, 2.57, 2.54, 2~
+$ Carbon_intensity &lt;dbl&gt; 91.9, 91.5, 90.9, 89.5, 88.3, 88.7, 88.0, 8~
+$ Renewables_share &lt;dbl&gt; 14.421, 14.551, 16.023, 16.697, 17.463, 17.~
+$ Envt_taxes       &lt;dbl&gt; 259023.0, 271901.0, 278204.4, 284120.8, 291~
+$ Liquid_biofuels  &lt;dbl&gt; 29688.79, 28710.54, 28421.94, 29751.46, 291~
+$ Solar_thermal    &lt;dbl&gt; 34487.96, 37949.15, 40587.31, 43245.73, 454~
+$ Heat_pumps       &lt;dbl&gt; 31200.12, 43941.43, 48603.18, 53297.87, 799~</code></pre>
+</div>
+<p>Reviewing the dataframe showed that it contains all the listed datasets above as individual columns with data spanning from Year 2010 to 2018. Apart from overall greenhouse gas emissions <em>(GHG_emissions)</em>, there was also data on individual gases such as carbon dioxide <em>(CO2_emissions)</em>, methane <em>(CH4_emissions)</em> and nitrogen dioxide <em>(NO2_emissions)</em>. Further inspection also showed that:</p>
+<ul>
+<li>The dataframe contains data at both the regional and country levels. The regional levels (i.e. “European Union - 27 countries (from 2020)”, “European Union - 28 countries (2013-2020) and Iceland under the Kyoto Protocol” and “European Union - 28 countries (2013-2020)”) will not be used in this analysis. Hence, <code>filter()</code> of <strong>dplyr</strong> will be used to keep only the relevant country data.</li>
+<li>Germany was labelled with a long name of “Germany (until 1990 former territory of the FRG)” which will be recoded using a combination of <code>mutate()</code> and <code>recode()</code> of <strong>dplyr</strong>.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering and recoding the dataframe</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>GHG_EU_cleaned <span class="ot">&lt;-</span> GHG_EU <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># remove regional levels</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;European Union - 27 countries (from 2020)&quot;</span>, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;European Union - 28 countries (2013-2020) and Iceland under the Kyoto Protocol&quot;</span>, </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;European Union - 28 countries (2013-2020)&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># recode Germany label</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Country =</span> dplyr<span class="sc">::</span><span class="fu">recode</span>(Country, <span class="st">&quot;Germany (until 1990 former territory of the FRG)&quot;</span> <span class="ot">=</span> <span class="st">&quot;Germany&quot;</span>))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the cleaned dataframe</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(GHG_EU_cleaned)</span></code></pre></div>
+<pre><code>Rows: 297
+Columns: 15
+$ Country          &lt;chr&gt; &quot;Belgium&quot;, &quot;Belgium&quot;, &quot;Belgium&quot;, &quot;Belgium&quot;,~
+$ Year             &lt;dbl&gt; 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2~
+$ GHG_emissions    &lt;dbl&gt; 134315.86, 123782.51, 120922.50, 120949.31,~
+$ CO2_emissions    &lt;dbl&gt; 114561.03, 105046.06, 102428.75, 102674.40,~
+$ CH4_emissions    &lt;dbl&gt; 8794.36, 8530.82, 8392.13, 8236.66, 8118.96~
+$ NO2_emissions    &lt;dbl&gt; 7587.12, 6374.29, 6306.82, 6146.26, 6181.75~
+$ GDP              &lt;dbl&gt; 363140.1, 375967.8, 386174.7, 392880.0, 403~
+$ Final_EI         &lt;dbl&gt; 114.09, 103.22, 99.68, 102.20, 92.09, 91.67~
+$ Fuel_mix         &lt;dbl&gt; 1.39, 1.41, 1.37, 1.57, 1.65, 1.64, 1.54, 1~
+$ Carbon_intensity &lt;dbl&gt; 90.6, 87.7, 90.7, 86.9, 85.8, 90.1, 83.6, 8~
+$ Renewables_share &lt;dbl&gt; 6.002, 6.275, 7.089, 7.650, 8.043, 8.026, 8~
+$ Envt_taxes       &lt;dbl&gt; 8879.00, 9668.40, 9735.00, 9905.50, 10254.5~
+$ Liquid_biofuels  &lt;dbl&gt; 1374.000, 1374.000, 1105.800, 1105.145, 110~
+$ Solar_thermal    &lt;dbl&gt; 371.000, 420.000, 527.000, 570.000, 614.600~
+$ Heat_pumps       &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0~</code></pre>
+</div>
+<p>To determine if the data frame is a balanced or unbalanced panel data, a quick check of missing values was performed using <code>prepare_missing_values_graph()</code> of <strong>ExPanDaR</strong>. As the plot shows that there is some missing data, unbalanced panel data analysis will be performed.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ExPanDaR<span class="sc">::</span><span class="fu">prepare_missing_values_graph</span>(GHG_EU_cleaned, <span class="at">ts_id =</span> <span class="st">&quot;Year&quot;</span>)</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+</div>
+<h2 id="exploring-correlation-betwen-variables-in-the-panel-data">2.3 Exploring Correlation betwen Variables in the Panel Data</h2>
+<p>Prior to running the panel data regression, relationship between the variables in the dataframe was first investigated using <code>ggcorrmat()</code> of “ggstatsplot” to identify multicollinearity issues among the predictor variables.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ggstatsplot<span class="sc">::</span><span class="fu">ggcorrmat</span>(<span class="at">data =</span> GHG_EU_cleaned, </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">cor.vars =</span> <span class="fu">c</span>(GHG_emissions<span class="sc">:</span>Heat_pumps), </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">cor.vars.names =</span> <span class="fu">c</span>(<span class="st">&quot;GHG emissions&quot;</span>, <span class="st">&quot;CO2 emissions&quot;</span>, <span class="st">&quot;CH4 emissions&quot;</span>, <span class="st">&quot;NO2 emissions&quot;</span>, </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;GDP&quot;</span>, <span class="st">&quot;final energy intensity&quot;</span>, <span class="st">&quot;fuel mix&quot;</span>, <span class="st">&quot;carbon intensity&quot;</span>, </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;renewable energy share&quot;</span>, <span class="st">&quot;environmental taxes&quot;</span>, <span class="st">&quot;liquid biofuels&quot;</span>, </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;solar thermal&quot;</span>, <span class="st">&quot;heat pumps&quot;</span>), </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">&quot;Relationship between GHG and drivers/ mitigation variables&quot;</span>, </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">colors =</span> <span class="fu">divergingx_hcl</span>(<span class="dv">3</span>, <span class="at">palette =</span> <span class="st">&quot;TealRose&quot;</span>, <span class="at">rev =</span> <span class="cn">TRUE</span>)) <span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>), </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">10</span>))</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<p>Correlation matrix plot showed that <em>GDP</em> and <em>Environmental Taxes</em> were highly correlated with each other. As <em>GDP</em> has a stronger correlation with the outcome variables, this variable will be included instead of <em>Environmental Taxes</em>. For the purpose of this exercise, we will only focus on the outcome variable of <em>GHG_emissions</em>, along with the following list of predictor variables - <em>GDP</em>, <em>Final_EI</em>, <em>Fuel_mix</em>, <em>Carbon_intensity</em>, <em>Renewables_share</em>, <em>Liquid_biofuels</em>, <em>Solar_thermal</em> and <em>Heat_pumps</em>.</p>
+<p>The column <em>Envt_taxes</em> will be excluded from the dataframe using <code>select()</code> of <strong>dplyr</strong>. Column to dropped can be indicated with a minus sign as shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing the correlated variable of Environmental Taxes</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>GHG_EU_final <span class="ot">&lt;-</span> GHG_EU_cleaned <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Envt_taxes)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspecting the remaining columns</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(GHG_EU_final)</span></code></pre></div>
+<pre><code>Rows: 297
+Columns: 14
+$ Country          &lt;chr&gt; &quot;Belgium&quot;, &quot;Belgium&quot;, &quot;Belgium&quot;, &quot;Belgium&quot;,~
+$ Year             &lt;dbl&gt; 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2~
+$ GHG_emissions    &lt;dbl&gt; 134315.86, 123782.51, 120922.50, 120949.31,~
+$ CO2_emissions    &lt;dbl&gt; 114561.03, 105046.06, 102428.75, 102674.40,~
+$ CH4_emissions    &lt;dbl&gt; 8794.36, 8530.82, 8392.13, 8236.66, 8118.96~
+$ NO2_emissions    &lt;dbl&gt; 7587.12, 6374.29, 6306.82, 6146.26, 6181.75~
+$ GDP              &lt;dbl&gt; 363140.1, 375967.8, 386174.7, 392880.0, 403~
+$ Final_EI         &lt;dbl&gt; 114.09, 103.22, 99.68, 102.20, 92.09, 91.67~
+$ Fuel_mix         &lt;dbl&gt; 1.39, 1.41, 1.37, 1.57, 1.65, 1.64, 1.54, 1~
+$ Carbon_intensity &lt;dbl&gt; 90.6, 87.7, 90.7, 86.9, 85.8, 90.1, 83.6, 8~
+$ Renewables_share &lt;dbl&gt; 6.002, 6.275, 7.089, 7.650, 8.043, 8.026, 8~
+$ Liquid_biofuels  &lt;dbl&gt; 1374.000, 1374.000, 1105.800, 1105.145, 110~
+$ Solar_thermal    &lt;dbl&gt; 371.000, 420.000, 527.000, 570.000, 614.600~
+$ Heat_pumps       &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0~</code></pre>
+</div>
+<h2 id="panel-data-modelling">2.4 Panel Data Modelling</h2>
+<p>The <strong>plm</strong> package will be used for building the panel data models. Multiple arguments can be changed when using the <code>plm()</code> function of the package to allow us to estimate different basic panel models and introduce individual and/or time effects. For the random effects model, the estimator of the parameter can also be varied. The arguments which we will cover and their respective values are listed below.</p>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Argument</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>model</strong></td>
+<td style="text-align: left;">- the fixed effects model (“within”) <br> - the error components model (“random”) <br> * the pooling model is covered in a separate post</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>effect</strong></td>
+<td style="text-align: left;">- individual effect (“individual”) <br> - time effect (“time”) <br> - two-ways effects (“twoways”)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>random.method</strong></td>
+<td style="text-align: left;">- from Swamy and Arora (“swar”) <br> - from Wallace and Hussain (“walhus”) <br> - from Amemiya (“amemiya”) <br> - Nerlove (“nerlove”)</td>
+</tr>
+</tbody>
+</table>
+<p>Each of the model sub-sections below will display the code chunks to run the individual models, where each pane will show the variation for the relevant effects (and random.method for random effects model). All of these fields will be dynamic in the final R Shiny application.</p>
+<h3 id="visualising-panel-modelling-output">2.4.1 Visualising Panel Modelling Output</h3>
+<p>Apart from presenting the panel modelling results in tabular forms, visualisations will be explored using the <strong>ggstatsplot</strong> package. The code chunks to visualise the results of the models are shown in each pane.</p>
+<h3 id="fixed-effects-model">2.4.2 Fixed Effects Model</h3>
+<p>The fixed effects model takes into consideration individual differences over time. The model assumes correlation between the individuals’ error term and predictor variables, and no correlation between time-invariant and the individuals’ other characteristics. Model argument in the <code>plm()</code> of <strong>plm</strong> will be set as “within” to run the fixed effects model.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="panelset">
+<section id="individual-effect" class="panel-name panel">
+<h4 class="panel-name">Individual Effect</h4>
+<p>Set by using the effect argument to be “individual”, the individual effect captures effects that are specific to some panel unit but constant over time.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Running the model</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>GHG_fe_indiv <span class="ot">&lt;-</span> <span class="fu">plm</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                    Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> GHG_EU_final, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Year&quot;</span>), </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">model =</span> <span class="st">&quot;within&quot;</span>, <span class="at">effect =</span> <span class="st">&quot;individual&quot;</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating the dot-and-whisker plot for regression coefficient estimates</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>ggstatsplot<span class="sc">::</span><span class="fu">ggcoefstats</span>(<span class="at">x =</span> GHG_fe_indiv, <span class="at">output =</span> <span class="st">&quot;plot&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Final_EI&quot;</span> <span class="ot">=</span> <span class="st">&quot;final energy intensity&quot;</span>, </span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Fuel_mix&quot;</span> <span class="ot">=</span> <span class="st">&quot;fuel mix&quot;</span>, </span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Carbon_intensity&quot;</span> <span class="ot">=</span> <span class="st">&quot;carbon intensity&quot;</span>, </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Renewables_share&quot;</span> <span class="ot">=</span> <span class="st">&quot;renewable energy share&quot;</span>, </span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Liquid_biofuels&quot;</span> <span class="ot">=</span> <span class="st">&quot;liquid biofuels&quot;</span>, </span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Solar_thermal&quot;</span> <span class="ot">=</span> <span class="st">&quot;solar thermal&quot;</span>, </span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Heat_pumps&quot;</span> <span class="ot">=</span> <span class="st">&quot;heat pumps&quot;</span>))</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
+</div>
+<p>The detailed statistical output of the fixed effects model with individual effect is shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(GHG_fe_indiv)</span></code></pre></div>
+<pre><code>Oneway (individual) effect Within Model
+
+Call:
+plm(formula = GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+    Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps, 
+    data = GHG_EU_final, effect = &quot;individual&quot;, model = &quot;within&quot;, 
+    index = c(&quot;Country&quot;, &quot;Year&quot;))
+
+Unbalanced Panel: n = 30, T = 8-9, N = 269
+
+Residuals:
+     Min.   1st Qu.    Median   3rd Qu.      Max. 
+-42457.34  -2761.59   -203.14   2866.93  44102.44 
+
+Coefficients:
+                    Estimate  Std. Error t-value  Pr(&gt;|t|)    
+GDP              -1.0507e-01  1.2504e-02 -8.4029 4.471e-15 ***
+Final_EI         -9.0080e+01  1.1388e+02 -0.7910   0.42976    
+Fuel_mix         -1.2350e+03  1.2805e+03 -0.9645   0.33580    
+Carbon_intensity  3.3722e+02  1.8131e+02  1.8599   0.06417 .  
+Renewables_share -1.1591e+03  4.6913e+02 -2.4707   0.01421 *  
+Liquid_biofuels   2.7039e+00  3.1899e+00  0.8476   0.39751    
+Solar_thermal     7.9766e-01  2.1585e+00  0.3695   0.71206    
+Heat_pumps       -1.5836e-01  6.2466e-02 -2.5351   0.01190 *  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Total Sum of Squares:    4.2266e+10
+Residual Sum of Squares: 2.1551e+10
+R-Squared:      0.49012
+Adj. R-Squared: 0.40845
+F-statistic: 27.7557 on 8 and 231 DF, p-value: &lt; 2.22e-16</code></pre>
+</div>
+</section>
+<section id="time-effect" class="panel-name panel">
+<h4 class="panel-name">Time Effect</h4>
+<p>Set by using the effect argument to be “time”, the time effect captures effects that are specific to some time period but constant over panel units.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Running the model</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>GHG_fe_time <span class="ot">&lt;-</span> <span class="fu">plm</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                   Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> GHG_EU_final, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Year&quot;</span>), </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">model =</span> <span class="st">&quot;within&quot;</span>, <span class="at">effect =</span> <span class="st">&quot;time&quot;</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating the dot-and-whisker plot for regression coefficient estimates</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>ggstatsplot<span class="sc">::</span><span class="fu">ggcoefstats</span>(<span class="at">x =</span> GHG_fe_time, <span class="at">output =</span> <span class="st">&quot;plot&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Final_EI&quot;</span> <span class="ot">=</span> <span class="st">&quot;final energy intensity&quot;</span>, </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Fuel_mix&quot;</span> <span class="ot">=</span> <span class="st">&quot;fuel mix&quot;</span>, </span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Carbon_intensity&quot;</span> <span class="ot">=</span> <span class="st">&quot;carbon intensity&quot;</span>, </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Renewables_share&quot;</span> <span class="ot">=</span> <span class="st">&quot;renewable energy share&quot;</span>, </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Liquid_biofuels&quot;</span> <span class="ot">=</span> <span class="st">&quot;liquid biofuels&quot;</span>, </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Solar_thermal&quot;</span> <span class="ot">=</span> <span class="st">&quot;solar thermal&quot;</span>, </span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Heat_pumps&quot;</span> <span class="ot">=</span> <span class="st">&quot;heat pumps&quot;</span>))</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</div>
+<p>The detailed statistical output of the fixed effects model with time effect is shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(GHG_fe_time)</span></code></pre></div>
+<pre><code>Oneway (time) effect Within Model
+
+Call:
+plm(formula = GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+    Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps, 
+    data = GHG_EU_final, effect = &quot;time&quot;, model = &quot;within&quot;, index = c(&quot;Country&quot;, 
+        &quot;Year&quot;))
+
+Unbalanced Panel: n = 30, T = 8-9, N = 269
+
+Residuals:
+      Min.    1st Qu.     Median    3rd Qu.       Max. 
+-114909.67  -20611.11     462.18   16552.07  163071.93 
+
+Coefficients:
+                    Estimate  Std. Error t-value  Pr(&gt;|t|)    
+GDP               2.1256e-01  6.3568e-03 33.4385 &lt; 2.2e-16 ***
+Final_EI          1.0445e+02  8.5149e+01  1.2267 0.2210957    
+Fuel_mix          1.3751e+04  6.8356e+02 20.1168 &lt; 2.2e-16 ***
+Carbon_intensity  5.9675e+01  2.3322e+02  0.2559 0.7982617    
+Renewables_share -7.3854e+02  1.7705e+02 -4.1713 4.170e-05 ***
+Liquid_biofuels   1.9553e+01  3.2135e+00  6.0847 4.316e-09 ***
+Solar_thermal     7.0885e+00  1.3678e+00  5.1824 4.493e-07 ***
+Heat_pumps       -7.4596e-01  2.1455e-01 -3.4769 0.0005972 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Total Sum of Squares:    1.1008e+13
+Residual Sum of Squares: 3.3788e+11
+R-Squared:      0.96931
+Adj. R-Squared: 0.96736
+F-statistic: 994.756 on 8 and 252 DF, p-value: &lt; 2.22e-16</code></pre>
+</div>
+</section>
+<section id="twoways-effects" class="panel-name panel">
+<h4 class="panel-name">Twoways Effects</h4>
+<p>Set by using the effect argument to be “twoways”, the two-ways effect captures both the individual and time effects.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Running the model</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>GHG_fe_twoways <span class="ot">&lt;-</span> <span class="fu">plm</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                      Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">data =</span> GHG_EU_final, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Year&quot;</span>), </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">model =</span> <span class="st">&quot;within&quot;</span>, <span class="at">effect =</span> <span class="st">&quot;twoways&quot;</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating the dot-and-whisker plot for regression coefficient estimates</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>ggstatsplot<span class="sc">::</span><span class="fu">ggcoefstats</span>(<span class="at">x =</span> GHG_fe_twoways, <span class="at">output =</span> <span class="st">&quot;plot&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Final_EI&quot;</span> <span class="ot">=</span> <span class="st">&quot;final energy intensity&quot;</span>, </span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Fuel_mix&quot;</span> <span class="ot">=</span> <span class="st">&quot;fuel mix&quot;</span>, </span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Carbon_intensity&quot;</span> <span class="ot">=</span> <span class="st">&quot;carbon intensity&quot;</span>, </span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Renewables_share&quot;</span> <span class="ot">=</span> <span class="st">&quot;renewable energy share&quot;</span>, </span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Liquid_biofuels&quot;</span> <span class="ot">=</span> <span class="st">&quot;liquid biofuels&quot;</span>, </span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Solar_thermal&quot;</span> <span class="ot">=</span> <span class="st">&quot;solar thermal&quot;</span>, </span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Heat_pumps&quot;</span> <span class="ot">=</span> <span class="st">&quot;heat pumps&quot;</span>))</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-12-1.png" width="624" /></p>
+</div>
+<p>The detailed statistical output of the fixed effects model with two-ways effect is shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(GHG_fe_twoways)</span></code></pre></div>
+<pre><code>Twoways effects Within Model
+
+Call:
+plm(formula = GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+    Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps, 
+    data = GHG_EU_final, effect = &quot;twoways&quot;, model = &quot;within&quot;, 
+    index = c(&quot;Country&quot;, &quot;Year&quot;))
+
+Unbalanced Panel: n = 30, T = 8-9, N = 269
+
+Residuals:
+    Min.  1st Qu.   Median  3rd Qu.     Max. 
+-43655.7  -2513.8    222.0   2937.6  40990.0 
+
+Coefficients:
+                    Estimate  Std. Error t-value  Pr(&gt;|t|)    
+GDP                -0.112480    0.012345 -9.1117 &lt; 2.2e-16 ***
+Final_EI         -279.609538  151.894623 -1.8408  0.066978 .  
+Fuel_mix         -270.961391 1296.307724 -0.2090  0.834619    
+Carbon_intensity  429.393559  183.151106  2.3445  0.019933 *  
+Renewables_share -933.873206  530.500515 -1.7604  0.079717 .  
+Liquid_biofuels     1.739240    3.175787  0.5477  0.584476    
+Solar_thermal       2.301794    2.200535  1.0460  0.296686    
+Heat_pumps         -0.191680    0.062000 -3.0916  0.002244 ** 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Total Sum of Squares:    3.3113e+10
+Residual Sum of Squares: 1.9787e+10
+R-Squared:      0.40243
+Adj. R-Squared: 0.28184
+F-statistic: 18.7719 on 8 and 223 DF, p-value: &lt; 2.22e-16</code></pre>
+</div>
+</section>
+</div>
+<p>(Note: To run the model with the individual gases as the outcome variable, the term y in the formula argument of <code>plm()</code> can be replaced with the variable name of the other gases. Visualisation of regression coefficient estimates can be performed using the same code chunk and replacing the x value in the <code>ggcoefstats()</code>.)</p>
+<h3 id="random-effects-model">2.4.3 Random Effects Model</h3>
+<p>The random effects model builds on the fixed effects model, but considers unique errors to be uncorrelated with the regressors. The model assumes that the variations across individuals to be random and uncorrelated with the predictor variables. Model argument in the <code>plm()</code> of <strong>plm</strong> will be set as “random” to run the random effects model.</p>
+<p>The default for the effect argument (i.e. individual) will be used in the code chunks shown but the other two effects of time and twoways will be tested to check on the model feasibility.</p>
+<div class="panelset">
+<section id="swamy-arora" class="panel-name panel">
+<h4 class="panel-name">Swamy-Arora</h4>
+<p>Set by using the random.method argument to be “swar”, the Swamy-Arora estimator of the error component variances uses error terms from the fixed effects model and the residuals from the “between” regression model.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Running the model</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>GHG_re_swar <span class="ot">&lt;-</span> <span class="fu">plm</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                   Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> GHG_EU_final, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Year&quot;</span>), </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">model =</span> <span class="st">&quot;random&quot;</span>, <span class="at">effect =</span> <span class="st">&quot;individual&quot;</span>, <span class="at">random.method =</span> <span class="st">&quot;swar&quot;</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating the dot-and-whisker plot for regression coefficient estimates</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>ggstatsplot<span class="sc">::</span><span class="fu">ggcoefstats</span>(<span class="at">x =</span> GHG_re_swar, <span class="at">output =</span> <span class="st">&quot;plot&quot;</span>, <span class="at">palette =</span> <span class="st">&quot;Paired&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Final_EI&quot;</span> <span class="ot">=</span> <span class="st">&quot;final energy intensity&quot;</span>, </span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Fuel_mix&quot;</span> <span class="ot">=</span> <span class="st">&quot;fuel mix&quot;</span>, </span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Carbon_intensity&quot;</span> <span class="ot">=</span> <span class="st">&quot;carbon intensity&quot;</span>, </span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Renewables_share&quot;</span> <span class="ot">=</span> <span class="st">&quot;renewable energy share&quot;</span>, </span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Liquid_biofuels&quot;</span> <span class="ot">=</span> <span class="st">&quot;liquid biofuels&quot;</span>, </span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Solar_thermal&quot;</span> <span class="ot">=</span> <span class="st">&quot;solar thermal&quot;</span>, </span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Heat_pumps&quot;</span> <span class="ot">=</span> <span class="st">&quot;heat pumps&quot;</span>))</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-14-1.png" width="624" /></p>
+</div>
+<p>The detailed statistical output of the random effects model using Swamy-Arora estimator is shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(GHG_re_swar)</span></code></pre></div>
+<pre><code>Oneway (individual) effect Random Effect Model 
+   (Swamy-Arora&#39;s transformation)
+
+Call:
+plm(formula = GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+    Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps, 
+    data = GHG_EU_final, effect = &quot;individual&quot;, model = &quot;random&quot;, 
+    random.method = &quot;swar&quot;, index = c(&quot;Country&quot;, &quot;Year&quot;))
+
+Unbalanced Panel: n = 30, T = 8-9, N = 269
+
+Effects:
+                    var   std.dev share
+idiosyncratic  93293029      9659 0.095
+individual    892736699     29879 0.905
+theta:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.8864  0.8929  0.8929  0.8927  0.8929  0.8929 
+
+Residuals:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ -48396   -9617   -3473     -71    2097  127058 
+
+Coefficients:
+                    Estimate  Std. Error z-value  Pr(&gt;|z|)    
+(Intercept)       8.6529e+04  4.0103e+04  2.1576  0.030955 *  
+GDP               7.9382e-02  1.7649e-02  4.4980 6.861e-06 ***
+Final_EI          1.7900e+02  1.6714e+02  1.0710  0.284172    
+Fuel_mix          3.1379e+03  2.0714e+03  1.5148  0.129812    
+Carbon_intensity  2.7139e+02  3.3680e+02  0.8058  0.420365    
+Renewables_share -2.3663e+03  5.6548e+02 -4.1846 2.857e-05 ***
+Liquid_biofuels   2.7292e+01  5.8177e+00  4.6912 2.716e-06 ***
+Solar_thermal     1.8141e+00  3.3903e+00  0.5351  0.592585    
+Heat_pumps       -3.5387e-01  1.2767e-01 -2.7716  0.005577 ** 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Total Sum of Squares:    1.7658e+11
+Residual Sum of Squares: 1.0435e+11
+R-Squared:      0.40906
+Adj. R-Squared: 0.39088
+Chisq: 176.611 on 8 DF, p-value: &lt; 2.22e-16</code></pre>
+</div>
+<p>Both time effect and twoways effect models were not applicable when performing estimation of the variance of the error components using the Swamy-Arora estimator.</p>
+</section>
+<section id="wallace-hussain" class="panel-name panel">
+<h4 class="panel-name">Wallace-Hussain</h4>
+<p>Set by using the random.method argument to be “walhus”, the Wallace-Hussain estimator of the error component variances uses error terms from the pooled ordinary least squares (OLS) model.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Running the model</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>GHG_re_walh <span class="ot">&lt;-</span> <span class="fu">plm</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                   Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> GHG_EU_final, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Year&quot;</span>), </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">model =</span> <span class="st">&quot;random&quot;</span>, <span class="at">effect =</span> <span class="st">&quot;individual&quot;</span>, <span class="at">random.method =</span> <span class="st">&quot;walhus&quot;</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating the dot-and-whisker plot for regression coefficient estimates</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>ggstatsplot<span class="sc">::</span><span class="fu">ggcoefstats</span>(<span class="at">x =</span> GHG_re_walh, <span class="at">output =</span> <span class="st">&quot;plot&quot;</span>, <span class="at">palette =</span> <span class="st">&quot;Paired&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Final_EI&quot;</span> <span class="ot">=</span> <span class="st">&quot;final energy intensity&quot;</span>, </span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Fuel_mix&quot;</span> <span class="ot">=</span> <span class="st">&quot;fuel mix&quot;</span>, </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Carbon_intensity&quot;</span> <span class="ot">=</span> <span class="st">&quot;carbon intensity&quot;</span>, </span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Renewables_share&quot;</span> <span class="ot">=</span> <span class="st">&quot;renewable energy share&quot;</span>, </span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Liquid_biofuels&quot;</span> <span class="ot">=</span> <span class="st">&quot;liquid biofuels&quot;</span>, </span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Solar_thermal&quot;</span> <span class="ot">=</span> <span class="st">&quot;solar thermal&quot;</span>, </span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Heat_pumps&quot;</span> <span class="ot">=</span> <span class="st">&quot;heat pumps&quot;</span>))</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-16-1.png" width="624" /></p>
+</div>
+<p>The detailed statistical output of the random effects model using Wallace-Hussian estimator is shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(GHG_re_walh)</span></code></pre></div>
+<pre><code>Oneway (individual) effect Random Effect Model 
+   (Wallace-Hussain&#39;s transformation)
+
+Call:
+plm(formula = GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+    Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps, 
+    data = GHG_EU_final, effect = &quot;individual&quot;, model = &quot;random&quot;, 
+    random.method = &quot;walhus&quot;, index = c(&quot;Country&quot;, &quot;Year&quot;))
+
+Unbalanced Panel: n = 30, T = 8-9, N = 269
+
+Effects:
+                    var   std.dev share
+idiosyncratic 691216711     26291 0.451
+individual    842778598     29031 0.549
+theta:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.6951  0.7110  0.7110  0.7105  0.7110  0.7110 
+
+Residuals:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-102296   -9860   -1841     -43    6999  160971 
+
+Coefficients:
+                    Estimate  Std. Error z-value  Pr(&gt;|z|)    
+(Intercept)      -3.8026e+04  3.2859e+04 -1.1573  0.247168    
+GDP               1.7490e-01  1.1669e-02 14.9882 &lt; 2.2e-16 ***
+Final_EI          3.0786e+02  1.3040e+02  2.3608  0.018235 *  
+Fuel_mix          1.0126e+04  1.4496e+03  6.9855 2.839e-12 ***
+Carbon_intensity  5.0561e+02  3.1500e+02  1.6051  0.108463    
+Renewables_share -1.3148e+03  3.6487e+02 -3.6035  0.000314 ***
+Liquid_biofuels   3.0984e+01  5.4268e+00  5.7094 1.134e-08 ***
+Solar_thermal     3.3201e+00  2.4877e+00  1.3346  0.182009    
+Heat_pumps       -5.1307e-01  1.5693e-01 -3.2695  0.001077 ** 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Total Sum of Squares:    1.0148e+12
+Residual Sum of Squares: 1.6446e+11
+R-Squared:      0.83795
+Adj. R-Squared: 0.83296
+Chisq: 1330.24 on 8 DF, p-value: &lt; 2.22e-16</code></pre>
+</div>
+<p>Both time effect and twoways effect models could be used when performing estimation of the variance of the error components using the Wallace-Hussain estimator. The code chunks to run the models are shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Time Effect</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>GHG_re_time_walh <span class="ot">&lt;-</span> <span class="fu">plm</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                        Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> GHG_EU_final, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Year&quot;</span>), </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">model =</span> <span class="st">&quot;random&quot;</span>, <span class="at">effect =</span> <span class="st">&quot;time&quot;</span>, <span class="at">random.method =</span> <span class="st">&quot;walhus&quot;</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Two-ways Effect</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>GHG_re_twoways_walh <span class="ot">&lt;-</span> <span class="fu">plm</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>                           Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>                           <span class="at">data =</span> GHG_EU_final, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Year&quot;</span>), </span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>                           <span class="at">model =</span> <span class="st">&quot;random&quot;</span>, <span class="at">effect =</span> <span class="st">&quot;twoways&quot;</span>, <span class="at">random.method =</span> <span class="st">&quot;walhus&quot;</span>)</span></code></pre></div>
+</div>
+</section>
+<section id="amemiya" class="panel-name panel">
+<h4 class="panel-name">Amemiya</h4>
+<p>Set by using the random.method argument to be “amemiya”, the Amemiya estimator of the error component variances uses error terms from the fixed effect model and estimated individual-specific component.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Running the model</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>GHG_re_amemiya <span class="ot">&lt;-</span> <span class="fu">plm</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                      Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">data =</span> GHG_EU_final, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Year&quot;</span>), </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">model =</span> <span class="st">&quot;random&quot;</span>, <span class="at">effect =</span> <span class="st">&quot;individual&quot;</span>, <span class="at">random.method =</span> <span class="st">&quot;amemiya&quot;</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating the dot-and-whisker plot for regression coefficient estimates</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>ggstatsplot<span class="sc">::</span><span class="fu">ggcoefstats</span>(<span class="at">x =</span> GHG_re_amemiya, <span class="at">output =</span> <span class="st">&quot;plot&quot;</span>, <span class="at">palette =</span> <span class="st">&quot;Paired&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Final_EI&quot;</span> <span class="ot">=</span> <span class="st">&quot;final energy intensity&quot;</span>, </span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Fuel_mix&quot;</span> <span class="ot">=</span> <span class="st">&quot;fuel mix&quot;</span>, </span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Carbon_intensity&quot;</span> <span class="ot">=</span> <span class="st">&quot;carbon intensity&quot;</span>, </span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Renewables_share&quot;</span> <span class="ot">=</span> <span class="st">&quot;renewable energy share&quot;</span>, </span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Liquid_biofuels&quot;</span> <span class="ot">=</span> <span class="st">&quot;liquid biofuels&quot;</span>, </span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Solar_thermal&quot;</span> <span class="ot">=</span> <span class="st">&quot;solar thermal&quot;</span>, </span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Heat_pumps&quot;</span> <span class="ot">=</span> <span class="st">&quot;heat pumps&quot;</span>))</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-19-1.png" width="624" /></p>
+</div>
+<p>The detailed statistical output of the random effects model using Amemiya estimator is shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(GHG_re_amemiya)</span></code></pre></div>
+<pre><code>Oneway (individual) effect Random Effect Model 
+   (Amemiya&#39;s transformation)
+
+Call:
+plm(formula = GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+    Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps, 
+    data = GHG_EU_final, effect = &quot;individual&quot;, model = &quot;random&quot;, 
+    random.method = &quot;amemiya&quot;, index = c(&quot;Country&quot;, &quot;Year&quot;))
+
+Unbalanced Panel: n = 30, T = 8-9, N = 269
+
+Effects:
+                    var   std.dev share
+idiosyncratic 9.329e+07 9.659e+03 0.001
+individual    7.283e+10 2.699e+05 0.999
+theta:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.9873  0.9881  0.9881  0.9880  0.9881  0.9881 
+
+Residuals:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ -36973   -3943   -1564     -22    2599   48881 
+
+Coefficients:
+                    Estimate  Std. Error z-value  Pr(&gt;|z|)    
+(Intercept)       2.0533e+05  5.5810e+04  3.6791 0.0002341 ***
+GDP              -9.8667e-02  1.2421e-02 -7.9438  1.96e-15 ***
+Final_EI         -9.2171e+01  1.1294e+02 -0.8161 0.4144452    
+Fuel_mix         -1.1276e+03  1.2762e+03 -0.8836 0.3769107    
+Carbon_intensity  3.2320e+02  1.8112e+02  1.7844 0.0743576 .  
+Renewables_share -1.2897e+03  4.6252e+02 -2.7883 0.0052978 ** 
+Liquid_biofuels   3.6181e+00  3.1850e+00  1.1360 0.2559704    
+Solar_thermal     8.8161e-01  2.1500e+00  0.4101 0.6817683    
+Heat_pumps       -1.6448e-01  6.2528e-02 -2.6305 0.0085263 ** 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Total Sum of Squares:    4.3933e+10
+Residual Sum of Squares: 2.4321e+10
+R-Squared:      0.4464
+Adj. R-Squared: 0.42937
+Chisq: 209.47 on 8 DF, p-value: &lt; 2.22e-16</code></pre>
+</div>
+<p>Both time effect and twoways effect models could also be used when performing estimation of the variance of the error components using the Amemiya estimator. The code chunks to run the models are shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Time Effect</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>GHG_re_time_amem <span class="ot">&lt;-</span> <span class="fu">plm</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                        Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> GHG_EU_final, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Year&quot;</span>), </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">model =</span> <span class="st">&quot;random&quot;</span>, <span class="at">effect =</span> <span class="st">&quot;time&quot;</span>, <span class="at">random.method =</span> <span class="st">&quot;amemiya&quot;</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Two-ways Effect</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>GHG_re_twoways_amem <span class="ot">&lt;-</span> <span class="fu">plm</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>                           Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>                           <span class="at">data =</span> GHG_EU_final, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Year&quot;</span>), </span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>                           <span class="at">model =</span> <span class="st">&quot;random&quot;</span>, <span class="at">effect =</span> <span class="st">&quot;twoways&quot;</span>, <span class="at">random.method =</span> <span class="st">&quot;amemiya&quot;</span>)</span></code></pre></div>
+</div>
+</section>
+<section id="nerlove" class="panel-name panel">
+<h4 class="panel-name">Nerlove</h4>
+<p>Set by using the random.method argument to be “nerlove”, the Nerlove estimator of the error component variances uses error terms and estimated individual-specific component from the fixed effect model as well.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Running the model</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>GHG_re_nerlove <span class="ot">&lt;-</span> <span class="fu">plm</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                      Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">data =</span> GHG_EU_final, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Year&quot;</span>), </span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">model =</span> <span class="st">&quot;random&quot;</span>, <span class="at">effect =</span> <span class="st">&quot;individual&quot;</span>, <span class="at">random.method =</span> <span class="st">&quot;nerlove&quot;</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating the dot-and-whisker plot for regression coefficient estimates</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>ggstatsplot<span class="sc">::</span><span class="fu">ggcoefstats</span>(<span class="at">x =</span> GHG_re_nerlove, <span class="at">output =</span> <span class="st">&quot;plot&quot;</span>, <span class="at">palette =</span> <span class="st">&quot;Paired&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Final_EI&quot;</span> <span class="ot">=</span> <span class="st">&quot;final energy intensity&quot;</span>, </span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Fuel_mix&quot;</span> <span class="ot">=</span> <span class="st">&quot;fuel mix&quot;</span>, </span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Carbon_intensity&quot;</span> <span class="ot">=</span> <span class="st">&quot;carbon intensity&quot;</span>, </span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Renewables_share&quot;</span> <span class="ot">=</span> <span class="st">&quot;renewable energy share&quot;</span>, </span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Liquid_biofuels&quot;</span> <span class="ot">=</span> <span class="st">&quot;liquid biofuels&quot;</span>, </span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Solar_thermal&quot;</span> <span class="ot">=</span> <span class="st">&quot;solar thermal&quot;</span>, </span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Heat_pumps&quot;</span> <span class="ot">=</span> <span class="st">&quot;heat pumps&quot;</span>))</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-22-1.png" width="624" /></p>
+</div>
+<p>The detailed statistical output of the random effects model using Nerlove’s estimator is shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(GHG_re_nerlove)</span></code></pre></div>
+<pre><code>Oneway (individual) effect Random Effect Model 
+   (Nerlove&#39;s transformation)
+
+Call:
+plm(formula = GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity + 
+    Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps, 
+    data = GHG_EU_final, effect = &quot;individual&quot;, model = &quot;random&quot;, 
+    random.method = &quot;nerlove&quot;, index = c(&quot;Country&quot;, &quot;Year&quot;))
+
+Unbalanced Panel: n = 30, T = 8-9, N = 269
+
+Effects:
+                    var   std.dev share
+idiosyncratic 8.011e+07 8.951e+03 0.001
+individual    7.304e+10 2.703e+05 0.999
+theta:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.9883  0.9890  0.9890  0.9889  0.9890  0.9890 
+
+Residuals:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ -37304   -3841   -1481     -20    2535   48544 
+
+Coefficients:
+                    Estimate  Std. Error z-value  Pr(&gt;|z|)    
+(Intercept)       2.0536e+05  5.8897e+04  3.4868 0.0004888 ***
+GDP              -9.9569e-02  1.2335e-02 -8.0723 6.901e-16 ***
+Final_EI         -9.1952e+01  1.1218e+02 -0.8196 0.4124170    
+Fuel_mix         -1.1427e+03  1.2667e+03 -0.9020 0.3670353    
+Carbon_intensity  3.2511e+02  1.7972e+02  1.8090 0.0704568 .  
+Renewables_share -1.2717e+03  4.5980e+02 -2.7659 0.0056773 ** 
+Liquid_biofuels   3.4897e+00  3.1607e+00  1.1041 0.2695567    
+Solar_thermal     8.7013e-01  2.1343e+00  0.4077 0.6835042    
+Heat_pumps       -1.6361e-01  6.2027e-02 -2.6378 0.0083453 ** 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Total Sum of Squares:    4.3693e+10
+Residual Sum of Squares: 2.3931e+10
+R-Squared:      0.45229
+Adj. R-Squared: 0.43544
+Chisq: 214.545 on 8 DF, p-value: &lt; 2.22e-16</code></pre>
+</div>
+<p>Both time effect and twoways effect models could also be used when performing estimation of the variance of the error components using the Nerlove’s estimator. The code chunks to run the models are shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Time Effect</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>GHG_re_time_nerl <span class="ot">&lt;-</span> <span class="fu">plm</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                        Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> GHG_EU_final, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Year&quot;</span>), </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">model =</span> <span class="st">&quot;random&quot;</span>, <span class="at">effect =</span> <span class="st">&quot;time&quot;</span>, <span class="at">random.method =</span> <span class="st">&quot;nerlove&quot;</span>)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Two-ways Effect</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>GHG_re_twoways_nerl <span class="ot">&lt;-</span> <span class="fu">plm</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>                           Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>                           <span class="at">data =</span> GHG_EU_final, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Year&quot;</span>), </span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>                           <span class="at">model =</span> <span class="st">&quot;random&quot;</span>, <span class="at">effect =</span> <span class="st">&quot;twoways&quot;</span>, <span class="at">random.method =</span> <span class="st">&quot;nerlove&quot;</span>)</span></code></pre></div>
+</div>
+</section>
+</div>
+<p>(Note: Likewise, to run the model with the individual gases as the outcome variable, the term y in the formula argument of <code>plm()</code> can be replaced with the variable name of the other gases. Visualisation of regression coefficient estimates can be performed using the same code chunk and replacing the x value in the <code>ggcoefstats()</code>.)</p>
+<h2 id="tests-for-assumptions">2.5 Tests for Assumptions</h2>
+<p>Additional diagnostic tests were performed to check if the panel dataset complies with the various assumptions. The diagnostic tests that would be covered include Test of Normality, Test of Serial Correlation and Test for Heteroskedasticity. For the tests, the fixed effect model is used for illustration.</p>
+<h3 id="test-of-normality">2.5.1 Test of Normality</h3>
+<p>Regressions are by default assumed to have errors that are normally distributed. To detect if there is any violation of normality assumptions, there are three different visual representations. Prior to generating the charts visualised using functions of <strong>ggplot2</strong>, a dataframe containing the residuals and fitted values was created.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>resfit_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">index =</span> <span class="fu">attr</span>(<span class="fu">resid</span>(GHG_fe_indiv), <span class="st">&quot;index&quot;</span>), </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">residual =</span> <span class="fu">resid</span>(GHG_fe_indiv), </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fitted =</span> <span class="fu">fitted</span>(GHG_fe_indiv)) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">country =</span> index.Country, <span class="at">year =</span> index.Year)</span></code></pre></div>
+</div>
+<div class="panelset">
+<section id="residual-qq-plot" class="panel-name panel">
+<h4 class="panel-name">Residual QQ Plot</h4>
+<p>The residual QQ plot can be used to visually assess if the residuals are normally distributed (i.e. data points closely following the straight diagonal line). The plot can be generated using <code>stat_qq()</code> and <code>stat_gg_line()</code> of <strong>ggplot2</strong>, setting the sample argument as the residual column. To create individual plots for each country, <code>facet_wrap()</code> was used.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data =</span> resfit_df, <span class="fu">aes</span>(<span class="at">sample =</span> residual)) <span class="sc">+</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>(<span class="at">color =</span> <span class="st">&quot;cornflowerblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>(<span class="at">color =</span> <span class="st">&quot;darkslategray&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> country) <span class="sc">+</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Residual QQ Plot by Country&quot;</span>)</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-26-1.png" width="624" /></p>
+</div>
+</section>
+<section id="residual-vs-fitted-value-plot" class="panel-name panel">
+<h4 class="panel-name">Residual vs Fitted Value Plot</h4>
+<p>The residual vs fitted value plot allows for visual inspection of normality assumption violation by seeing if the residuals spread randomly around the zero line forming an approximate horizontal band and there is no visible outliers. The plot can be generated using <code>geom_point()</code> of <strong>ggplot2</strong>, setting the x and y arguments as the fitted and residual columns respectively.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data =</span> resfit_df) <span class="sc">+</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fitted, <span class="at">y =</span> residual), <span class="at">color =</span> <span class="st">&quot;cornflowerblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;darkslategray&quot;</span>)  <span class="sc">+</span> </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> country) <span class="sc">+</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Residual vs Fitted Value Plot by Country&quot;</span>)</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-27-1.png" width="624" /></p>
+</div>
+</section>
+<section id="residual-histogram" class="panel-name panel">
+<h4 class="panel-name">Residual Histogram</h4>
+<p>The residual histogram is also another alternative to visually detect if the residuals are normally distributed (i.e. distribution of histogram follows a normal distribution curve). The histogram can be generated using <code>geom_histogram()</code> of <strong>ggplot2</strong>, setting the x argument as the residual column.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data =</span> resfit_df) <span class="sc">+</span> </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> residual), <span class="at">fill =</span> <span class="st">&quot;cornflowerblue&quot;</span>)  <span class="sc">+</span> </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> country) <span class="sc">+</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Residual Histogram by Country&quot;</span>)</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-28-1.png" width="624" /></p>
+</div>
+</section>
+</div>
+<h3 id="test-of-serial-correlation">2.5.2 Test of Serial Correlation</h3>
+<p>Test of serial correlation is performed to identify the presence of time-invariant error component, or typically the presence of idiosyncratic error terms.</p>
+<div class="panelset">
+<section id="unobserved-effect-test" class="panel-name panel">
+<h4 class="panel-name">Unobserved Effect Test</h4>
+<p>The Wooldridge’s Test for Unobserved Effects in Panel Models is a semi-parametric test to detect if there are unobserved effects in panel models. The null hypothesis assumes that the covariance matrix of the residuals is equal to its diagonal.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>plm<span class="sc">::</span><span class="fu">pwtest</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>            Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> GHG_EU_final)</span></code></pre></div>
+<pre><code>
+    Wooldridge&#39;s test for unobserved individual effects
+
+data:  formula
+z = 2.7575, p-value = 0.005824
+alternative hypothesis: unobserved effect</code></pre>
+</div>
+</section>
+<section id="locally-robust-tests" class="panel-name panel">
+<h4 class="panel-name">Locally Robust Tests</h4>
+<p>The test is a joint Lagrange Multiplier test for random effects and serial correlation. The null hypothesis assumes normality and homoscedasticity of the idiosyncratic errors.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plm<span class="sc">::</span><span class="fu">pbsytest</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>              Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> GHG_EU_final)</span></code></pre></div>
+<pre><code>
+    Bera, Sosa-Escudero and Yoon locally robust test - unbalanced
+    panel
+
+data:  formula
+chisq = 107.03, df = 1, p-value &lt; 2.2e-16
+alternative hypothesis: AR(1) errors sub random effects</code></pre>
+</div>
+</section>
+<section id="breusch-godfreywooldridge-test" class="panel-name panel">
+<h4 class="panel-name">Breusch-Godfrey/Wooldridge Test</h4>
+<p>The Breusch-Godfrey/Wooldridge Test is a general serial correlation test that is applicable for random effects, fixed effects or pooling models. Higher-order serial correlation can also be tested by setting the order argument. The null hypothesis assumes no serial correlation in idiosyncratic errors.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>plm<span class="sc">::</span><span class="fu">pbgtest</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>             Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> GHG_EU_final)</span></code></pre></div>
+<pre><code>
+    Breusch-Godfrey/Wooldridge test for serial correlation in
+    panel models
+
+data:  GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity +     Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps
+chisq = 127.89, df = 8, p-value &lt; 2.2e-16
+alternative hypothesis: serial correlation in idiosyncratic errors</code></pre>
+</div>
+</section>
+<section id="correlogram-of-pacf" class="panel-name panel">
+<h4 class="panel-name">Correlogram of PACF</h4>
+<p>Plotting the correlogram of the partial autocorrelation function allows for visual detection of the correlation of a variable with itself at different time lags. Having any significant spike that extends beyond the significant limits indicate the presence of correlation for that lag.</p>
+<p>(Note: As <code>facet_wrap()</code> of <strong>ggplot2</strong> is not supported by <strong>bayesforecast</strong>, individual datasets by country need to be created to plot the PACF plot for each country. The code for one country is shown below.)</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>belgium_res <span class="ot">&lt;-</span> resfit_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">&quot;Belgium&quot;</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>bayesforecast<span class="sc">::</span><span class="fu">ggpacf</span>(belgium_res<span class="sc">$</span>residual) <span class="sc">+</span> </span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;PACF plot for Belgium&quot;</span>)</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-32-1.png" width="624" /></p>
+</div>
+</section>
+</div>
+<h3 id="test-for-heteroscedasticity">2.5.3 Test for Heteroscedasticity</h3>
+<p>Regression assumes homoscedasticity among residuals (i.e. all residuals are drawn from a population with a constant variance). If heteroscedasticity is detected, robust covariance matrix can be used to account for it.</p>
+<div class="panelset">
+<section id="breusch-pagan-test" class="panel-name panel">
+<h4 class="panel-name">Breusch-Pagan Test</h4>
+<p>The Breusch-Pagan Test is a statistical test for heteroscedasticity, where the null hypothesis assumes presence of heteroscedasticity.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>lmtest<span class="sc">:::</span><span class="fu">bptest</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>                Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps <span class="sc">+</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>                <span class="fu">factor</span>(Country), <span class="at">data =</span> GHG_EU_final, <span class="at">studentize =</span> F)</span></code></pre></div>
+<pre><code>
+    Breusch-Pagan test
+
+data:  GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity +     Renewables_share + Liquid_biofuels + Solar_thermal + Heat_pumps +     factor(Country)
+BP = 811.76, df = 37, p-value &lt; 2.2e-16</code></pre>
+</div>
+</section>
+<section id="residual-vs-fitted-value-plot-1" class="panel-name panel">
+<h4 class="panel-name">Residual vs Fitted Value Plot</h4>
+<p>The residual vs fitted value plot can also be used for detecting heteroscedasticity visually. If the variance of the residuals increases as the fitted values increases (i.e. cone shaped pattern), it indicates the presence of heteroskedasticity.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="at">data =</span> resfit_df) <span class="sc">+</span> </span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fitted, <span class="at">y =</span> residual), <span class="at">color =</span> <span class="st">&quot;cornflowerblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;darkslategray&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Residual vs Fitted Value Plot&quot;</span>)</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-34-1.png" width="624" /></p>
+</div>
+</section>
+</div>
+<h2 id="model-selection">2.6 Model Selection</h2>
+<p>When running panel regression models, there are three key models to select - fixed effect model, random effect model and pooled OLS model. The following tests below helps to identify the suitable model.</p>
+<h3 id="pooled-ols-or-fixed-effect-model">2.6.1 Pooled OLS or Fixed Effect Model</h3>
+<p><strong>Statistical Test: Test of Poolability</strong></p>
+<p>Tests of poolability performed using the F test of stability (or Chow test) for the coefficients can be used to determine if pooled effect or fixed effect is more appropriate. The test can be done using <code>pooltest()</code> from <strong>plm</strong>. The null hypothesis is the pooled effect model.</p>
+<p>(Note: Due to insufficient number of observations in the current dataset, the maximum number of x variables that can be included is 6 variables. This limitation needs to be accounted for when building the R Shiny application. For testing, variables with least missing data were kept in the test i.e. GDP, final energy intensity, fuel mix, carbon intensity, solar thermal and heat pumps).</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>plm<span class="sc">::</span><span class="fu">pooltest</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> GHG_EU_final, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Year&quot;</span>), <span class="at">model =</span> <span class="st">&quot;within&quot;</span>)</span></code></pre></div>
+<pre><code>
+    F statistic
+
+data:  GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity +  ...
+F = 16.54, df1 = 180, df2 = 62, p-value &lt; 2.2e-16
+alternative hypothesis: unstability</code></pre>
+</div>
+<p><strong>Visualisation: Scatterplot with OLS Regression</strong></p>
+<p>To visualise poolability, the scatterplot for each country and the OLS regression line is plotted in one chart to display comparison of the trends. The combined plot was generated using <code>scatterplot()</code> of <strong>car</strong> and <code>abline()</code> of <strong>graphics</strong>. For the purpose of this exercise, only GDP was used as the predictor variable.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Running the Pooled OLS model</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>olsfitted <span class="ot">&lt;-</span> <span class="fu">lm</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> <span class="fu">factor</span>(Country) <span class="sc">-</span><span class="dv">1</span>, <span class="at">data =</span> GHG_EU_final)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating of dataframe for subsequent visualisation</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>GHG_EU_final<span class="sc">$</span>index <span class="ot">&lt;-</span> <span class="fu">rownames</span>(GHG_EU_final) <span class="co"># adding index for matching</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>pooldf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">yhat =</span> olsfitted<span class="sc">$</span>fitted.values)</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>pooldf <span class="ot">&lt;-</span> pooldf <span class="sc">%&gt;%</span> </span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(<span class="at">index =</span> <span class="fu">rownames</span>(pooldf)) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(GHG_EU_final, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;index&quot;</span>))</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating the plot</span></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">scatterplot</span>(yhat <span class="sc">~</span> GDP<span class="sc">|</span>Country, <span class="at">data =</span> pooldf, <span class="at">xlab =</span> <span class="st">&quot;GDP&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Fitted Values&quot;</span>, <span class="at">smooth =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>graphics<span class="sc">::</span><span class="fu">abline</span>(<span class="fu">lm</span>(GHG_emissions <span class="sc">~</span> GDP, <span class="at">data =</span> pooldf), <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;darkslategray&quot;</span>)</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-36-1.png" width="960" /></p>
+</div>
+<p>The current visualisation might not be easy for detecting poolability and hence will recommend to keep to the statistical test instead.</p>
+<h3 id="fixed-effect-or-random-effect-model">2.6.2 Fixed Effect or Random Effect Model</h3>
+<p><strong>Statistical Test: Hausman Test</strong></p>
+<p>The Hausman Test, which evaluates if the unique errors are correlated with the predictor variables, is performed to determine if the fixed effect or random effect model should be used. The test can be done using <code>phtest()</code> from <strong>plm</strong>, with the first argument being a fixed effect model and the second argument a random effect model. The null hypothesis assumes that the preferred model is random effects.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">phtest</span>(GHG_fe_indiv, GHG_re_amemiya)</span></code></pre></div>
+<pre><code>
+    Hausman Test
+
+data:  GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity +  ...
+chisq = 33.723, df = 8, p-value = 4.561e-05
+alternative hypothesis: one model is inconsistent</code></pre>
+</div>
+<p><strong>Visualisation: Heterogeneity across Years and Countries</strong></p>
+<p>To visually assess if fixed or random effects is more appropriate, the means and error bars for each year/ country can be plotted to determine presence of heterogeneity across years and countries. The plot was generated using `</p>
+<p>visualise poolability, the scatterplot for each country and the OLS regression line is plotted in one chart to display comparison of the trends. The combined plot will be generated using <code>scatterplot()</code> of <strong>car</strong> and <code>abline()</code> of <strong>graphics</strong>. For the purpose of this exercise, only GDP will be used as the predictor variable.</p>
+<p>(Note: Due to the large number of countries, the heterogeneity plot across countries will appear overly cluttered when all countries were included. Should the plot be included in the Shiny application, selection of countries up to a max of 10 should be allowed.)</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Heterogeneity across years</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>gplots<span class="sc">::</span><span class="fu">plotmeans</span>(GHG_emissions <span class="sc">~</span> Year, <span class="at">data =</span> GHG_EU_final, </span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">main=</span><span class="st">&quot;Heterogeineity across years&quot;</span>, </span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">col =</span> <span class="st">&quot;deepskyblue3&quot;</span>, <span class="at">barcol =</span> <span class="st">&quot;cornflowerblue&quot;</span>, </span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ylab =</span> <span class="st">&quot;GHG emissions&quot;</span>)</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-38-1.png" width="624" /></p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Heterogeneity across countries</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>GHG_subset <span class="ot">&lt;-</span> GHG_EU_final <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Belgium&quot;</span>, <span class="st">&quot;Denmark&quot;</span>, <span class="st">&quot;Greece&quot;</span>, <span class="st">&quot;Austria&quot;</span>, </span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">&quot;Finland&quot;</span>, <span class="st">&quot;Sweden&quot;</span>, <span class="st">&quot;Switzerland&quot;</span>))</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>gplots<span class="sc">::</span><span class="fu">plotmeans</span>(GHG_emissions <span class="sc">~</span> Country, <span class="at">data =</span> GHG_subset, </span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">main=</span><span class="st">&quot;Heterogeineity across countries&quot;</span>, </span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">col =</span> <span class="st">&quot;deepskyblue3&quot;</span>, <span class="at">barcol =</span> <span class="st">&quot;cornflowerblue&quot;</span>, </span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ylab =</span> <span class="st">&quot;GHG emissions&quot;</span>)</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-38-2.png" width="624" /></p>
+</div>
+<h3 id="random-effect-or-pooled-ols-model">2.6.3 Random Effect or Pooled OLS Model</h3>
+<p><strong>Statistical Test: Lagrange Multiplier Test</strong></p>
+<p>The Lagrange Multiplier Test can be used to determine if a fixed effect model or a pooled OLS model is more appropriate. The test can be done using <code>plmtest()</code> from <strong>plm</strong>. The null hypothesis assumes that the variances across entities is zero, meaning no significant difference across individuals (i.e. no panel effect).</p>
+<p>The first argument of the function is a pooling model. The type <em>(“honda”, “bp”, “kw”, “ghm”)</em> and effects <em>(“individual”, “time”, “twoways”)</em> arguments can be added to indicate the type of test to be computed and the effects tested respectively. Since effects argument has been included in the models, the argument will follow according to the calibrated model specifications. For the purpose of this exercise, the calibrated model is assumed to have individual effects and only Honda test (type = “honda”) will be tested. Other tests can be run by changing the type argument.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Running the pooled OLS model</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>poolmodel <span class="ot">&lt;-</span> <span class="fu">plm</span>(GHG_emissions <span class="sc">~</span> GDP <span class="sc">+</span> Final_EI <span class="sc">+</span> Fuel_mix <span class="sc">+</span> Carbon_intensity <span class="sc">+</span> </span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>                 Renewables_share <span class="sc">+</span> Liquid_biofuels <span class="sc">+</span> Solar_thermal <span class="sc">+</span> Heat_pumps,</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> GHG_EU_final, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;Country&quot;</span>, <span class="st">&quot;Year&quot;</span>), </span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">model =</span> <span class="st">&quot;pooling&quot;</span>)</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Lagrange Multiplier Test</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>plm<span class="sc">::</span><span class="fu">plmtest</span>(poolmodel, <span class="at">effect=</span><span class="st">&quot;individual&quot;</span>, <span class="at">type=</span><span class="st">&quot;honda&quot;</span>)</span></code></pre></div>
+<pre><code>
+    Lagrange Multiplier Test - (Honda) for unbalanced panels
+
+data:  GHG_emissions ~ GDP + Final_EI + Fuel_mix + Carbon_intensity +  ...
+normal = 15.036, p-value &lt; 2.2e-16
+alternative hypothesis: significant effects</code></pre>
+</div>
+<p><strong>Visualisation: Variance Plots</strong></p>
+<p>To explore visualising the variances across entities, the box/violin plot for group comparisons in within-subjects will be used. The plot was generated using <code>ggwithinstats()</code> of <strong>ggstatsplot</strong>. For the purpose of this exercise, the earlier dataset of GHG_subset with selected countries will be used.</p>
+<p>(Note: Due to the large number of countries, the plot across countries will appear overly cluttered when all countries were included. Should the plot be included in the Shiny application, selection of countries up to a max of 10 should be allowed.)</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>ggstatsplot<span class="sc">::</span><span class="fu">ggwithinstats</span>(<span class="at">data =</span> GHG_subset, <span class="at">x =</span> Country, <span class="at">y =</span> GHG_emissions, </span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">type =</span> <span class="st">&quot;np&quot;</span>, <span class="at">pairwise.comparisons =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="panel-data-analysis_files/figure-html5/unnamed-chunk-40-1.png" width="624" /></p>
+</div>
+<h1 id="final-components-of-visualisation">3.0 Final Components of Visualisation</h1>
+<p>Several visualisation ideas were initially explored but not all intended visualisations could be eventually created after the tests performed in this exercise. Following all the exploration done in the sections above, the final panel model module will include the following components below.</p>
+<ul>
+<li>Calibration of specifications of panel data model: model-related (i.e. model, effect) and data-related (i.e. year, country, predictor and outcome variables)</li>
+<li>Output of panel models in statistical form with regression coefficient estimates plot</li>
+<li>Tests for violation of regression assumptions</li>
+<li>Model selection between fixed effect, random effect and OLS models</li>
+</ul>
+<h2 id="storyboard-for-proposed-design">3.1 Storyboard for Proposed Design</h2>
+<p>A draft proposed layout of the module in the dashboard can be found below. Each of the pane will follow a similar layout of selecting the relevant specifications on the left panel and displaying the visualisation along with the statistical output on the right area.</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="images/sketch_2.JPG" width="457" /></p>
+</div>
+<h2 id="interactivity">3.2 Interactivity</h2>
+<p>The subsequent R Shiny application built will help to introduce interactivity to the model calibration with the following selection options offered to the users.</p>
+<ul>
+<li>Parameters for inclusion in the model which cover Year (between 2010 to 2018) and Countries (among the 33 countries)</li>
+<li>Predictor variables (type of greenhouse gases) and outcome variables of interest to be studied</li>
+<li>Model (fixed effect or random effect) along with other model specifications that include the effects (individual/ time/ two-ways) and the estimator for the random effect model (among the 4 estimators)</li>
+</ul>
+<p>Instead of having only standard specifications for the models, the users can now decide on their preferred models and parameters to generate the relevant panel models then interactively modify the models and parameters, should they hope to explore other model types and specifications.</p>
+<h2 id="reflections-on-visualisation-and-interactivity">3.3 Reflections on Visualisation and Interactivity</h2>
+<p><strong>Visualisation</strong></p>
+<p>Regression and validation test outputs are often presented in tabular forms containing the statistical outputs making it less interesting for users when interpreting the results, particularly for non-technical users who might be searching only for the p-value in the output. While there are several existing packages to support performing panel data regression and the relevant tests (such as <strong>plm</strong>), there is currently no package that supports visualisations the panel data regression and test outputs. Several visualisations using existing visualisation packages in R have been explored which could allow users to more easily spot the results. However, there are limitations for some of the tests where visualising using existing R packages could not produce useful or easily interpretable charts.</p>
+<p><strong>Interactivity</strong></p>
+<p>Introducing interactivity in the form of model selection allowed for users to enjoy the flexibility of building any model of interest and modifying selected attributes according to preference. This can help to contribute to better user engagement where users do not need to filter through a whole chunk of static visualisations to search for the model of interest, but could instead generate them on the fly. It also allow non-technical users to perform panel data regressions and the relevant tests without having to execute complex codes. Panel data regression can be more easily accesible to users of all levels.</p>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

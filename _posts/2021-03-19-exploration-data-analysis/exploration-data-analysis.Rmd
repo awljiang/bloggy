@@ -11,13 +11,109 @@ output:
     self_contained: false
 ---
 
+<style>
+toc {
+text-align: left
+}
+h1, h2, h3 {
+text-align: left
+}
+body {
+text-align: justify}
+</style>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Distill is a publication format for scientific and technical writing, native to the web.
+# 1.0 Purpose of Exploratory Data Analysis
 
-Learn more about using Distill at <https://rstudio.github.io/distill>.
+Exploratory Data Analysis (EDA) is an approach that uses data visualisation to analyse data sets and to summarise their characteristics. It enables users to draw useful information and insights of the data sets with the use of graphical and non-graphical methods to reveal the distribution and statistics of selected variables. Many Data Science experts and literature state that EDA is a critical first step in data analysis as it helps to detect mistakes, check assumptions, determine relationships among the independent variables, and assess the direction and magnitude of relationships between the dependent and independent variablea (Seltman, 2018).
 
+* Seltman, H. (2018, July 11). Carnegie Mellon University Statistics & Data Science. Retrieved from Howard Seltman: http://www.stat.cmu.edu/~hseltman/309/Book/Book.pdf
+* MIT Critical Data. (2016). Secondary Analysis of Electronic Health Records. Springer. doi:10.1007/978-3-319-43742-2
 
+This assignment explores the appropriate tidyverse methods, as well as the ExPanDaR package for EDA.
+
+# 2.0 Preparation of Data Visualisation
+
+## 2.1 Installing and launching R Packages
+
+Instead of the conventional way of installing the required packages right away, the code chunk below checks whether the required packages have already been installed and subsequently install those that are not before loading the packages.
+
+```{r echo= TRUE, message=FALSE, warning=FALSE}
+packages = c('tidyverse', 'ExPanDaR', 'kableExtra', 'ggstatsplot', 'corrplot', 'DT')
+
+for(p in packages){ 'exclude FOR loop for Shiny>' 
+  if(!require(p, character.only = T)){
+    install.packages(p)
+  }
+  library(p, character.only = T)
+}
+```
+
+## 2.2 Data Source
+
+The data sets for this Visual Analytics Project were sourced from [Eurostat Climate Change Database](https://ec.europa.eu/eurostat/web/climate-change/data/database). Through the preliminary literature review conducted, the data sets used were narrowed down, wrangled, and subsequently merged into a single panel or cross-sectional time-series data where behavior of entities, in this case countries, are observed and recorded across time.
+
+The list of literature reviewed and details of the data preparation could be found (here).
+
+## 2.3 Loading the Dataset into R
+
+### Reading the csv file as GHG
+
+```{r echo= TRUE, message=TRUE, warning=FALSE}
+GHG <- read_csv("data/GHGproj_data.csv")
+```
+
+### Inspecting the structure of the dataset
+
+```{r echo= TRUE, message=TRUE, warning=FALSE}
+str(GHG)
+```
+
+### Removing and Recoding variable
+
+From the inspection, it could be observed that there are several countries that have very long name. To find out the unique values in Country:
+
+```{r echo= TRUE, message=TRUE, warning=FALSE}
+unique(GHG$Country)
+```
+
+From the above, it is noticed that the variable *Country* consist of groups of countries that are not needed in the analysis. Also, Germany has a rather long name.
+
+```{r echo= TRUE, message=TRUE, warning=FALSE}
+G <- GHG %>%
+  filter(!Country %in% c("European Union - 27 countries (from 2020)",
+                         "European Union - 28 countries (2013-2020)", 
+                         "European Union - 28 countries (2013-2020) and Iceland under the Kyoto Protocol")) %>%
+  mutate(Country=recode(Country, "Germany (until 1990 former territory of the FRG)" = "Germany"))
+```
+
+## 2.4 Overview of Dataset
+
+### Datatable
+
+In the propose Shiny application, the data table will be made available to users who not only want to have any overview of the data structure, but also the actual data set.
+
+```{r echo= TRUE, message=TRUE, warning=FALSE}
+datatable(
+  data = G, 
+  extensions = 'FixedHeader',
+  options =
+    list(
+      scrollX = TRUE,
+      scrollY = 500,
+      scrollCollapse = TRUE,
+      paging = FALSE
+    )
+)
+```
+
+### Descriptive Statistics
+
+```{r echo= TRUE, message=TRUE, warning=FALSE}
+t <- prepare_descriptive_table(G)
+t$kable_ret  %>%
+  kable_styling("condensed", full_width = F, position = "center")
+```

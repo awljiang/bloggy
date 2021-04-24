@@ -682,9 +682,7 @@ phtest(GHG_fe_indiv, GHG_re_amemiya)
 ```
 **Visualisation: Heterogeneity across Years and Countries**
 
-To visually assess if fixed or random effects is more appropriate, the means and error bars for each year/ country can be plotted to determine presence of heterogeneity across years and countries. The plot was generated using `
-
-visualise poolability, the scatterplot for each country and the OLS regression line is plotted in one chart to display comparison of the trends. The combined plot will be generated using `scatterplot()` of **car** and `abline()` of **graphics**. For the purpose of this exercise, only GDP will be used as the predictor variable.
+To visually assess if fixed or random effects is more appropriate, the means and error bars for each year/ country can be plotted to determine presence of heterogeneity across years and countries. The plot was generated using `plotmeans()` of **gplots**. For the purpose of this exercise, only 7 countries were selected for the heterogenity plot across countries to avoid overlaps.
 
 (Note: Due to the large number of countries, the heterogeneity plot across countries will appear overly cluttered when all countries were included. Should the plot be included in the Shiny application, selection of countries up to a max of 10 should be allowed.)
 

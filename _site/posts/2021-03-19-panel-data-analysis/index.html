@@ -3010,8 +3010,7 @@ chisq = 33.723, df = 8, p-value = 4.561e-05
 alternative hypothesis: one model is inconsistent</code></pre>
 </div>
 <p><strong>Visualisation: Heterogeneity across Years and Countries</strong></p>
-<p>To visually assess if fixed or random effects is more appropriate, the means and error bars for each year/ country can be plotted to determine presence of heterogeneity across years and countries. The plot was generated using `</p>
-<p>visualise poolability, the scatterplot for each country and the OLS regression line is plotted in one chart to display comparison of the trends. The combined plot will be generated using <code>scatterplot()</code> of <strong>car</strong> and <code>abline()</code> of <strong>graphics</strong>. For the purpose of this exercise, only GDP will be used as the predictor variable.</p>
+<p>To visually assess if fixed or random effects is more appropriate, the means and error bars for each year/ country can be plotted to determine presence of heterogeneity across years and countries. The plot was generated using <code>plotmeans()</code> of <strong>gplots</strong>. For the purpose of this exercise, only 7 countries were selected for the heterogenity plot across countries to avoid overlaps.</p>
 <p>(Note: Due to the large number of countries, the heterogeneity plot across countries will appear overly cluttered when all countries were included. Should the plot be included in the Shiny application, selection of countries up to a max of 10 should be allowed.)</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Heterogeneity across years</span></span>

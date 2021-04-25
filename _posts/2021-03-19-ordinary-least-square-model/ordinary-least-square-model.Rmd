@@ -43,7 +43,7 @@ A list of packages are required for this makeover exercise. This code chunk inst
 
 ```{r, echo=TRUE, warning=FALSE, message = FALSE}
 packages = c('tidyverse', 'olsrr', 'lmtest', 'dplyr', 'ggplot2', 'ggstatsplot', 'ggcorrplot', 
-             'purrr', 'jtools', 'broom.mixed', 'ggstance', 'EnvStats', 'graphics','caret','ppcor')
+             'purrr', 'jtools', 'broom.mixed', 'ggstance', 'EnvStats', 'graphics','caret','ppcor', 'MASS', 'ggpubr', 'data.table')
 for (p in packages){
   if(!require(p, character.only = T)){
     install.packages(p)
@@ -179,6 +179,129 @@ k
 plot(k, main = "Panel of fit criteria", xlab="No. of predictors", ylab="Value")
 ```
 
+```{r}
+df1 <- as.data.frame(k %>% group_by(n) %>% summarise(Value = max(rsquare)))
+            p1 <- ggplot(data=k, aes(x=k$n, y=k$rsquare)) + 
+                geom_point(color = "blue", size = 2) +
+                geom_point(data=df1, aes(x=n, y=Value), shape=2, color="red", size=4) +
+                xlab("") + ylab("") + ggtitle("R-square") +
+                geom_text(aes(label=k$mindex), hjust = 0, nudge_x = 0.1, col="black") + 
+                theme(legend.title = element_blank(), legend.position = "none") +
+                scale_x_continuous(breaks= pretty_breaks())
+            
+            df2 <- as.data.frame(k %>% group_by(n) %>% summarise(Value = min(cp)))
+            p2 <- ggplot(data=k, aes(x=k$n, y=k$cp)) + 
+                geom_point(color = "blue", size = 2) +
+                geom_point(data=df2, aes(x=n, y=Value), shape=2, color="red", size=4) +
+                xlab("") + ylab("") + ggtitle("C(p)") +
+                geom_text(aes(label=k$mindex), hjust = 0, nudge_x = 0.1, col="black") + 
+                theme(legend.title = element_blank(), legend.position = "none")
+            
+            df3 <- as.data.frame(k %>% group_by(n) %>% summarise(Value = max(adjr)))
+            p3 <- ggplot(data=k, aes(x=k$n, y=k$adjr)) + 
+                geom_point(color = "blue", size = 2) +
+                geom_point(data=df3, aes(x=n, y=Value), shape=2, color="red", size=4) +
+                xlab("") + ylab("") + ggtitle("Adj. R-square") +
+                geom_text(aes(label=k$mindex), hjust = 0, nudge_x = 0.1, col="black") + 
+                theme(legend.title = element_blank(), legend.position = "none")
+
+            df4 <- as.data.frame(k %>% group_by(n) %>% summarise(Value = min(aic)))
+            p4 <- ggplot(data=k, aes(x=k$n, y=k$aic)) + 
+                geom_point(color = "blue", size = 2) +
+                geom_point(data=df4, aes(x=n, y=Value), shape=2, color="red", size=4) +
+                xlab("") + ylab("") + ggtitle("AIC") +
+                geom_text(aes(label=k$mindex), hjust = 0, nudge_x = 0.1, col="black") + 
+                theme(legend.title = element_blank(), legend.position = "none")
+
+            df5 <- as.data.frame(k %>% group_by(n) %>% summarise(Value = min(sbic)))
+            p5 <- ggplot(data=k, aes(x=k$n, y=k$sbic)) + 
+                geom_point(color = "blue", size = 2) +
+                geom_point(data=df5, aes(x=n, y=Value), shape=2, color="red", size=4) +
+                xlab("") + ylab("") + ggtitle("SBIC") +
+                geom_text(aes(label=k$mindex), hjust = 0, nudge_x = 0.1, col="black") + 
+                theme(legend.title = element_blank(), legend.position = "none")
+            
+            df6 <- as.data.frame(k %>% group_by(n) %>% summarise(Value = min(sbc)))
+            p6 <- ggplot(data=k, aes(x=k$n, y=k$sbc)) + 
+                geom_point(color = "blue", size = 2) +
+                geom_point(data=df6, aes(x=n, y=Value), shape=2, color="red", size=4) +
+                xlab("") + ylab("") + ggtitle("SBC") +
+                geom_text(aes(label=k$mindex), hjust = 0, nudge_x = 0.1, col="black") + 
+                theme(legend.title = element_blank(), legend.position = "none")
+            
+            ggarrange(p1, p2, p3, p4, p5, p6 , 
+                      ncol = 2, nrow = 3)
+
+```
+
+```{r}
+
+k$maxrsq_col <- "NOTMAX"
+k$maxrsq_col[k$rsquare==max(k$rsquare)] = "MAX"
+
+k$maxcp_col <- "NOTMAX"
+k$maxcp_col[k$cp==min(k$cp)] = "MAX"
+
+k$maxadjr_col <- "NOTMAX"
+k$maxadjr_col[k$adjr==max(k$adjr)] = "MAX"
+
+k$maxaic_col <- "NOTMAX"
+k$maxaic_col[k$aic==min(k$aic)] = "MAX"
+
+k$maxsbic_col <- "NOTMAX"
+k$maxsbic_col[k$sbic==min(k$sbic)] = "MAX"
+
+k$maxsbc_col <- "NOTMAX"
+k$maxsbc_col[k$sbc==min(k$sbc)] = "MAX"
+
+p1 <- ggplot(data=k, aes(x=k$n, y=k$rsquare, color=k$maxrsq_col)) + 
+  geom_point(size=3) +
+  xlab("") + ylab("") + ggtitle("R-square") +
+  geom_text(aes(label=k$mindex), hjust = 0, nudge_x = 0.1, col="black") + 
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.title = element_blank(), legend.position = "none")
+
+p2 <- ggplot(data=k, aes(x=k$n, y=k$cp, color=k$maxcp_col)) + 
+  geom_point(size=3) +
+  xlab("") + ylab("") + ggtitle("C(p)") +
+  geom_text(aes(label=k$mindex), hjust = 0, nudge_x = 0.1, col="black") + 
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.title = element_blank(), legend.position = "none")
+
+p3 <- ggplot(data=k, aes(x=k$n, y=k$adjr, color=k$maxadjr_col)) + 
+  geom_point(size=3) +
+  xlab("") + ylab("") + ggtitle("Adj. R-square") +
+  geom_text(aes(label=k$mindex), hjust = 0, nudge_x = 0.1, col="black") + 
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.title = element_blank(), legend.position = "none")
+
+p4 <- ggplot(data=k, aes(x=k$n, y=k$aic, color=k$maxaic_col)) + 
+  geom_point(size=3) +
+  xlab("") + ylab("") + ggtitle("AIC") +
+  geom_text(aes(label=k$mindex), hjust = 0, nudge_x = 0.1, col="black") + 
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.title = element_blank(), legend.position = "none")
+
+p5 <- ggplot(data=k, aes(x=k$n, y=k$sbic, color=k$maxsbic_col)) + 
+  geom_point(size=3) +
+  xlab("") + ylab("") + ggtitle("SBIC") +
+  geom_text(aes(label=k$mindex), hjust = 0, nudge_x = 0.1, col="black") + 
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.title = element_blank(), legend.position = "none")
+
+p6 <- ggplot(data=k, aes(x=k$n, y=k$sbc, color=k$maxsbc_col)) + 
+  geom_point(size=3) +
+  xlab("") + ylab("") + ggtitle("SBC") +
+  geom_text(aes(label=k$mindex), hjust = 0, nudge_x = 0.1, col="black") + 
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.title = element_blank(), legend.position = "none")
+
+ggarrange(p1, p2, p3, p4, p5, p6 , 
+          ncol = 2, nrow = 3)
+```
+
+
+
 **(ii) Best Subset**
 
 The code chunk below selects the subset of predictors that do the best at meeting some well-defined objective criterion e.g. largest adjusted R-square or smallest AIC etc. From the plot, users will be able to identify the model with the highest adjusted R-square value etc.
@@ -192,6 +315,53 @@ k
 
 # Panel of fit criteria
 plot(k, main = "Panel of fit criteria", xlab="No. of predictors", ylab="Value")
+```
+
+```{r}
+p1 <- ggplot(data=k, aes(y=k$rsquare, x=k$mindex)) + 
+  geom_line(color = "blue") +
+  geom_point(color = "blue", shape = 1, size = 2) +
+  xlab("") + ylab("") + 
+  ggtitle("R-square") +
+  theme(axis.ticks = element_blank())
+
+p2 <- ggplot(data=k, aes(y=k$cp, x=k$mindex)) + 
+  geom_line(color = "blue") +
+  geom_point(color = "blue", shape = 1, size = 2) +
+  xlab("") + ylab("") + 
+  ggtitle("C(p)") +
+  theme(axis.ticks = element_blank())
+
+p3 <- ggplot(data=k, aes(y=k$adjr, x=k$mindex)) + 
+  geom_line(color = "blue") +
+  geom_point(color = "blue", shape = 1, size = 2) +
+  xlab("") + ylab("") + 
+  ggtitle("Adj. R-square") +
+  theme(axis.ticks = element_blank())
+
+p4 <- ggplot(data=k, aes(y=k$aic, x=k$mindex)) + 
+  geom_line(color = "blue") +
+  geom_point(color = "blue", shape = 1, size = 2) +
+  xlab("") + ylab("") + 
+  ggtitle("AIC") +
+  theme(axis.ticks = element_blank())
+
+p5 <- ggplot(data=k, aes(y=k$sbic, x=k$mindex)) + 
+  geom_line(color = "blue") +
+  geom_point(color = "blue", shape = 1, size = 2) +
+  xlab("") + ylab("") + 
+  ggtitle("SBIC") +
+  theme(axis.ticks = element_blank())
+
+p6 <- ggplot(data=k, aes(y=k$sbc, x=k$mindex)) + 
+  geom_line(color = "blue") +
+  geom_point(color = "blue", shape = 1, size = 2) +
+  xlab("") + ylab("") + 
+  ggtitle("SBC") +
+  theme(axis.ticks = element_blank())
+
+ggarrange(p1, p2, p3, p4, p5, p6 , 
+          ncol = 2, nrow = 3)
 ```
 
 **(iii) Stepwise Forward**
@@ -211,6 +381,78 @@ plot(k)
 # obtain detailed output
 ols_step_forward_p(model, details = TRUE)
 ```
+
+```{r}
+k2 <- ols_step_forward_p(model, details = TRUE)
+#plot(k2, print_plot= TRUE)
+plot(k2)
+```
+
+```{r}
+y <- seq_len(length(k$rsquare))
+
+d1 <- data.frame(a = y, b = k$rsquare)
+d2 <- data.frame(a = y, b = k$mallows_cp)
+d3 <- data.frame(a = y, b = k$adjr)
+d4 <- data.frame(a = y, b = k$aic)
+d5 <- data.frame(a = y, b = k$sbic)
+d6 <- data.frame(a = y, b = k$sbc)
+  
+p1 <- ggplot(data=d1, aes(y=b, x=a)) + 
+  geom_line(color = "blue") +
+  geom_point(color = "blue", shape = 1, size = 2) +
+  xlab("") + ylab("") + 
+  ggtitle("R-square") +
+  theme(axis.ticks = element_blank())
+
+p2 <- ggplot(data=d2, aes(y=b, x=a)) + 
+  geom_line(color = "blue") +
+  geom_point(color = "blue", shape = 1, size = 2) +
+  xlab("") + ylab("") + 
+  ggtitle("C(p)") +
+  theme(axis.ticks = element_blank())
+
+p3 <- ggplot(data=d3, aes(y=b, x=a)) + 
+  geom_line(color = "blue") +
+  geom_point(color = "blue", shape = 1, size = 2) +
+  xlab("") + ylab("") + 
+  ggtitle("Adj. R-square") +
+  theme(axis.ticks = element_blank())
+
+p4 <- ggplot(data=d4, aes(y=b, x=a)) + 
+  geom_line(color = "blue") +
+  geom_point(color = "blue", shape = 1, size = 2) +
+  xlab("") + ylab("") + 
+  ggtitle("AIC") +
+  theme(axis.ticks = element_blank())
+
+p5 <- ggplot(data=d5, aes(y=b, x=a)) + 
+  geom_line(color = "blue") +
+  geom_point(color = "blue", shape = 1, size = 2) +
+  xlab("") + ylab("") + 
+  ggtitle("SBIC") +
+  theme(axis.ticks = element_blank())
+
+p6 <- ggplot(data=d6, aes(y=b, x=a)) + 
+  geom_line(color = "blue") +
+  geom_point(color = "blue", shape = 1, size = 2) +
+  xlab("") + ylab("") + 
+  ggtitle("SBC") +
+  theme(axis.ticks = element_blank())
+
+ggarrange(p1, p2, p3, p4, p5, p6 , 
+          ncol = 2, nrow = 3)
+```
+
+```{r}
+rsquare <- plot(k$rsquare, main="R-Square", xlab="Step", ylab="Criterion value", type="o", col="blue")
+cp <- plot(k$mallows_cp, main="C(p)", xlab="Step", ylab="Criterion value", type="o", col="blue")
+adjr <- plot(k$adjr, main="Adj. R-Square", xlab="Step", ylab="Criterion value", type="o", col="blue")
+aic <- plot(k$aic, main="AIC", xlab="Step", ylab="Criterion value", type="o", col="blue")
+sbic <- plot(k$sbic, main="SBIC", xlab="Step", ylab="Criterion value", type="o", col="blue")
+sbc <- plot(k$sbc, main="SBC", xlab="Step", ylab="Criterion value", type="o", col="blue")
+```
+
 
 **(iv) Stepwise Backward**
 

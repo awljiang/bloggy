@@ -1,7 +1,7 @@
 ---
-title: "Proposal"
+title: "Project Proposal"
 description: |
-  Exploratory analysis of greenhouse gas emissions and Panel data regression for investigating the determinants of greenhouse gas emissions for European Union countries
+  Exploring the relationship of drivers and mitigation measures with greenhouse gas emissions for European Union countries through exploratory data analysis and advanced statistical techniques namely Ordinary Least Square (OLS) Regression and Panel Data Regresion
 author:
   - name: Group 2 (Angeline Jiang, Dylan Wong, Selene Choong)
     url: {}
@@ -77,9 +77,9 @@ Green Energy Production|![](./image/EDA2.jpg){width=100%}
 Correlation Plot of Drivers and Mitigation|![](./image/EDA3.jpg){width=100%}
 Scatter Plot for Drivers and Mitigation|![](./image/EDA4.jpg){width=100%}
 
-### (B) Analysis of Ordinary Least Square regression in R
+### (B) Analysis of Cross-Sectional Data through Ordinary Least Square Regression in R
 
-The following shows the proposed first module under OLS regression where users can explore different methods to determine the set of predictors for their model. Proposed type of visualization and rationales are as follow: 
+The following shows the proposed first module under OLS regression where users can explore different methods to determine the set of independent variables for their model. Proposed type of visualization and rationales are as follow: 
 
 ```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%"}
 library(knitr)
@@ -97,43 +97,38 @@ ols2_path <- "./image/OLS_2.png"
 include_graphics(ols2_path)
 ```
 
-### (C) Analysis of Panel data regression in R
+### (C) Analysis of Longitudinal Data through Panel Data Regression in R
+
+The Panel Data Regression module allows users to explore different time periods, countries and set of independent variables to run both the fixed effect and random effect model. The following shows the proposed layout for the module, where the selection of the relevant specifications is on the left panel and the visualisation along with the statistical output will be displayed on the right area.
 
 ```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%"}
 library(knitr)
 library(png)
-panel1_path <- "./image/Panel_1.png"
-include_graphics(panel1_path)
-```
-
-If user(s) prefers to see in terms of bar chart i.e. "Bar" is selected under the View option.
-
-```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%"}
-library(knitr)
-library(png)
-panel2_path <- "./image/Panel_2.png"
+panel2_path <- "./image/Panel_Rev.JPG"
 include_graphics(panel2_path)
 ```
 
-**Development of validating checks and model selection in R** 
-
-To cater to varying statistical knowledge of users, there will be two types of outputs shown - (1) simplified overview of whether the assumptions for the calibrated model is met and (2) detailed outputs from each validation tests.
-
-```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%"}
-knitr::include_graphics("image/Validation.png")
-```
-
-The list of validation tests for the panel models include:
+Evaluation of Model Fit Assessment using the proposed list of tests below will also be shown.
 
  - Test of **poolability** using Chow test
  - Tests for **individual and time effects** using Lagrange multiplier test
  - Test for **correlation between unobserved effects and the regressors** using Hausman-type test
- - Test for **stationarity of the series** using Augmented Dickey-Fuller (ADF)
- - Test for **cross-sectional dependence** using the Pesaran CD test of independence
+
+Additional validation tests will also be performed to assess if there is any violation of assumptions. The list of validation tests for the panel models include:
+
+ - Test for **normality** using Residual Plots
+ - Test for **serial correlation** using Unobserved Effect Test, Locally Robust Test and Breusch-Godfrey/Wooldridge Test
+ - Test for **heteroscedasticity** using Breusch-Pagan Test and Residual vs Fitted Value Plot
 
 ### Proposed R Packages
 #### Data Preparation
 * tidyverse: https://www.tidyverse.org
+
+#### Exploratory data analysis
+* ggplot2: https://cran.r-project.org/web/packages/ggplot2
+* ExPanDaR: https://cran.r-project.org/web/packages/ExPanDaR
+* ggstatsplot: https://cran.r-project.org/web/packages/ggstatsplot
+* plotly: https://cran.r-project.org/web/packages/plotly
 
 #### Ordinary Least Square regression
 * olsrr: https://cran.r-project.org/web/packages/olsrr/index.html
@@ -142,7 +137,6 @@ The list of validation tests for the panel models include:
 * ggstance: https://cran.r-project.org/web/packages/ggstance/index.html
 
 #### Panel data regression
-* ExPanDaR: https://cran.r-project.org/web/packages/ExPanDaR
 * plm: https://cran.r-project.org/web/packages/plm
 * stargazer: https://cran.r-project.org/web/packages/stargazer
 * tseries: https://cran.r-project.org/web/packages/tseries

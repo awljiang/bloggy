@@ -1490,8 +1490,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <ul>
 <li><a href="#descriptive-analysis">3.1 Descriptive Analysis</a></li>
 <li><a href="#time-trend">3.2 Time Trend</a></li>
-<li><a href="#correlation-plot">3.3 Correlation Plot</a></li>
-<li><a href="#bivariate-plot">3.4 Bivariate Plot</a></li>
+<li><a href="#correlation-matrix">3.3 Correlation Matrix</a></li>
+<li><a href="#scatterplot">3.4 Scatterplot</a></li>
 </ul></li>
 <li><a href="#ordinary-least-square-ols-regression">4.0 Ordinary Least Square (OLS) Regression</a>
 <ul>
@@ -1513,14 +1513,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li>The source code and data are made available at <a href="https://github.com/awljiang/bloggy">GitHub.com</a>.</li>
 </ul>
 <h1 id="user-guide-for-degged">User Guide for DEGGED</h1>
-<p>From the main navigation bar, select any of the following tabs to navigate and several tabs have further dropdowns. A quick overview of the different components can be found under the Overview Page.</p>
+<p>From the main navigation bar, select any of the following tabs to navigate and several tabs have further drop-downs. A quick overview of the different components can be found under the Overview Page.</p>
 <h2 id="overview-page">1.0 Overview Page</h2>
 <p>This page shows a short description of the application along with an overview of the components included in the application.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="images/overview.JPG" width="638" /></p>
+<p><img src="images/overview.JPG" width="760" /></p>
 </div>
 <h2 id="data-overview">2.0 Data Overview</h2>
-<p>This tab provides users with an overview of the data used. The selection options on the left panel apply to all the panes within the tab.</p>
+<p>This tab provides users with an overview of the data used. The selection options on the left panel apply to all the tabs within the tab.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="images/dataoverview.png" width="916" /></p>
 </div>
@@ -1529,7 +1529,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><p>Select the countries of interest by clicking on each country to check or uncheck the selection. Click on the Select All button to select all the countries and the Deselect All button to clear all selection.</p></li>
 <li><p>Click “Apply changes” to filter the dataset.</p></li>
 </ol>
-<p>The Data pane allows users to explore the data.</p>
+<p>The Data tab allows users to explore the data.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="images/data.png" width="900" /></p>
 </div>
@@ -1539,21 +1539,22 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><p>Select the number of entries to display in 1 page</p></li>
 <li><p>Click to navigate to the respective pages, or previous and next page.</p></li>
 </ol>
-<p>As for the Missing Data pane, it allows users to detect the presence of missing data for which country and which variable.</p>
+<p>As for the Missing Data tab, it allows users to detect the presence of missing data for which country and which variable.</p>
 <h2 id="exploratory-data-analysis">3.0 Exploratory Data Analysis</h2>
-<p>Under the Exploratory Data Analysis tab of the main navigation bar, there are four dropdowns namely “Descriptive Analysis”, “Time Trend”, “Correlation Plot” and “Bivariate Plot”. More details on each dropdown tab are detailed in the next few sections.</p>
+<p>Under the Exploratory Data Analysis tab of the main navigation bar, there are four drop-downs namely “Descriptive Analysis”, “Time Trend”, “Correlation Matrix” and “Scatterplot”. More details on each drop-down tab are detailed in the next few sections.</p>
 <h3 id="descriptive-analysis">3.1 Descriptive Analysis</h3>
-<p>This tab provides some descriptive statistics on the data. The selection options on the left panel apply to all the panes within the tab.</p>
+<p>This tab provides some descriptive statistics on the data. The selection options on the left panel apply to all the tabs within the tab.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="images/eda.png" width="916" /></p>
+<p><img src="images/eda.png" width="574" /></p>
 </div>
 <ol type="1">
 <li><p>Select the range of Years to be included.</p></li>
 <li><p>Select the countries of interest by clicking on each country to check or uncheck the selection. Click on the Select All button to select all the countries and the Deselect All button to clear all selection.</p></li>
 <li><p>Select the variables of interest. Multiple variables can be selected. To remove a variable from the selected list, use backspace on keyboard to delete it.</p></li>
+<li><p>Select the number of bins for histogram plot.</p></li>
 <li><p>Click “Apply changes” to compute the output and plot the chart.</p></li>
 </ol>
-<p>Two panes are included as part of this tab - Summary Statistics and Histogram.</p>
+<p>Two tabs are included as part of this tab - Summary Statistics and Histogram.</p>
 <p>For the Histogram Chart, users can hover over the bars and a tooltip will appear containing the count of records with the indicated value.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="images/histogram.png" width="600" /></p>
@@ -1574,18 +1575,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="images/timetrendhover.png" width="917" /></p>
 </div>
-<h3 id="correlation-plot">3.3 Correlation Plot</h3>
+<h3 id="correlation-matrix">3.3 Correlation Matrix</h3>
 <p>This tab shows the correlation values between each variable pair. The selection options on the left panel allows users to customise the data to be included in the view.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="images/corrplot.png" width="911" /></p>
+<p><img src="images/corrplot.png" width="388" /></p>
 </div>
 <ol type="1">
 <li><p>Select the Year to be included. Only 1 year can be selected.</p></li>
 <li><p>Select the countries of interest by clicking on each country to check or uncheck the selection. Click on the Select All button to select all the countries and the Deselect All button to clear all selection.</p></li>
 <li><p>Select the variables of interest. Multiple variables can be selected. To remove a variable from the selected list, use backspace on keyboard to delete it.</p></li>
+<li><p>Select the type of correlation coefficient is to be computed. The options are Pearson, Spearman and Robust.</p></li>
+<li><p>Select the significance level (0.01, 0.05, 0.1) for the matrix.</p></li>
 <li><p>Click “Apply changes” to update the chart.</p></li>
 </ol>
-<h3 id="bivariate-plot">3.4 Bivariate Plot</h3>
+<h3 id="scatterplot">3.4 Scatterplot</h3>
 <p>This tab allows users to determine the empirical relationship between two variables. The selection options on the left panel allows users to customise the variables included in the view of the plot.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="images/bivariate.png" width="916" /></p>
@@ -1597,11 +1600,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><p>Select the Y-variable of interest to be plotted against X. Only 1 variable can be selected.</p></li>
 <li><p>Click “Apply changes” to update the chart.</p></li>
 </ol>
-<p>Users can also hover the chart elements (scatterplot points, line and band) and a tooltip containing information on the hovered point wil be shown.</p>
+<p>Users can also hover the chart elements (scatterplot points, line and band) and a tooltip containing information on the hovered point will be shown.</p>
 <h2 id="ordinary-least-square-ols-regression">4.0 Ordinary Least Square (OLS) Regression</h2>
-<p>Under the Ordinary Least Square Regression tab of the main navigation bar, there are two dropdowns namely “Variable Selection” and “Model Selected”. More details on each dropdown tab are detailed in the next few sections.</p>
+<p>Under the Ordinary Least Square Regression tab of the main navigation bar, there are two drop-downs namely “Variable Selection” and “Model Selected”. More details on each drop-down tab are detailed in the next few sections.</p>
 <h3 id="variable-selection">4.1 Variable Selection</h3>
-<p>This tab allows users to explore the best subset of predictors to include in the model, among all possible subsets of predictors. The selection options on the left panel apply to all the panes within the tab.</p>
+<p>This tab allows users to explore the best subset of predictors to include in the model, among all possible subsets of predictors. The selection options on the left panel apply to all the tabs within the tab.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="images/ols_vs.png" width="914" /></p>
 </div>
@@ -1610,22 +1613,33 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><p>Select the independent variables of interest. Multiple variables can be selected. To remove a variable from the selected list, use backspace on keyboard to delete it.</p></li>
 <li><p>Select the range of Years to be included. Only 1 year is allowed to be selected.</p></li>
 <li><p>Select the method to perform for variable selection among the 6 options - “Stepwise AIC forward”, “Stepwise AIC backward”, “Stepwise AIC both”, “Stepwise BIC forward”, “Stepwise BIC backward”, “Stepwise BIC both”</p></li>
+<li><p>Click “Apply changes”.</p></li>
 </ol>
-<p>Three panes are included as part of this tab - Summary, Plot and Detailed Output. These panes will display the outputs of the OLS model in different forms. User can toggle between the panes to view their preferred way for interpreting the results of the variable selection.</p>
-<p>Guide has been included in each pane on how to interpret the output/ plot.</p>
+<p>Three tabs are included as part of this tab - Summary, Plot and Detailed Output. These tabs will display the outputs of the OLS model in different forms. User can toggle between the tabs to view their preferred way for interpreting the results of the variable selection.</p>
+<p>Guide has been included in each tab on how to interpret the output/ plot.</p>
 <h3 id="model-selected">4.2 Model Selected</h3>
-<p>This tab allows users to analyse the outputs of the selected model, along with validating any violation of assumptions. For the selection options on the left panel, the first 3 selections (Dependent Variable, Independent Variable and Year of Analysis) apply to all the panes within the tab while the remaining selections allows users to select the preferred test option for each assumption.</p>
+<p>This tab allows users to analyse the outputs of the selected model, along with validating any violation of assumptions. For the selection options on the left panel, the first 3 selections (Dependent Variable, Independent Variable and Year of Analysis) apply to all the tabs within the tab while the remaining selections allows users to select the preferred test option for each assumption.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="images/ols_sm.png" width="912" /></p>
 </div>
-<p>Six panes are included as part of this tab - Output (Table), Output (Plot), Heteroskedasticity Test, Residual Diagnostics, Collinear Diagnostics and Model Fit Assessment.</p>
-<p>The first two panes in this tab (Output in Table and Plot) will display the outputs of the selected OLS model in tabular and visualised forms. User can toggle between these panes to view their preferred way for interpreting the results of the OLS model.</p>
-<p>The Heteroskedasticity Test, Residual Diagnostics and Collinear Diagnostics pane display the respective outputs for each assumption test, while the Model Fit Assessment pane allows users to visually assess the fit of the OLS model.</p>
-<p>Guide has been included in each pane on how to interpret the output/ plot.</p>
+<ol type="1">
+<li><p>Select the dependent variable among the 4 greenhouse gas types. Only 1 selection is allowed.</p></li>
+<li><p>Select the independent variables of interest. Multiple variables can be selected. To remove a variable from the selected list, use backspace on keyboard to delete it.</p></li>
+<li><p>Select the range of Years to be included. Only 1 year is allowed to be selected.</p></li>
+<li><p>Select the preferred choice for heteroskedasticity test.</p></li>
+<li><p>Select the preferred choice for residual diagnostics.</p></li>
+<li><p>Select the preferred choice for collinear diagnostics.</p></li>
+<li><p>Select the preferred choice for model fit assessment.</p></li>
+<li><p>Click “Apply changes”.</p></li>
+</ol>
+<p>Six tabs are included as part of this tab - Output (Table), Output (Plot), Heteroskedasticity Test, Residual Diagnostics, Collinear Diagnostics and Model Fit Assessment.</p>
+<p>The first two tabs in this tab (Output in Table and Plot) will display the outputs of the selected OLS model in tabular and visualised forms. User can toggle between these tabs to view their preferred way for interpreting the results of the OLS model.</p>
+<p>The Heteroskedasticity Test, Residual Diagnostics and Collinear Diagnostics tab display the respective outputs for each assumption test, while the Model Fit Assessment tab allows users to visually assess the fit of the OLS model.</p>
+<p>Guide has been included in each tab on how to interpret the output/ plot.</p>
 <h2 id="panel-data-regression">5.0 Panel Data Regression</h2>
-<p>Under the Panel Data Regression tab of the main navigation bar, there are two dropdowns namely “Model Building” and “Tests for Assumptions”. More details on each dropdown tab are detailed in the next few sections.</p>
+<p>Under the Panel Data Regression tab of the main navigation bar, there are two drop-downs namely “Model Building” and “Tests for Assumptions”. More details on each drop-down tab are detailed in the next few sections.</p>
 <h3 id="model-building">5.1 Model Building</h3>
-<p>This tab allows users to construct the panel data regression model of interest. The selection options on the left panel apply to all the panes within the tab.</p>
+<p>This tab allows users to construct the panel data regression model of interest. The selection options on the left panel apply to all the tabs within the tab.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="images/panel_mb.png" width="919" /></p>
 </div>
@@ -1640,10 +1654,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><p>This option will only appear if “Random Effect” is selected for Model Type, and is meant for the Model Fit Assessment. Select the type for the Lagrange Multiplier Test among the 3 types.</p></li>
 <li><p>Click “Apply changes” to generate the output of the constructed panel model.</p></li>
 </ol>
-<p>Four panes are included as part of this tab - Summary, Plot, Detailed Output and Model Fit Assessment.</p>
-<p>The first three panes in this tab (Summary, Plot and Detailed Output) will display the outputs of the constructed panel model in different forms. User can toggle between the panes to view their preferred way for interpreting the results of the panel model.</p>
-<p>The Model Fit Assessment pane performs the relevant statistical tests to determine the most appropriate model type. When “Fixed Effect” is selected for Model Type, Hausman Test and Chow Test of Poolability will be performed to assess fixed effect against random and pooled effect respectively. When “Random Effect” is selected for Model Type, Hausman Test and Lagrange Multiplier Test will be performed to assess random effect against fixed and pooled effect respectively.</p>
-<p>Guide has been included in each pane on how to interpret the output/ plot.</p>
+<p>Four tabs are included as part of this tab - Summary, Plot, Detailed Output and Model Fit Assessment.</p>
+<p>The first three tabs in this tab (Summary, Plot and Detailed Output) will display the outputs of the constructed panel model in different forms. User can toggle between the tabs to view their preferred way for interpreting the results of the panel model.</p>
+<p>The Model Fit Assessment tab performs the relevant statistical tests to determine the most appropriate model type. When “Fixed Effect” is selected for Model Type, Hausman Test and Chow Test of Poolability will be performed to assess fixed effect against random and pooled effect respectively. When “Random Effect” is selected for Model Type, Hausman Test and Lagrange Multiplier Test will be performed to assess random effect against fixed and pooled effect respectively.</p>
+<p>Guide has been included in each tab on how to interpret the output/ plot.</p>
 <h3 id="tests-for-assumptions">5.2 Tests for Assumptions</h3>
 <p>This tab allows users to assess if the data complies with the assumptions of panel data regression. The selection options on the left panel allows users to select the preferred test option for each assumption.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1655,7 +1669,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><p>Select between statistical test or plot for assessing reference of heteroscedasticity. Users can choose between “Breusch-Pagan Test” or “Residual vs Fitted Value Plot”,</p></li>
 <li><p>Click “Apply changes” to generate the output of each selected test.</p></li>
 </ol>
-<p>The respective output for each assumption test will be shown in the respective pane on the right. Guide has been included in each pane on how to interpret the output/ plot.</p>
+<p>The respective output for each assumption test will be shown in the respective tab on the right. Guide has been included in each tab on how to interpret the output/ plot.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

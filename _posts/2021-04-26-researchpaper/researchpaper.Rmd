@@ -18,6 +18,12 @@ knitr::opts_chunk$set(echo = FALSE)
 The link to our full research paper can be found here: https://github.com/awljiang/bloggy/blob/master/Researchpaper.pdf
 
 ```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%", fig.align="center"}
-knitr::include_graphics("Research_paper.PNG")
+knitr::include_graphics("images/page1.PNG")
+knitr::include_graphics("images/page2.PNG")
+knitr::include_graphics("images/page3.PNG")
+knitr::include_graphics("images/page4.PNG")
+knitr::include_graphics("images/page5.PNG")
+knitr::include_graphics("images/page6.PNG")
+knitr::include_graphics("images/page7.PNG")
 ```
 

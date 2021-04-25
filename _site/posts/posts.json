@@ -17,6 +17,23 @@
     "input_file": "degged-shiny-application.utf8.md"
   },
   {
+    "path": "posts/2021-04-25-poster/",
+    "title": "Poster",
+    "description": "Poster for \"DEGGED - Dynamic Exploration of Greenhouse Gas Emissions and its Determinants using R and Shiny\"",
+    "author": [
+      {
+        "name": "Group 2 (Angeline Jiang, Dylan Wong, Selene Choong)",
+        "url": {}
+      }
+    ],
+    "date": "2021-04-25",
+    "categories": [],
+    "contents": "\r\n\r\n\r\n\r\nThe link to our poster can be found here: https://github.com/awljiang/bloggy/blob/master/Poster.pdf\r\n\r\n\r\n\r\n",
+    "preview": "posts/2021-04-25-poster/Poster.PNG",
+    "last_modified": "2021-04-25T23:56:02+08:00",
+    "input_file": "poster.utf8.md"
+  },
+  {
     "path": "posts/2021-03-19-panel-data-analysis/",
     "title": "Determining the Drivers of Greenhouse Gas Emissions for European Countries using Panel Data Analysis",
     "description": "This post details the preliminary investigation on the drivers of greenhouse gas emissions in European countries through the use of panel data analysis in R. The assignment is part of the Shiny-based Visual Analytics Application project undertaken for the course of ISSS608 Visual Analytics and Applications offered by SMU MITB.",

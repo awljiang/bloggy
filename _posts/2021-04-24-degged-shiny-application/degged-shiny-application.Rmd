@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # User Guide for DEGGED
 
-From the main navigation bar, select any of the following tabs to navigate and several tabs have further dropdowns. A quick overview of the different components can be found under the Overview Page.
+From the main navigation bar, select any of the following tabs to navigate and several tabs have further drop-downs. A quick overview of the different components can be found under the Overview Page.
 
 ## 1.0 Overview Page
 
@@ -36,7 +36,7 @@ knitr::include_graphics("images/overview.JPG")
 
 ## 2.0 Data Overview
 
-This tab provides users with an overview of the data used. The selection options on the left panel apply to all the panes within the tab.
+This tab provides users with an overview of the data used. The selection options on the left panel apply to all the tabs within the tab.
 
 ```{r, echo=FALSE, message=FALSE}
 knitr::include_graphics("images/dataoverview.png")
@@ -48,7 +48,7 @@ knitr::include_graphics("images/dataoverview.png")
 
 (3) Click "Apply changes" to filter the dataset.
 
-The Data pane allows users to explore the data.
+The Data tab allows users to explore the data.
 
 ```{r, echo=FALSE, message=FALSE}
 knitr::include_graphics("images/data.png")
@@ -62,16 +62,16 @@ knitr::include_graphics("images/data.png")
 
 (4) Click to navigate to the respective pages, or previous and next page.
 
-As for the Missing Data pane, it allows users to detect the presence of missing data for which country and which variable.
+As for the Missing Data tab, it allows users to detect the presence of missing data for which country and which variable.
 
 
 ## 3.0 Exploratory Data Analysis
 
-Under the Exploratory Data Analysis tab of the main navigation bar, there are four dropdowns namely "Descriptive Analysis", "Time Trend", "Correlation Plot" and "Bivariate Plot". More details on each dropdown tab are detailed in the next few sections. 
+Under the Exploratory Data Analysis tab of the main navigation bar, there are four drop-downs namely "Descriptive Analysis", "Time Trend", "Correlation Matrix" and "Scatterplot". More details on each drop-down tab are detailed in the next few sections. 
 
 ### 3.1 Descriptive Analysis
 
-This tab provides some descriptive statistics on the data. The selection options on the left panel apply to all the panes within the tab.
+This tab provides some descriptive statistics on the data. The selection options on the left panel apply to all the tabs within the tab.
 
 ```{r, echo=FALSE, message=FALSE}
 knitr::include_graphics("images/eda.png")
@@ -83,9 +83,11 @@ knitr::include_graphics("images/eda.png")
 
 (3) Select the variables of interest. Multiple variables can be selected. To remove a variable from the selected list, use backspace on keyboard to delete it.
 
-(3) Click "Apply changes" to compute the output and plot the chart.
+(4) Select the number of bins for histogram plot.
 
-Two panes are included as part of this tab - Summary Statistics and Histogram. 
+(5) Click "Apply changes" to compute the output and plot the chart.
+
+Two tabs are included as part of this tab - Summary Statistics and Histogram. 
 
 For the Histogram Chart, users can hover over the bars and a tooltip will appear containing the count of records with the indicated value.
 
@@ -118,7 +120,7 @@ knitr::include_graphics("images/timetrendhover.png")
 ```
 
 
-### 3.3 Correlation Plot
+### 3.3 Correlation Matrix
 
 This tab shows the correlation values between each variable pair. The selection options on the left panel allows users to customise the data to be included in the view.
 
@@ -132,10 +134,14 @@ knitr::include_graphics("images/corrplot.png")
 
 (3) Select the variables of interest. Multiple variables can be selected. To remove a variable from the selected list, use backspace on keyboard to delete it.
 
-(3) Click "Apply changes" to update the chart.
+(4) Select the type of correlation coefficient is to be computed. The options are Pearson, Spearman and Robust.
+
+(5) Select the significance level (0.01, 0.05, 0.1) for the matrix.
+
+(6) Click "Apply changes" to update the chart.
 
 
-### 3.4 Bivariate Plot
+### 3.4 Scatterplot
 
 This tab allows users to determine the empirical relationship between two variables. The selection options on the left panel allows users to customise the variables included in the view of the plot.
 
@@ -153,16 +159,16 @@ knitr::include_graphics("images/bivariate.png")
 
 (5) Click "Apply changes" to update the chart.
 
-Users can also hover the chart elements (scatterplot points, line and band) and a tooltip containing information on the hovered point wil be shown.
+Users can also hover the chart elements (scatterplot points, line and band) and a tooltip containing information on the hovered point will be shown.
 
 
 ## 4.0 Ordinary Least Square (OLS) Regression
 
-Under the Ordinary Least Square Regression tab of the main navigation bar, there are two dropdowns namely "Variable Selection" and "Model Selected". More details on each dropdown tab are detailed in the next few sections. 
+Under the Ordinary Least Square Regression tab of the main navigation bar, there are two drop-downs namely "Variable Selection" and "Model Selected". More details on each drop-down tab are detailed in the next few sections. 
 
 ### 4.1 Variable Selection
 
-This tab allows users to explore the best subset of predictors to include in the model, among all possible subsets of predictors. The selection options on the left panel apply to all the panes within the tab.
+This tab allows users to explore the best subset of predictors to include in the model, among all possible subsets of predictors. The selection options on the left panel apply to all the tabs within the tab.
 
 ```{r, echo=FALSE, message=FALSE}
 knitr::include_graphics("images/ols_vs.png")
@@ -176,35 +182,53 @@ knitr::include_graphics("images/ols_vs.png")
 
 (4) Select the method to perform for variable selection among the 6 options - "Stepwise AIC forward", "Stepwise AIC backward", "Stepwise AIC both", "Stepwise BIC forward", "Stepwise BIC backward", "Stepwise BIC both"
 
-Three panes are included as part of this tab - Summary, Plot and Detailed Output. These panes will display the outputs of the OLS model in different forms. User can toggle between the panes to view their preferred way for interpreting the results of the variable selection.
+(5) Click "Apply changes".
 
-Guide has been included in each pane on how to interpret the output/ plot. 
+Three tabs are included as part of this tab - Summary, Plot and Detailed Output. These tabs will display the outputs of the OLS model in different forms. User can toggle between the tabs to view their preferred way for interpreting the results of the variable selection.
+
+Guide has been included in each tab on how to interpret the output/ plot. 
 
 
 ### 4.2 Model Selected
 
-This tab allows users to analyse the outputs of the selected model, along with validating any violation of assumptions. For the selection options on the left panel, the first 3 selections (Dependent Variable, Independent Variable and Year of Analysis) apply to all the panes within the tab while the remaining selections allows users to select the preferred test option for each assumption.
+This tab allows users to analyse the outputs of the selected model, along with validating any violation of assumptions. For the selection options on the left panel, the first 3 selections (Dependent Variable, Independent Variable and Year of Analysis) apply to all the tabs within the tab while the remaining selections allows users to select the preferred test option for each assumption.
 
 ```{r, echo=FALSE, message=FALSE}
 knitr::include_graphics("images/ols_sm.png")
 ```
 
-Six panes are included as part of this tab - Output (Table), Output (Plot), Heteroskedasticity Test, Residual Diagnostics, Collinear Diagnostics and Model Fit Assessment. 
+(1) Select the dependent variable among the 4 greenhouse gas types. Only 1 selection is allowed. 
 
-The first two panes in this tab (Output in Table and Plot) will display the outputs of the selected OLS model in tabular and visualised forms. User can toggle between these panes to view their preferred way for interpreting the results of the OLS model.
+(2) Select the independent variables of interest. Multiple variables can be selected. To remove a variable from the selected list, use backspace on keyboard to delete it.
 
-The Heteroskedasticity Test, Residual Diagnostics and Collinear Diagnostics pane display the respective outputs for each assumption test, while the Model Fit Assessment pane allows users to visually assess the fit of the OLS model. 
+(3) Select the range of Years to be included. Only 1 year is allowed to be selected.
 
-Guide has been included in each pane on how to interpret the output/ plot. 
+(4) Select the preferred choice for heteroskedasticity test.
+
+(5) Select the preferred choice for residual diagnostics.
+
+(6) Select the preferred choice for collinear diagnostics.
+
+(7) Select the preferred choice for model fit assessment.
+
+(8) Click "Apply changes".
+
+Six tabs are included as part of this tab - Output (Table), Output (Plot), Heteroskedasticity Test, Residual Diagnostics, Collinear Diagnostics and Model Fit Assessment. 
+
+The first two tabs in this tab (Output in Table and Plot) will display the outputs of the selected OLS model in tabular and visualised forms. User can toggle between these tabs to view their preferred way for interpreting the results of the OLS model.
+
+The Heteroskedasticity Test, Residual Diagnostics and Collinear Diagnostics tab display the respective outputs for each assumption test, while the Model Fit Assessment tab allows users to visually assess the fit of the OLS model. 
+
+Guide has been included in each tab on how to interpret the output/ plot. 
 
 
 ## 5.0 Panel Data Regression
 
-Under the Panel Data Regression tab of the main navigation bar, there are two dropdowns namely "Model Building" and "Tests for Assumptions". More details on each dropdown tab are detailed in the next few sections. 
+Under the Panel Data Regression tab of the main navigation bar, there are two drop-downs namely "Model Building" and "Tests for Assumptions". More details on each drop-down tab are detailed in the next few sections. 
 
 ### 5.1 Model Building
 
-This tab allows users to construct the panel data regression model of interest. The selection options on the left panel apply to all the panes within the tab.
+This tab allows users to construct the panel data regression model of interest. The selection options on the left panel apply to all the tabs within the tab.
 
 ```{r, echo=FALSE, message=FALSE}
 knitr::include_graphics("images/panel_mb.png")
@@ -228,13 +252,13 @@ knitr::include_graphics("images/panel_mb.png")
 
 (9) Click "Apply changes" to generate the output of the constructed panel model.
 
-Four panes are included as part of this tab - Summary, Plot, Detailed Output and Model Fit Assessment. 
+Four tabs are included as part of this tab - Summary, Plot, Detailed Output and Model Fit Assessment. 
 
-The first three panes in this tab (Summary, Plot and Detailed Output) will display the outputs of the constructed panel model in different forms. User can toggle between the panes to view their preferred way for interpreting the results of the panel model.
+The first three tabs in this tab (Summary, Plot and Detailed Output) will display the outputs of the constructed panel model in different forms. User can toggle between the tabs to view their preferred way for interpreting the results of the panel model.
 
-The Model Fit Assessment pane performs the relevant statistical tests to determine the most appropriate model type. When "Fixed Effect" is selected for Model Type, Hausman Test and Chow Test of Poolability will be performed to assess fixed effect against random and pooled effect respectively. When "Random Effect" is selected for Model Type, Hausman Test and Lagrange Multiplier Test will be performed to assess random effect against fixed and pooled effect respectively. 
+The Model Fit Assessment tab performs the relevant statistical tests to determine the most appropriate model type. When "Fixed Effect" is selected for Model Type, Hausman Test and Chow Test of Poolability will be performed to assess fixed effect against random and pooled effect respectively. When "Random Effect" is selected for Model Type, Hausman Test and Lagrange Multiplier Test will be performed to assess random effect against fixed and pooled effect respectively. 
 
-Guide has been included in each pane on how to interpret the output/ plot. 
+Guide has been included in each tab on how to interpret the output/ plot. 
 
 
 ### 5.2 Tests for Assumptions
@@ -253,4 +277,4 @@ knitr::include_graphics("images/panel_assump.png")
 
 (4) Click "Apply changes" to generate the output of each selected test.
 
-The respective output for each assumption test will be shown in the respective pane on the right. Guide has been included in each pane on how to interpret the output/ plot. 
+The respective output for each assumption test will be shown in the respective tab on the right. Guide has been included in each tab on how to interpret the output/ plot. 

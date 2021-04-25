@@ -15,10 +15,9 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+The link to our full research paper can be found here: https://github.com/awljiang/bloggy/blob/master/Researchpaper.pdf
+
 ```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="100%", fig.align="center"}
-knitr::include_graphics("Researchpaper.pdf")
+knitr::include_graphics("Research_paper.PNG")
 ```
-
-The link to our poster can be found here: https://github.com/awljiang/bloggy/blob/master/Researchpaper.pdf
-
 
